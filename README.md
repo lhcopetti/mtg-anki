@@ -10,6 +10,10 @@ This project provides Anki decks designed for learners of Japanese, based on the
 ### Quick Start
 To find the decks, head straight to the [Releases](https://github.com/lhcopetti/mtg-anki/releases) page and download the Anki decks for your desired MTG set expansion.
 
+### Example
+
+![example-review](https://github.com/user-attachments/assets/eae65b1b-7008-4162-947e-fc14b2af35f0)
+
 ## Background
 As a Magic: The Gathering player, I often considered switching the language settings in *Magic: Arena* to Japanese. However, I felt overwhelmed by the sheer number of cards and the vast vocabulary required to comfortably play the game in a foreign language. Since MTG matches tend to be fast-paced, there isn’t much time to look up unfamiliar kanji or vocabulary mid-game, even though playing in Japanese seemed like a great language-learning tool.
 
