@@ -16,4 +16,9 @@ SAMPLE_SENTENCES="$(echo $SAMPLE_SENTENCES | jq -r 'map(.sentence + "'"$NEW_LINE
 KEY="$VOCAB"
 VALUE="${READING}${NEW_LINE}${DEFINITIONS}${NEW_LINE}${NEW_LINE}${SAMPLE_SENTENCES}"
 
-echo "$KEY,$VALUE"
+KEY=${KEY//$'\t'//}
+VALUE=${VALUE//$'\t'//}
+
+ENTRY="$KEY\t$VALUE"
+ENTRY="${ENTRY//$'\n'/$NEW_LINE}"
+echo -e "$ENTRY"
