@@ -1,0 +1,132 @@
+{
+  "object": "card",
+  "id": "cfd369cc-6d1b-4852-b5a1-c4d3b2f8561f",
+  "oracle_id": "c027f369-e445-46a8-94ad-93396321295a",
+  "multiverse_ids": [
+    674988
+  ],
+  "name": "Rip, Spawn Hunter",
+  "printed_name": "落とし子狩り、リップ",
+  "lang": "ja",
+  "released_at": "2024-09-27",
+  "uri": "https://api.scryfall.com/cards/cfd369cc-6d1b-4852-b5a1-c4d3b2f8561f",
+  "scryfall_uri": "https://scryfall.com/card/dsk/228/ja/%E8%90%BD%E3%81%A8%E3%81%97%E5%AD%90%E7%8B%A9%E3%82%8A%E3%80%81%E3%83%AA%E3%83%83%E3%83%97?utm_source=api",
+  "layout": "normal",
+  "highres_image": false,
+  "image_status": "lowres",
+  "image_uris": {
+    "small": "https://cards.scryfall.io/small/front/c/f/cfd369cc-6d1b-4852-b5a1-c4d3b2f8561f.jpg?1726873679",
+    "normal": "https://cards.scryfall.io/normal/front/c/f/cfd369cc-6d1b-4852-b5a1-c4d3b2f8561f.jpg?1726873679",
+    "large": "https://cards.scryfall.io/large/front/c/f/cfd369cc-6d1b-4852-b5a1-c4d3b2f8561f.jpg?1726873679",
+    "png": "https://cards.scryfall.io/png/front/c/f/cfd369cc-6d1b-4852-b5a1-c4d3b2f8561f.png?1726873679",
+    "art_crop": "https://cards.scryfall.io/art_crop/front/c/f/cfd369cc-6d1b-4852-b5a1-c4d3b2f8561f.jpg?1726873679",
+    "border_crop": "https://cards.scryfall.io/border_crop/front/c/f/cfd369cc-6d1b-4852-b5a1-c4d3b2f8561f.jpg?1726873679"
+  },
+  "mana_cost": "{2}{G}{W}",
+  "cmc": 4,
+  "type_line": "Legendary Creature — Human Survivor",
+  "printed_type_line": "伝説のクリーチャー — 人間・生存者",
+  "oracle_text": "Survival — At the beginning of your second main phase, if Rip, Spawn Hunter is tapped, reveal the top X cards of your library, where X is its power. Put any number of creature and/or Vehicle cards with different powers from among them into your hand. Put the rest on the bottom of your library in a random order.",
+  "printed_text": "生存 — あなたの第２メイン・フェイズの開始時に、落とし子狩り、リップがタップ状態である場合、あなたのライブラリーの一番上にあるカードX枚を公開する。Xはこれのパワーに等しい。その中から、クリーチャーや機体でありパワーが異なる望む枚数のカードをあなたの手札に加える。残りをあなたのライブラリーの一番下に無作為の順番で置く。",
+  "power": "4",
+  "toughness": "4",
+  "colors": [
+    "G",
+    "W"
+  ],
+  "color_identity": [
+    "G",
+    "W"
+  ],
+  "keywords": [
+    "Survival"
+  ],
+  "legalities": {
+    "standard": "legal",
+    "future": "legal",
+    "historic": "legal",
+    "timeless": "legal",
+    "gladiator": "legal",
+    "pioneer": "legal",
+    "explorer": "legal",
+    "modern": "legal",
+    "legacy": "legal",
+    "pauper": "not_legal",
+    "vintage": "legal",
+    "penny": "legal",
+    "commander": "legal",
+    "oathbreaker": "legal",
+    "standardbrawl": "legal",
+    "brawl": "legal",
+    "alchemy": "legal",
+    "paupercommander": "not_legal",
+    "duel": "legal",
+    "oldschool": "not_legal",
+    "premodern": "not_legal",
+    "predh": "not_legal"
+  },
+  "games": [
+    "paper",
+    "mtgo",
+    "arena"
+  ],
+  "reserved": false,
+  "foil": true,
+  "nonfoil": true,
+  "finishes": [
+    "nonfoil",
+    "foil"
+  ],
+  "oversized": false,
+  "promo": false,
+  "reprint": false,
+  "variation": false,
+  "set_id": "a111d8a9-b647-48ec-afab-2b78f92173f5",
+  "set": "dsk",
+  "set_name": "Duskmourn: House of Horror",
+  "set_type": "expansion",
+  "set_uri": "https://api.scryfall.com/sets/a111d8a9-b647-48ec-afab-2b78f92173f5",
+  "set_search_uri": "https://api.scryfall.com/cards/search?order=set&q=e%3Adsk&unique=prints",
+  "scryfall_set_uri": "https://scryfall.com/sets/dsk?utm_source=api",
+  "rulings_uri": "https://api.scryfall.com/cards/cfd369cc-6d1b-4852-b5a1-c4d3b2f8561f/rulings",
+  "prints_search_uri": "https://api.scryfall.com/cards/search?order=released&q=oracleid%3Ac027f369-e445-46a8-94ad-93396321295a&unique=prints",
+  "collector_number": "228",
+  "digital": false,
+  "rarity": "rare",
+  "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
+  "artist": "Justine Cruz",
+  "artist_ids": [
+    "4d6acc42-7bac-42cb-ac57-a56355292e89"
+  ],
+  "illustration_id": "c85ab70d-9e60-46d4-97b4-a3b46bb0747b",
+  "border_color": "black",
+  "frame": "2015",
+  "frame_effects": [
+    "legendary"
+  ],
+  "security_stamp": "oval",
+  "full_art": false,
+  "textless": false,
+  "booster": true,
+  "story_spotlight": false,
+  "edhrec_rank": 18884,
+  "prices": {
+    "usd": null,
+    "usd_foil": null,
+    "usd_etched": null,
+    "eur": null,
+    "eur_foil": null,
+    "tix": null
+  },
+  "related_uris": {
+    "gatherer": "https://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=674988&printed=true",
+    "tcgplayer_infinite_articles": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Darticle%26game%3Dmagic%26partner%3Dscryfall%26q%3DRip%252C%2BSpawn%2BHunter",
+    "tcgplayer_infinite_decks": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Ddeck%26game%3Dmagic%26partner%3Dscryfall%26q%3DRip%252C%2BSpawn%2BHunter",
+    "edhrec": "https://edhrec.com/route/?cc=Rip%2C+Spawn+Hunter"
+  },
+  "purchase_uris": {
+    "tcgplayer": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fsearch%2Fmagic%2Fproduct%3FproductLineName%3Dmagic%26q%3DRip%252C%2BSpawn%2BHunter%26view%3Dgrid",
+    "cardmarket": "https://www.cardmarket.com/en/Magic/Products/Search?referrer=scryfall&searchString=Rip%2C+Spawn+Hunter&utm_campaign=card_prices&utm_medium=text&utm_source=scryfall",
+    "cardhoarder": "https://www.cardhoarder.com/cards?affiliate_id=scryfall&data%5Bsearch%5D=Rip%2C+Spawn+Hunter&ref=card-profile&utm_campaign=affiliate&utm_medium=card&utm_source=scryfall"
+  }
+}

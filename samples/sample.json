@@ -1,0 +1,133 @@
+{
+  "object": "card",
+  "id": "a922e685-4b6c-412d-a463-143342dc589a",
+  "oracle_id": "5ade11c0-41dd-4b6a-9f5b-c5903a3a0d7f",
+  "multiverse_ids": [
+    605323
+  ],
+  "name": "Elesh Norn, Mother of Machines",
+  "printed_name": "機械の母、エリシュ・ノーン",
+  "lang": "ja",
+  "released_at": "2023-02-03",
+  "uri": "https://api.scryfall.com/cards/a922e685-4b6c-412d-a463-143342dc589a",
+  "scryfall_uri": "https://scryfall.com/card/one/415/ja/%E6%A9%9F%E6%A2%B0%E3%81%AE%E6%AF%8D%E3%80%81%E3%82%A8%E3%83%AA%E3%82%B7%E3%83%A5%E3%83%BB%E3%83%8E%E3%83%BC%E3%83%B3?utm_source=api",
+  "layout": "normal",
+  "highres_image": false,
+  "image_status": "lowres",
+  "image_uris": {
+    "small": "https://cards.scryfall.io/small/front/a/9/a922e685-4b6c-412d-a463-143342dc589a.jpg?1677111635",
+    "normal": "https://cards.scryfall.io/normal/front/a/9/a922e685-4b6c-412d-a463-143342dc589a.jpg?1677111635",
+    "large": "https://cards.scryfall.io/large/front/a/9/a922e685-4b6c-412d-a463-143342dc589a.jpg?1677111635",
+    "png": "https://cards.scryfall.io/png/front/a/9/a922e685-4b6c-412d-a463-143342dc589a.png?1677111635",
+    "art_crop": "https://cards.scryfall.io/art_crop/front/a/9/a922e685-4b6c-412d-a463-143342dc589a.jpg?1677111635",
+    "border_crop": "https://cards.scryfall.io/border_crop/front/a/9/a922e685-4b6c-412d-a463-143342dc589a.jpg?1677111635"
+  },
+  "mana_cost": "{4}{W}",
+  "cmc": 5,
+  "type_line": "Legendary Creature — Phyrexian Praetor",
+  "printed_type_line": "伝説のクリーチャー — ファイレクシアン・法務官",
+  "oracle_text": "Vigilance\nIf a permanent entering causes a triggered ability of a permanent you control to trigger, that ability triggers an additional time.\nPermanents entering don't cause abilities of permanents your opponents control to trigger.",
+  "printed_text": "警戒\nパーマネント１つが戦場に出たことによりあなたがコントロールしているパーマネントの誘発型能力１つが誘発するなら、その能力は追加でもう１回誘発する。\nパーマネントが戦場に出ることによっては、対戦相手がコントロールしているパーマネントの能力は誘発しない。",
+  "power": "4",
+  "toughness": "7",
+  "colors": [
+    "W"
+  ],
+  "color_identity": [
+    "W"
+  ],
+  "keywords": [
+    "Vigilance"
+  ],
+  "legalities": {
+    "standard": "legal",
+    "future": "legal",
+    "historic": "legal",
+    "timeless": "legal",
+    "gladiator": "legal",
+    "pioneer": "legal",
+    "explorer": "legal",
+    "modern": "legal",
+    "legacy": "legal",
+    "pauper": "not_legal",
+    "vintage": "legal",
+    "penny": "not_legal",
+    "commander": "legal",
+    "oathbreaker": "legal",
+    "standardbrawl": "legal",
+    "brawl": "legal",
+    "alchemy": "not_legal",
+    "paupercommander": "not_legal",
+    "duel": "legal",
+    "oldschool": "not_legal",
+    "premodern": "not_legal",
+    "predh": "not_legal"
+  },
+  "games": [
+    "paper",
+    "mtgo",
+    "arena"
+  ],
+  "reserved": false,
+  "foil": true,
+  "nonfoil": true,
+  "finishes": [
+    "nonfoil",
+    "foil"
+  ],
+  "oversized": false,
+  "promo": false,
+  "reprint": false,
+  "variation": false,
+  "set_id": "04bef644-343f-4230-95ee-255f29aa67a2",
+  "set": "one",
+  "set_name": "Phyrexia: All Will Be One",
+  "set_type": "expansion",
+  "set_uri": "https://api.scryfall.com/sets/04bef644-343f-4230-95ee-255f29aa67a2",
+  "set_search_uri": "https://api.scryfall.com/cards/search?order=set&q=e%3Aone&unique=prints",
+  "scryfall_set_uri": "https://scryfall.com/sets/one?utm_source=api",
+  "rulings_uri": "https://api.scryfall.com/cards/a922e685-4b6c-412d-a463-143342dc589a/rulings",
+  "prints_search_uri": "https://api.scryfall.com/cards/search?order=released&q=oracleid%3A5ade11c0-41dd-4b6a-9f5b-c5903a3a0d7f&unique=prints",
+  "collector_number": "415",
+  "digital": false,
+  "rarity": "mythic",
+  "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
+  "artist": "Junji Ito",
+  "artist_ids": [
+    "6748e11a-4c31-45ff-8bc0-dfb1f338febe"
+  ],
+  "illustration_id": "d3c71d5d-db89-45ee-9069-b0889e80f7f0",
+  "border_color": "borderless",
+  "frame": "2015",
+  "frame_effects": [
+    "legendary"
+  ],
+  "security_stamp": "oval",
+  "full_art": false,
+  "textless": false,
+  "booster": false,
+  "story_spotlight": false,
+  "promo_types": [
+    "boosterfun"
+  ],
+  "edhrec_rank": 691,
+  "prices": {
+    "usd": null,
+    "usd_foil": null,
+    "usd_etched": null,
+    "eur": null,
+    "eur_foil": null,
+    "tix": null
+  },
+  "related_uris": {
+    "gatherer": "https://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=605323&printed=true",
+    "tcgplayer_infinite_articles": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Darticle%26game%3Dmagic%26partner%3Dscryfall%26q%3DElesh%2BNorn%252C%2BMother%2Bof%2BMachines",
+    "tcgplayer_infinite_decks": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Ddeck%26game%3Dmagic%26partner%3Dscryfall%26q%3DElesh%2BNorn%252C%2BMother%2Bof%2BMachines",
+    "edhrec": "https://edhrec.com/route/?cc=Elesh+Norn%2C+Mother+of+Machines"
+  },
+  "purchase_uris": {
+    "tcgplayer": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fsearch%2Fmagic%2Fproduct%3FproductLineName%3Dmagic%26q%3DElesh%2BNorn%252C%2BMother%2Bof%2BMachines%26view%3Dgrid",
+    "cardmarket": "https://www.cardmarket.com/en/Magic/Products/Search?referrer=scryfall&searchString=Elesh+Norn%2C+Mother+of+Machines&utm_campaign=card_prices&utm_medium=text&utm_source=scryfall",
+    "cardhoarder": "https://www.cardhoarder.com/cards?affiliate_id=scryfall&data%5Bsearch%5D=Elesh+Norn%2C+Mother+of+Machines&ref=card-profile&utm_campaign=affiliate&utm_medium=card&utm_source=scryfall"
+  }
+}
