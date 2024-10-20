@@ -1,0 +1,123 @@
+{
+  "object": "card",
+  "id": "0555c524-bc91-469c-838e-1b4abef4dbc4",
+  "oracle_id": "71d14755-b81d-4aec-b94d-1637884a5844",
+  "multiverse_ids": [
+    659699
+  ],
+  "name": "Elvish Rejuvenator",
+  "printed_name": "エルフの再生者",
+  "lang": "ja",
+  "released_at": "2024-04-19",
+  "uri": "https://api.scryfall.com/cards/0555c524-bc91-469c-838e-1b4abef4dbc4",
+  "scryfall_uri": "https://scryfall.com/card/otc/191/ja/%E3%82%A8%E3%83%AB%E3%83%95%E3%81%AE%E5%86%8D%E7%94%9F%E8%80%85?utm_source=api",
+  "layout": "normal",
+  "highres_image": false,
+  "image_status": "lowres",
+  "image_uris": {
+    "small": "https://cards.scryfall.io/small/front/0/5/0555c524-bc91-469c-838e-1b4abef4dbc4.jpg?1713747006",
+    "normal": "https://cards.scryfall.io/normal/front/0/5/0555c524-bc91-469c-838e-1b4abef4dbc4.jpg?1713747006",
+    "large": "https://cards.scryfall.io/large/front/0/5/0555c524-bc91-469c-838e-1b4abef4dbc4.jpg?1713747006",
+    "png": "https://cards.scryfall.io/png/front/0/5/0555c524-bc91-469c-838e-1b4abef4dbc4.png?1713747006",
+    "art_crop": "https://cards.scryfall.io/art_crop/front/0/5/0555c524-bc91-469c-838e-1b4abef4dbc4.jpg?1713747006",
+    "border_crop": "https://cards.scryfall.io/border_crop/front/0/5/0555c524-bc91-469c-838e-1b4abef4dbc4.jpg?1713747006"
+  },
+  "mana_cost": "{2}{G}",
+  "cmc": 3,
+  "type_line": "Creature — Elf Druid",
+  "printed_type_line": "クリーチャー — エルフ・ドルイド",
+  "oracle_text": "When Elvish Rejuvenator enters, look at the top five cards of your library. You may put a land card from among them onto the battlefield tapped. Put the rest on the bottom of your library in a random order.",
+  "printed_text": "エルフの再生者が戦場に出たとき、あなたのライブラリーの一番上にあるカード５枚を見る。その中から土地・カード１枚をタップ状態で戦場に出してもよい。残りをあなたのライブラリーの一番下に無作為の順番で置く。",
+  "power": "1",
+  "toughness": "1",
+  "colors": [
+    "G"
+  ],
+  "color_identity": [
+    "G"
+  ],
+  "keywords": [],
+  "legalities": {
+    "standard": "not_legal",
+    "future": "not_legal",
+    "historic": "legal",
+    "timeless": "legal",
+    "gladiator": "legal",
+    "pioneer": "legal",
+    "explorer": "legal",
+    "modern": "legal",
+    "legacy": "legal",
+    "pauper": "legal",
+    "vintage": "legal",
+    "penny": "not_legal",
+    "commander": "legal",
+    "oathbreaker": "legal",
+    "standardbrawl": "not_legal",
+    "brawl": "legal",
+    "alchemy": "not_legal",
+    "paupercommander": "legal",
+    "duel": "legal",
+    "oldschool": "not_legal",
+    "premodern": "not_legal",
+    "predh": "not_legal"
+  },
+  "games": [
+    "paper",
+    "mtgo"
+  ],
+  "reserved": false,
+  "foil": false,
+  "nonfoil": true,
+  "finishes": [
+    "nonfoil"
+  ],
+  "oversized": false,
+  "promo": false,
+  "reprint": true,
+  "variation": false,
+  "set_id": "d6548798-0c10-4509-b71a-2d8b1d14665a",
+  "set": "otc",
+  "set_name": "Outlaws of Thunder Junction Commander",
+  "set_type": "commander",
+  "set_uri": "https://api.scryfall.com/sets/d6548798-0c10-4509-b71a-2d8b1d14665a",
+  "set_search_uri": "https://api.scryfall.com/cards/search?order=set&q=e%3Aotc&unique=prints",
+  "scryfall_set_uri": "https://scryfall.com/sets/otc?utm_source=api",
+  "rulings_uri": "https://api.scryfall.com/cards/0555c524-bc91-469c-838e-1b4abef4dbc4/rulings",
+  "prints_search_uri": "https://api.scryfall.com/cards/search?order=released&q=oracleid%3A71d14755-b81d-4aec-b94d-1637884a5844&unique=prints",
+  "collector_number": "191",
+  "digital": false,
+  "rarity": "common",
+  "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
+  "artist": "Winona Nelson",
+  "artist_ids": [
+    "e45fe8d3-75d6-42c9-a2df-e945ad81ea27"
+  ],
+  "illustration_id": "13b9cc94-8c08-47a7-9805-909a0c519720",
+  "border_color": "black",
+  "frame": "2015",
+  "full_art": false,
+  "textless": false,
+  "booster": false,
+  "story_spotlight": false,
+  "edhrec_rank": 3728,
+  "penny_rank": 1927,
+  "prices": {
+    "usd": null,
+    "usd_foil": null,
+    "usd_etched": null,
+    "eur": null,
+    "eur_foil": null,
+    "tix": null
+  },
+  "related_uris": {
+    "gatherer": "https://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=659699&printed=true",
+    "tcgplayer_infinite_articles": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Darticle%26game%3Dmagic%26partner%3Dscryfall%26q%3DElvish%2BRejuvenator",
+    "tcgplayer_infinite_decks": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Ddeck%26game%3Dmagic%26partner%3Dscryfall%26q%3DElvish%2BRejuvenator",
+    "edhrec": "https://edhrec.com/route/?cc=Elvish+Rejuvenator"
+  },
+  "purchase_uris": {
+    "tcgplayer": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fsearch%2Fmagic%2Fproduct%3FproductLineName%3Dmagic%26q%3DElvish%2BRejuvenator%26view%3Dgrid",
+    "cardmarket": "https://www.cardmarket.com/en/Magic/Products/Search?referrer=scryfall&searchString=Elvish+Rejuvenator&utm_campaign=card_prices&utm_medium=text&utm_source=scryfall",
+    "cardhoarder": "https://www.cardhoarder.com/cards?affiliate_id=scryfall&data%5Bsearch%5D=Elvish+Rejuvenator&ref=card-profile&utm_campaign=affiliate&utm_medium=card&utm_source=scryfall"
+  }
+}

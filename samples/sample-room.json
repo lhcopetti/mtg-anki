@@ -1,0 +1,154 @@
+{
+  "object": "card",
+  "id": "054a8235-8d45-4db4-a77f-2349c80f9988",
+  "oracle_id": "a341eb75-e6a0-468b-8c83-61102249c648",
+  "multiverse_ids": [
+    674941
+  ],
+  "name": "Greenhouse // Rickety Gazebo",
+  "lang": "ja",
+  "released_at": "2024-09-27",
+  "uri": "https://api.scryfall.com/cards/054a8235-8d45-4db4-a77f-2349c80f9988",
+  "scryfall_uri": "https://scryfall.com/card/dsk/181/ja/greenhouse-rickety-gazebo-greenhouse-rickety-gazebo?utm_source=api",
+  "layout": "split",
+  "highres_image": false,
+  "image_status": "lowres",
+  "image_uris": {
+    "small": "https://cards.scryfall.io/small/front/0/5/054a8235-8d45-4db4-a77f-2349c80f9988.jpg?1726871848",
+    "normal": "https://cards.scryfall.io/normal/front/0/5/054a8235-8d45-4db4-a77f-2349c80f9988.jpg?1726871848",
+    "large": "https://cards.scryfall.io/large/front/0/5/054a8235-8d45-4db4-a77f-2349c80f9988.jpg?1726871848",
+    "png": "https://cards.scryfall.io/png/front/0/5/054a8235-8d45-4db4-a77f-2349c80f9988.png?1726871848",
+    "art_crop": "https://cards.scryfall.io/art_crop/front/0/5/054a8235-8d45-4db4-a77f-2349c80f9988.jpg?1726871848",
+    "border_crop": "https://cards.scryfall.io/border_crop/front/0/5/054a8235-8d45-4db4-a77f-2349c80f9988.jpg?1726871848"
+  },
+  "mana_cost": "{2}{G} // {3}{G}",
+  "cmc": 7,
+  "type_line": "Enchantment — Room // Enchantment — Room",
+  "colors": [
+    "G"
+  ],
+  "color_identity": [
+    "G"
+  ],
+  "keywords": [
+    "Mill"
+  ],
+  "produced_mana": [
+    "B",
+    "G",
+    "R",
+    "U",
+    "W"
+  ],
+  "card_faces": [
+    {
+      "object": "card_face",
+      "name": "Greenhouse",
+      "printed_name": "Greenhouse // Rickety Gazebo",
+      "mana_cost": "{2}{G}",
+      "type_line": "Enchantment — Room",
+      "printed_type_line": "エンチャント — 部屋",
+      "oracle_text": "Lands you control have \"{T}: Add one mana of any color.\"\n(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",
+      "printed_text": "あなたがコントロールしているすべての土地は「{T}：好きな色１色のマナ１点を加える。」を持つ。\n（どちらの半分でも唱えることができる。そのドアは戦場で開放される。閉鎖されているドアのマナ・コストを支払って、それを開放してもよい。これはソーサリーとして行う。）",
+      "artist": "John Di Giovanni",
+      "artist_id": "dc7630d7-41e3-4fef-8630-058d1ba39d37",
+      "illustration_id": "8861dfe4-7b2a-4c8c-8936-56424cfa2dd0"
+    },
+    {
+      "object": "card_face",
+      "name": "Rickety Gazebo",
+      "printed_name": "Greenhouse // Rickety Gazebo",
+      "mana_cost": "{3}{G}",
+      "type_line": "Enchantment — Room",
+      "printed_type_line": "エンチャント — 部屋",
+      "oracle_text": "When you unlock this door, mill four cards, then return up to two permanent cards from among them to your hand.\n(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",
+      "printed_text": "がたつく展（てん）望（ぼう）台（だい）\no3oG\nあなたがこのドアを開放したとき、カード４枚を切削し、その後その中からパーマネント・カード最大２枚をあなたの手札に戻す。",
+      "artist": "John Di Giovanni",
+      "artist_id": "dc7630d7-41e3-4fef-8630-058d1ba39d37"
+    }
+  ],
+  "legalities": {
+    "standard": "legal",
+    "future": "legal",
+    "historic": "legal",
+    "timeless": "legal",
+    "gladiator": "legal",
+    "pioneer": "legal",
+    "explorer": "legal",
+    "modern": "legal",
+    "legacy": "legal",
+    "pauper": "not_legal",
+    "vintage": "legal",
+    "penny": "legal",
+    "commander": "legal",
+    "oathbreaker": "legal",
+    "standardbrawl": "legal",
+    "brawl": "legal",
+    "alchemy": "legal",
+    "paupercommander": "not_legal",
+    "duel": "legal",
+    "oldschool": "not_legal",
+    "premodern": "not_legal",
+    "predh": "not_legal"
+  },
+  "games": [
+    "paper",
+    "mtgo",
+    "arena"
+  ],
+  "reserved": false,
+  "foil": true,
+  "nonfoil": true,
+  "finishes": [
+    "nonfoil",
+    "foil"
+  ],
+  "oversized": false,
+  "promo": false,
+  "reprint": false,
+  "variation": false,
+  "set_id": "a111d8a9-b647-48ec-afab-2b78f92173f5",
+  "set": "dsk",
+  "set_name": "Duskmourn: House of Horror",
+  "set_type": "expansion",
+  "set_uri": "https://api.scryfall.com/sets/a111d8a9-b647-48ec-afab-2b78f92173f5",
+  "set_search_uri": "https://api.scryfall.com/cards/search?order=set&q=e%3Adsk&unique=prints",
+  "scryfall_set_uri": "https://scryfall.com/sets/dsk?utm_source=api",
+  "rulings_uri": "https://api.scryfall.com/cards/054a8235-8d45-4db4-a77f-2349c80f9988/rulings",
+  "prints_search_uri": "https://api.scryfall.com/cards/search?order=released&q=oracleid%3Aa341eb75-e6a0-468b-8c83-61102249c648&unique=prints",
+  "collector_number": "181",
+  "digital": false,
+  "rarity": "uncommon",
+  "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
+  "artist": "John Di Giovanni",
+  "artist_ids": [
+    "dc7630d7-41e3-4fef-8630-058d1ba39d37"
+  ],
+  "illustration_id": "8861dfe4-7b2a-4c8c-8936-56424cfa2dd0",
+  "border_color": "black",
+  "frame": "2015",
+  "full_art": false,
+  "textless": false,
+  "booster": true,
+  "story_spotlight": false,
+  "edhrec_rank": 12006,
+  "prices": {
+    "usd": null,
+    "usd_foil": null,
+    "usd_etched": null,
+    "eur": null,
+    "eur_foil": null,
+    "tix": null
+  },
+  "related_uris": {
+    "gatherer": "https://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=674941&printed=true",
+    "tcgplayer_infinite_articles": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Darticle%26game%3Dmagic%26partner%3Dscryfall%26q%3DGreenhouse%2B%252F%252F%2BRickety%2BGazebo",
+    "tcgplayer_infinite_decks": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Ddeck%26game%3Dmagic%26partner%3Dscryfall%26q%3DGreenhouse%2B%252F%252F%2BRickety%2BGazebo",
+    "edhrec": "https://edhrec.com/route/?cc=Greenhouse+%2F%2F+Rickety+Gazebo"
+  },
+  "purchase_uris": {
+    "tcgplayer": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fsearch%2Fmagic%2Fproduct%3FproductLineName%3Dmagic%26q%3DGreenhouse%2B%252F%252F%2BRickety%2BGazebo%26view%3Dgrid",
+    "cardmarket": "https://www.cardmarket.com/en/Magic/Products/Search?referrer=scryfall&searchString=Greenhouse+%2F%2F+Rickety+Gazebo&utm_campaign=card_prices&utm_medium=text&utm_source=scryfall",
+    "cardhoarder": "https://www.cardhoarder.com/cards?affiliate_id=scryfall&data%5Bsearch%5D=Greenhouse+%2F%2F+Rickety+Gazebo&ref=card-profile&utm_campaign=affiliate&utm_medium=card&utm_source=scryfall"
+  }
+}
