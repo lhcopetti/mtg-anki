@@ -43,6 +43,9 @@ To find the decks, head straight to the [Releases](https://github.com/lhcopetti/
 - [ ] 広
 - [ ] 緑青
 
+### Deck Format
+
+**To-do**
 
 ## Background
 As a Magic: The Gathering player, I often considered switching the language settings in *Magic: Arena* to Japanese. However, I felt overwhelmed by the sheer number of cards and the vast vocabulary required to comfortably play the game in a foreign language. Since MTG matches tend to be fast-paced, there isn’t much time to look up unfamiliar kanji or vocabulary mid-game, even though playing in Japanese seemed like a great language-learning tool.
@@ -61,6 +64,58 @@ That changed when I began playing MTG in the *Draft* format. In draft, you build
 - **[Scryfall](https://scryfall.com/):** A comprehensive database of all MTG cards, used to gather data about card sets and translations.
 - **Scripts:** A lot of bash scripts, json manipulation with jq and unsafe calls. For now...
 
-## Development
 
-**To-Do**
+
+Vocabulary cards for each expansion:
+* LCI: 337
+* DSK: 305
+* BLB: 225
+
+Common vocabulary between the last three sets: 160
+
+
+Standard Rotation:
+
+All vocabulary summed: 2842
+Unique: 839
+
+269 vocabs appear in more than two sets
+351 vocabs appear in more than one set
+113 vocabs appear in all 11 sets
+
+488 vocabulary are unique to their set
+
+
+cards are not deleted during import
+
+MTG Rule Core
+MTG Core 
+
+
+Leeches:
+https://controlaltbackspace.org/leech/
+
+Making changes to the note model prervents the deck frorm being imported 
+all the new notes are skipped (eg: adding a new field)
+
+We can't move cards between decks during imporrt
+    * But we do can bulk move it with move card functionality
+
+
+* We should remove the first and second line from room cards because they print the the name and cost 
+* Ignore invalid entries from jisho dictionary
+* Add tags to support deletion (eg: not updated cards) by adding genanki + updated_<date>
+
+MTG Core
+
+
+
+ * Update readme with todos and roadmap
+ * generate new verrsion of deck for DSK
+    * crrerate .apkg instead
+
+
+Cards to check:
+支払え
+広
+緑青 (color combination)
