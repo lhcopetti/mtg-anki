@@ -14,6 +14,36 @@ To find the decks, head straight to the [Releases](https://github.com/lhcopetti/
 
 ![example-review](https://github.com/user-attachments/assets/eae65b1b-7008-4162-947e-fc14b2af35f0)
 
+
+## Development
+
+#### TODOs:
+- [ ] Remove unnecessary vocabulary such as color combinations (eg: 緑青)
+- [ ] Some cards do not have sample sentences or definition
+- [ ] Add more tags (e.g., set name, game platform, core, rarity?)
+- [ ] Add support for all sets
+- [ ] Have a single build script do everything from export to apkg
+- [ ] Remove known conjugating words (e.g., torinozoku and torinozoki)
+- [ ] Include hiragana and katakana only words
+- [ ] Remove invalid words
+- [ ] Add better support for two-faced cards (enchantment room)
+- [ ] Handle improper formatting of room names (second face contains the name of the card)
+
+#### Enhancements:
+- [ ] Improve formatting of notes
+- [ ] Include frequency data
+- [ ] Add link to original card from sample sentence
+- [ ] Link to search for other cards containing that vocabulary
+- [ ] Add WaniKani level and JLPT if present
+- [ ] Add another two sentences for context outside of MTG
+- [ ] Include a deck for card names
+
+#### Vocabulary to check:
+- [ ] 支払え
+- [ ] 広
+- [ ] 緑青
+
+
 ## Background
 As a Magic: The Gathering player, I often considered switching the language settings in *Magic: Arena* to Japanese. However, I felt overwhelmed by the sheer number of cards and the vast vocabulary required to comfortably play the game in a foreign language. Since MTG matches tend to be fast-paced, there isn’t much time to look up unfamiliar kanji or vocabulary mid-game, even though playing in Japanese seemed like a great language-learning tool.
 
