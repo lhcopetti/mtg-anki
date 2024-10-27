@@ -17,6 +17,7 @@ class MtgAnkiNote(genanki.Note):
     return genanki.guid_for(self.fields[0])
 
 
+exportFilePath = sys.argv[1]
 
 mtgAnkiModel = genanki.Model(
         MTG_ANKI_MODEL_ID,
@@ -52,4 +53,4 @@ mtgAnkiDeck = genanki.Deck(
         'Magic: The Gathering (mtg-anki)'
         )
 for note in notes: mtgAnkiDeck.add_note(note)
-genanki.Package([mtgAnkiDeck]).write_to_file("mtg-anki-deck.apkg")
+genanki.Package([mtgAnkiDeck]).write_to_file(exportFilePath)
