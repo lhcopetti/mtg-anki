@@ -1,8 +1,8 @@
-package com.copetti.mtganki.domain.processor
+package com.copetti.mtganki.domain.usecase
 
 import com.copetti.mtganki.common.extensions.getLogger
-import com.copetti.mtganki.domain.card.MagicCard
-import com.copetti.mtganki.domain.card.VocabularyStudyCard
+import com.copetti.mtganki.domain.model.MagicCard
+import com.copetti.mtganki.domain.model.VocabularyStudyCard
 import com.copetti.mtganki.gateway.DictionaryProvider
 import org.slf4j.Logger
 import org.springframework.stereotype.Service

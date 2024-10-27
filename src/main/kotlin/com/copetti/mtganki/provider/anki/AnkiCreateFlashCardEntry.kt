@@ -1,6 +1,6 @@
 package com.copetti.mtganki.provider.anki
 
-import com.copetti.mtganki.domain.FlashCard
+import com.copetti.mtganki.domain.usecase.FlashCard
 import org.springframework.stereotype.Component
 
 @Component

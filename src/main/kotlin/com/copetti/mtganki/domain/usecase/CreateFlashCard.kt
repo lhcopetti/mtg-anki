@@ -1,7 +1,8 @@
-package com.copetti.mtganki.domain
+package com.copetti.mtganki.domain.usecase
 
-import com.copetti.mtganki.domain.card.MagicCard
-import com.copetti.mtganki.domain.card.VocabularyStudyCard
+import com.copetti.mtganki.domain.model.FlashCard
+import com.copetti.mtganki.domain.model.MagicCard
+import com.copetti.mtganki.domain.model.VocabularyStudyCard
 import org.springframework.stereotype.Service
 
 
@@ -9,13 +10,8 @@ data class CreateFlashCardEntryRequest(
     val vocabularyStudyCard: VocabularyStudyCard
 )
 
-data class FlashCard(
-    val front: String,
-    val back: String
-)
-
 @Service
-class CreateFlashCardEntry {
+class CreateFlashCard {
 
     fun create(request: CreateFlashCardEntryRequest): FlashCard {
         val front = buildFront(request)

@@ -1,6 +1,6 @@
 package com.copetti.mtganki.gateway
 
-import com.copetti.mtganki.domain.FlashCard
+import com.copetti.mtganki.domain.model.FlashCard
 
 data class CreateDeckProviderRequest(
     val filePath: String,

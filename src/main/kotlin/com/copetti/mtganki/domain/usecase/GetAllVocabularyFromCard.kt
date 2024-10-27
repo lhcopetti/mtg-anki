@@ -1,7 +1,7 @@
-package com.copetti.mtganki.domain.processor
+package com.copetti.mtganki.domain.usecase
 
-import com.copetti.mtganki.domain.card.DualLanguageText
-import com.copetti.mtganki.domain.card.MagicCard
+import com.copetti.mtganki.domain.model.DualLanguageText
+import com.copetti.mtganki.domain.model.MagicCard
 import com.copetti.mtganki.gateway.JapaneseParserProvider
 import org.springframework.stereotype.Service
 import java.lang.Character.UnicodeBlock

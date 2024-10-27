@@ -1,4 +1,4 @@
-package com.copetti.mtganki.domain.card
+package com.copetti.mtganki.domain.model
 
 data class DualLanguageText (
     val original: String,
