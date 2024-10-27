@@ -26,7 +26,6 @@ class CreateFlashCard {
         result.appendLine(request.vocabularyStudyCard.definition.reading)
         request.vocabularyStudyCard.definition.definitions.forEach(result::appendLine)
         result.appendLine()
-        result.appendLine()
 
         getSampleSentence(request)?.let {
             result.appendLine(it.original)

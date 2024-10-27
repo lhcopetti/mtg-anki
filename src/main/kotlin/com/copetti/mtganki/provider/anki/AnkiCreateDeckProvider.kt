@@ -17,7 +17,7 @@ class AnkiCreateDeckProvider(
     private val logger = getLogger()
     override fun create(request: CreateDeckProviderRequest) {
 
-        val process = ProcessBuilder("python", "scripts/create-anki-deck.py")
+        val process = ProcessBuilder("python", "scripts/create-anki-deck.py", request.filePath)
             .redirectErrorStream(true)
             .start()
 
@@ -38,7 +38,7 @@ class AnkiCreateDeckProvider(
 
         request.flashCards
             .map(ankiCreateFlashCardEntry::create)
-            .forEach{ writer.write(it)}
+            .forEach(writer::write)
 
         writer.close()
     }

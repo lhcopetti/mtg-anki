@@ -19,15 +19,18 @@ To find the decks, head straight to the [Releases](https://github.com/lhcopetti/
 
 #### TODOs:
 - [ ] Remove unnecessary vocabulary such as color combinations (eg: 緑青)
+- [ ] Output .apkg file name based on the version from maven artifact
 - [ ] Some cards do not have sample sentences or definition
 - [ ] Add more tags (e.g., set name, game platform, core, rarity?)
 - [ ] Add support for all sets
 - [ ] Have a single build script do everything from export to apkg
-- [ ] Remove known conjugating words (e.g., torinozoku and torinozoki)
-- [ ] Include hiragana and katakana only words
+- [X] Remove known conjugating words (e.g., torinozoku and torinozoki)
+- [ ] Include hiragana and katakana only words?
 - [ ] Remove invalid words
 - [ ] Add better support for two-faced cards (enchantment room)
 - [ ] Handle improper formatting of room names (second face contains the name of the card)
+- [ ] Build the project from 'mvn clean install' instead of build.sh
+- [ ] Incorporate downloading a fresh export from scryfall project during build
 
 #### Enhancements:
 - [ ] Improve formatting of notes
@@ -37,11 +40,6 @@ To find the decks, head straight to the [Releases](https://github.com/lhcopetti/
 - [ ] Add WaniKani level and JLPT if present
 - [ ] Add another two sentences for context outside of MTG
 - [ ] Include a deck for card names
-
-#### Vocabulary to check:
-- [ ] 支払え
-- [ ] 広
-- [ ] 緑青
 
 ### Deck Format
 
@@ -59,63 +57,8 @@ That changed when I began playing MTG in the *Draft* format. In draft, you build
 - **Contextual Learning:** Example sentences are generated directly from the MTG cards, helping you learn vocabulary in context.
 
 ## Tools Used
-- **[MeCab](https://taku910.github.io/mecab/):** A powerful Japanese parser used to break down the card text into vocabulary.
+- **[Kuromoji](https://github.com/atilika/kuromoji):** A powerful Japanese parser used to break down the card text into vocabulary.
 - **[Jisho API](https://jisho.org/):** An API that provides dictionary definitions and readings for the Japanese terms found on the cards.
 - **[Scryfall](https://scryfall.com/):** A comprehensive database of all MTG cards, used to gather data about card sets and translations.
-- **Scripts:** A lot of bash scripts, json manipulation with jq and unsafe calls. For now...
 
 
-
-Vocabulary cards for each expansion:
-* LCI: 337
-* DSK: 305
-* BLB: 225
-
-Common vocabulary between the last three sets: 160
-
-
-Standard Rotation:
-
-All vocabulary summed: 2842
-Unique: 839
-
-269 vocabs appear in more than two sets
-351 vocabs appear in more than one set
-113 vocabs appear in all 11 sets
-
-488 vocabulary are unique to their set
-
-
-cards are not deleted during import
-
-MTG Rule Core
-MTG Core 
-
-
-Leeches:
-https://controlaltbackspace.org/leech/
-
-Making changes to the note model prervents the deck frorm being imported 
-all the new notes are skipped (eg: adding a new field)
-
-We can't move cards between decks during imporrt
-    * But we do can bulk move it with move card functionality
-
-
-* We should remove the first and second line from room cards because they print the the name and cost 
-* Ignore invalid entries from jisho dictionary
-* Add tags to support deletion (eg: not updated cards) by adding genanki + updated_<date>
-
-MTG Core
-
-
-
- * Update readme with todos and roadmap
- * generate new verrsion of deck for DSK
-    * crrerate .apkg instead
-
-
-Cards to check:
-支払え
-広
-緑青 (color combination)
