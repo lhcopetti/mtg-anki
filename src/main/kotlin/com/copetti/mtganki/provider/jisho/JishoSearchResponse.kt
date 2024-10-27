@@ -20,8 +20,8 @@ data class JishoDataItem(
 )
 
 data class JishoJapaneseItem(
-    val word: String,
-    val reading: String
+    val word: String?,
+    val reading: String?
 )
 
 data class JishoSense(
