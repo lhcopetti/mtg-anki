@@ -1,5 +1,6 @@
 package com.copetti.mtganki
 
+import com.copetti.mtganki.common.extensions.getLogger
 import org.springframework.boot.ExitCodeGenerator
 import org.springframework.boot.SpringApplication
 import org.springframework.context.ApplicationContext
@@ -14,12 +15,13 @@ class MtgAnkiDeckBuilderCommandLineRunner(
     private val applicationContext: ApplicationContext
 ) {
 
+    private val logger = getLogger()
 
     fun run(args: Array<String>) {
         try {
             doRun(args)
         } catch (t: Throwable) {
-            println("Exception during mtg-anki deck builder: ${t.message}")
+            logger.error("Exception during mtg-anki deck builder", t)
             SpringApplication.exit(applicationContext, ExitCodeGenerator { 1 })
             exitProcess(1)
         }
