@@ -1,6 +1,6 @@
 package com.copetti.mtganki.provider.scryfall
 
-import com.copetti.mtganki.JsonConfiguration
+import com.copetti.mtganki.common.configuration.JsonConfiguration
 import com.copetti.mtganki.domain.model.DualLanguageText
 import com.copetti.mtganki.domain.model.MagicCard
 import com.copetti.mtganki.provider.scryfall.model.ScryfallMagicCard

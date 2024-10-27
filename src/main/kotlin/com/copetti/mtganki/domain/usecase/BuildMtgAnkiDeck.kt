@@ -1,18 +1,15 @@
-package com.copetti.mtganki
+package com.copetti.mtganki.domain.usecase
 
 import com.copetti.mtganki.domain.model.FlashCard
 import com.copetti.mtganki.domain.model.VocabularyStudyCard
-import com.copetti.mtganki.domain.usecase.CreateFlashCard
-import com.copetti.mtganki.domain.usecase.CreateFlashCardEntryRequest
-import com.copetti.mtganki.domain.usecase.ProcessMagicCards
 import com.copetti.mtganki.gateway.CreateDeckProvider
 import com.copetti.mtganki.gateway.CreateDeckProviderRequest
 import com.copetti.mtganki.provider.scryfall.ScryfallMagicMapper
 import org.springframework.stereotype.Component
 
 @Component
-class MtgAnkiDeckBuilder(
-    val scryfallMagicCardFileReader: ScryfallMagicCardFileReader,
+class BuildMtgAnkiDeck(
+    val readScryfallExportFile: ReadScryfallExportFile,
     val scryfallMagicMapper: ScryfallMagicMapper,
     val processMagicCards: ProcessMagicCards,
     val createFlashCard: CreateFlashCard,
@@ -20,7 +17,7 @@ class MtgAnkiDeckBuilder(
 ) {
 
     fun buildDeck(inputFilePath: String, exportFilePath: String) {
-        val scryfallMagicCards = scryfallMagicCardFileReader.loadCards(inputFilePath)
+        val scryfallMagicCards = readScryfallExportFile.loadCards(inputFilePath)
         val magicCards = scryfallMagicCards.map(scryfallMagicMapper::toMagicCard)
         val studyCards = processMagicCards.process(magicCards)
         val flashCardEntries = createFlashCards(studyCards)

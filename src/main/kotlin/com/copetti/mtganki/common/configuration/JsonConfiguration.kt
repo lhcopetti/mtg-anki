@@ -1,4 +1,4 @@
-package com.copetti.mtganki
+package com.copetti.mtganki.common.configuration
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
