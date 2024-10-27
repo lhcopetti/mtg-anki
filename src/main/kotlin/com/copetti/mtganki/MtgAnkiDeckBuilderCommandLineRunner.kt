@@ -1,6 +1,7 @@
 package com.copetti.mtganki
 
 import com.copetti.mtganki.common.extensions.getLogger
+import com.copetti.mtganki.domain.usecase.BuildMtgAnkiDeck
 import org.springframework.boot.ExitCodeGenerator
 import org.springframework.boot.SpringApplication
 import org.springframework.context.ApplicationContext
@@ -11,7 +12,7 @@ import kotlin.system.exitProcess
 
 @Component
 class MtgAnkiDeckBuilderCommandLineRunner(
-    private val mtgAnkiDeckBuilder: MtgAnkiDeckBuilder,
+    private val buildMtgAnkiDeck: BuildMtgAnkiDeck,
     private val applicationContext: ApplicationContext
 ) {
 
@@ -42,7 +43,7 @@ class MtgAnkiDeckBuilderCommandLineRunner(
         }
 
         val outputFilePath = args[1]
-        mtgAnkiDeckBuilder.buildDeck(inputFilePath, outputFilePath)
+        buildMtgAnkiDeck.buildDeck(inputFilePath, outputFilePath)
 
     }
 }

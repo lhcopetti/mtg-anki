@@ -1,4 +1,4 @@
-package com.copetti.mtganki
+package com.copetti.mtganki.domain.usecase
 
 import com.copetti.mtganki.provider.scryfall.model.ScryfallMagicCard
 import com.fasterxml.jackson.core.type.TypeReference
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 import java.io.File
 
 @Component
-class ScryfallMagicCardFileReader(
+class ReadScryfallExportFile(
     private val objectMapper: ObjectMapper
 ) {
 
