@@ -1,11 +1,11 @@
-package com.copetti.mtganki.domain.processor
+package com.copetti.mtganki.domain.usecase
 
-import com.copetti.mtganki.domain.card.MagicCard
-import com.copetti.mtganki.domain.card.VocabularyStudyCard
+import com.copetti.mtganki.domain.model.MagicCard
+import com.copetti.mtganki.domain.model.VocabularyStudyCard
 import org.springframework.stereotype.Component
 
 @Component
-class MagicCardProcessor(
+class ProcessMagicCards(
     private val getAllVocabularyFromCard: GetAllVocabularyFromCard,
     private val createMagicStudyCard: CreateMagicStudyCard
 ) {

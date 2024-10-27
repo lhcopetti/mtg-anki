@@ -1,5 +1,6 @@
-package com.copetti.mtganki.domain.card
+package com.copetti.mtganki.domain.model
 
+import com.copetti.mtganki.domain.model.MagicCard
 import com.copetti.mtganki.gateway.VocabularyDefinition
 
 data class VocabularyStudyCard (

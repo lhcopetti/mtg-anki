@@ -1,7 +1,7 @@
 package com.copetti.mtganki.provider.scryfall
 
-import com.copetti.mtganki.domain.card.DualLanguageText
-import com.copetti.mtganki.domain.card.MagicCard
+import com.copetti.mtganki.domain.model.DualLanguageText
+import com.copetti.mtganki.domain.model.MagicCard
 import com.copetti.mtganki.provider.scryfall.model.ScryfallMagicCard
 import org.springframework.stereotype.Component
 
