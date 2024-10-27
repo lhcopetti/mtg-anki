@@ -1,6 +1,7 @@
 import random
 import genanki
 import sys
+from datetime import datetime
 
 MTG_ANKI_MODEL_ID=1277901333
 MTG_ANKI_DECK_ID=1454387444
@@ -9,13 +10,17 @@ MTG_ANKI_TEMPLATE_ID=3732922555
 MTG_ANKI_FRONT_FIELD_ID=3732666555
 MTG_ANKI_BACK_FIELD_ID=3732777555
 
-DEFAULT_TAGS = ['mtg-anki']
+today = datetime.today().strftime("%Y-%m-%d")
+DEFAULT_TAGS = ['mtg-anki', f'updated-{today}']
 
 class MtgAnkiNote(genanki.Note):
   @property
   def guid(self):
     return genanki.guid_for(self.fields[0])
 
+if len(sys.argv) < 2:
+    print("This script should be called with a file name. Eg: 'python create-anki-deck.py deck-name.apkg'")
+    sys.exit(1)
 
 exportFilePath = sys.argv[1]
 
