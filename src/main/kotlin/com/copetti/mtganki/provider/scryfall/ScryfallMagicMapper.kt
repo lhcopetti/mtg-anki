@@ -21,10 +21,15 @@ class ScryfallMagicMapper {
         val names = mutableListOf<DualLanguageText>()
 
         if (scryfallMagicCard.printedName != null) {
-            names.add(DualLanguageText(scryfallMagicCard.name, scryfallMagicCard.printedName))
+            names.add(DualLanguageText(original = scryfallMagicCard.printedName, translation = scryfallMagicCard.name))
         }
         if (scryfallMagicCard.cardFaces != null) {
-            names.addAll(scryfallMagicCard.cardFaces.map { DualLanguageText(it.name, it.printedName ?: it.name) })
+            names.addAll(scryfallMagicCard.cardFaces.map {
+                DualLanguageText(
+                    original = it.printedName ?: it.name,
+                    translation = it.name
+                )
+            })
         }
         return names;
     }
@@ -33,11 +38,21 @@ class ScryfallMagicMapper {
         val texts = mutableListOf<DualLanguageText>()
 
         if (scryfallMagicCard.oracleText != null && scryfallMagicCard.printedText != null) {
-            texts.add(DualLanguageText(scryfallMagicCard.oracleText, scryfallMagicCard.printedText))
+            texts.add(
+                DualLanguageText(
+                    original = scryfallMagicCard.printedText,
+                    translation = scryfallMagicCard.oracleText,
+                )
+            )
         }
 
         if (scryfallMagicCard.cardFaces != null) {
-            texts.addAll(scryfallMagicCard.cardFaces.map { DualLanguageText(it.oracleText, it.printedText ?: it.oracleText) })
+            texts.addAll(scryfallMagicCard.cardFaces.map {
+                DualLanguageText(
+                    original = it.printedText ?: it.oracleText,
+                    translation = it.oracleText
+                )
+            })
         }
         return texts
     }

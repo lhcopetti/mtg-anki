@@ -26,7 +26,7 @@ To find the decks, head straight to the [Releases](https://github.com/lhcopetti/
 - [ ] Have a single build script do everything from export to apkg
 - [X] Remove known conjugating words (e.g., torinozoku and torinozoki)
 - [ ] Include hiragana and katakana only words?
-- [ ] Remove invalid words
+- [ ] Remove vocabularies that don't have a properly matching definition
 - [ ] Add better support for two-faced cards (enchantment room)
 - [ ] Handle improper formatting of room names (second face contains the name of the card)
 - [ ] Build the project from 'mvn clean install' instead of build.sh
