@@ -6,7 +6,7 @@ import com.copetti.mtganki.provider.scryfall.model.ScryfallMagicCard
 import org.springframework.stereotype.Component
 
 @Component
-class ScryfallMagicMapper {
+class ScryfallMagicCardMapper {
 
 
     fun toMagicCard(scryfallMagicCard: ScryfallMagicCard) = MagicCard(

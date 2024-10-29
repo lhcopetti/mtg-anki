@@ -11,10 +11,10 @@ import org.mockito.InjectMocks
 import org.mockito.junit.jupiter.MockitoExtension
 
 @ExtendWith(MockitoExtension::class)
-class ScryfallMagicMapperTest {
+class ScryfallMagicCardMapperTest {
 
     @InjectMocks
-    private lateinit var mapper: ScryfallMagicMapper
+    private lateinit var mapper: ScryfallMagicCardMapper
 
     private val jsonConfiguration = JsonConfiguration().objectMapper()
 
