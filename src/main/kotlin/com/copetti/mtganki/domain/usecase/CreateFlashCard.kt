@@ -28,14 +28,14 @@ class CreateFlashCard {
         result.appendLine()
 
         getSampleSentence(request)?.let {
-            result.appendLine(it.translation)
-            result.appendLine(it.original)
+            result.appendLine(it.texts.translation)
+            result.appendLine(it.texts.original)
         }
         return result.toString()
     }
 
     private fun getSampleSentence(request: CreateFlashCardEntryRequest) = request.vocabularyStudyCard.cards
-        .flatMap(MagicCard::texts)
-        .minByOrNull { it.original.length }
+        .flatMap(MagicCard::cardFaces)
+        .minByOrNull { it.texts.translation.length }
 
 }

@@ -18,8 +18,8 @@ class GetAllVocabularyFromCard(
     }
 
     private fun getAllTextFromCard(magicCard: MagicCard): String {
-        var allText = magicCard.texts.map(DualLanguageText::translation).joinToString(separator = " ")
-        magicCard.names.forEach { allText = allText.replace(it.translation, "") }
+        var allText = magicCard.cardFaces.joinToString(separator = " ") { face -> face.texts.translation }
+        magicCard.cardFaces.forEach { allText = allText.replace(it.name.translation, "") }
         return allText
     }
 
