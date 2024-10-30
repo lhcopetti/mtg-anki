@@ -21,13 +21,13 @@ class ScryfallMagicCardMapper {
         val names = mutableListOf<DualLanguageText>()
 
         if (scryfallMagicCard.printedName != null) {
-            names.add(DualLanguageText(original = scryfallMagicCard.printedName, translation = scryfallMagicCard.name))
+            names.add(DualLanguageText(original = scryfallMagicCard.name, translation = scryfallMagicCard.printedName))
         }
         if (scryfallMagicCard.cardFaces != null) {
             names.addAll(scryfallMagicCard.cardFaces.map {
                 DualLanguageText(
-                    original = it.printedName ?: it.name,
-                    translation = it.name
+                    original = it.name,
+                    translation = it.printedName ?: it.name
                 )
             })
         }
@@ -40,8 +40,8 @@ class ScryfallMagicCardMapper {
         if (scryfallMagicCard.oracleText != null && scryfallMagicCard.printedText != null) {
             texts.add(
                 DualLanguageText(
-                    original = scryfallMagicCard.printedText,
-                    translation = scryfallMagicCard.oracleText,
+                    original = scryfallMagicCard.oracleText,
+                    translation = scryfallMagicCard.printedText,
                 )
             )
         }
@@ -49,8 +49,8 @@ class ScryfallMagicCardMapper {
         if (scryfallMagicCard.cardFaces != null) {
             texts.addAll(scryfallMagicCard.cardFaces.map {
                 DualLanguageText(
-                    original = it.printedText ?: it.oracleText,
-                    translation = it.oracleText
+                    original = it.oracleText,
+                    translation = it.printedText ?: it.oracleText
                 )
             })
         }

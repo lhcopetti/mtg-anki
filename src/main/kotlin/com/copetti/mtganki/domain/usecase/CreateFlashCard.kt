@@ -28,8 +28,8 @@ class CreateFlashCard {
         result.appendLine()
 
         getSampleSentence(request)?.let {
-            result.appendLine(it.original)
             result.appendLine(it.translation)
+            result.appendLine(it.original)
         }
         return result.toString()
     }
