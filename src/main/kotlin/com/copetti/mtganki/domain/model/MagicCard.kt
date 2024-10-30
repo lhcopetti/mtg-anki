@@ -1,14 +1,18 @@
 package com.copetti.mtganki.domain.model
 
-data class DualLanguageText (
+data class DualLanguageText(
     val original: String,
     val translation: String
 )
 
-data class MagicCard (
+data class MagicCardFace(
+    val name: DualLanguageText,
+    val texts: DualLanguageText
+)
+
+data class MagicCard(
     val id: String,
     val set: String,
     val lang: String,
-    val names: List<DualLanguageText>,
-    val texts: List<DualLanguageText>
+    val cardFaces: List<MagicCardFace>,
 )

@@ -2,6 +2,7 @@ package com.copetti.mtganki.provider.scryfall
 
 import com.copetti.mtganki.domain.model.DualLanguageText
 import com.copetti.mtganki.domain.model.MagicCard
+import com.copetti.mtganki.domain.model.MagicCardFace
 import com.copetti.mtganki.provider.scryfall.model.ScryfallMagicCard
 import org.springframework.stereotype.Component
 
@@ -13,47 +14,39 @@ class ScryfallMagicCardMapper {
         id = scryfallMagicCard.id,
         set = scryfallMagicCard.set,
         lang = scryfallMagicCard.lang,
-        names = resolveNames(scryfallMagicCard),
-        texts = resolveTexts(scryfallMagicCard)
+        cardFaces = resolveCardFaces(scryfallMagicCard)
     )
 
-    private fun resolveNames(scryfallMagicCard: ScryfallMagicCard): List<DualLanguageText> {
-        val names = mutableListOf<DualLanguageText>()
+    private fun resolveCardFaces(scryfallMagicCard: ScryfallMagicCard): List<MagicCardFace> {
 
-        if (scryfallMagicCard.printedName != null) {
-            names.add(DualLanguageText(original = scryfallMagicCard.name, translation = scryfallMagicCard.printedName))
-        }
-        if (scryfallMagicCard.cardFaces != null) {
-            names.addAll(scryfallMagicCard.cardFaces.map {
-                DualLanguageText(
-                    original = it.name,
-                    translation = it.printedName ?: it.name
-                )
-            })
-        }
-        return names;
+        if (scryfallMagicCard.cardFaces != null)
+            return resolveMultiFacedCard(scryfallMagicCard)
+
+        return listOf(resolveSingleFacedCard(scryfallMagicCard))
     }
 
-    private fun resolveTexts(scryfallMagicCard: ScryfallMagicCard): List<DualLanguageText> {
-        val texts = mutableListOf<DualLanguageText>()
 
-        if (scryfallMagicCard.oracleText != null && scryfallMagicCard.printedText != null) {
-            texts.add(
-                DualLanguageText(
-                    original = scryfallMagicCard.oracleText,
-                    translation = scryfallMagicCard.printedText,
-                )
+    private fun resolveMultiFacedCard(scryfallMagicCard: ScryfallMagicCard): List<MagicCardFace> {
+
+        return scryfallMagicCard.cardFaces!!.map { cardFace ->
+            MagicCardFace(
+                name = DualLanguageText(original = cardFace.name, translation = cardFace.printedName ?: cardFace.name),
+                texts = DualLanguageText(original = cardFace.oracleText, translation = cardFace.printedText ?: cardFace.oracleText)
             )
         }
 
-        if (scryfallMagicCard.cardFaces != null) {
-            texts.addAll(scryfallMagicCard.cardFaces.map {
-                DualLanguageText(
-                    original = it.oracleText,
-                    translation = it.printedText ?: it.oracleText
-                )
-            })
-        }
-        return texts
+    }
+
+    private fun resolveSingleFacedCard(scryfallMagicCard: ScryfallMagicCard): MagicCardFace {
+        return MagicCardFace(
+            name = DualLanguageText(
+                original = scryfallMagicCard.name,
+                translation = scryfallMagicCard.printedName ?: scryfallMagicCard.name
+            ),
+            texts = DualLanguageText(
+                original = scryfallMagicCard.oracleText ?: "",
+                translation = scryfallMagicCard.printedText ?: scryfallMagicCard.oracleText ?: "",
+            )
+        )
     }
 }

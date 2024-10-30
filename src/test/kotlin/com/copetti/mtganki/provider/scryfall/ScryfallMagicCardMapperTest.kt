@@ -3,6 +3,7 @@ package com.copetti.mtganki.provider.scryfall
 import com.copetti.mtganki.common.configuration.JsonConfiguration
 import com.copetti.mtganki.domain.model.DualLanguageText
 import com.copetti.mtganki.domain.model.MagicCard
+import com.copetti.mtganki.domain.model.MagicCardFace
 import com.copetti.mtganki.provider.scryfall.model.ScryfallMagicCard
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -26,13 +27,13 @@ class ScryfallMagicCardMapperTest {
             id = "20d20b8d-a6e5-4cd2-b558-9acb1ad74f13",
             set = "dsk",
             lang = "ja",
-            names = listOf(
-                DualLanguageText(original = "Final Vengeance", translation = "最後の復讐")
-            ),
-            texts = listOf(
-                DualLanguageText(
-                    original = "As an additional cost to cast this spell, sacrifice a creature or enchantment.\nExile target creature.",
-                    translation = "この呪文を唱えるための追加コストとして、エンチャントやクリーチャーである１つを生け贄に捧げる。\nクリーチャー１体を対象とする。それを追放する。",
+            cardFaces = listOf(
+                MagicCardFace(
+                    name = DualLanguageText(original = "Final Vengeance", translation = "最後の復讐"),
+                    texts = DualLanguageText(
+                        original = "As an additional cost to cast this spell, sacrifice a creature or enchantment.\nExile target creature.",
+                        translation = "この呪文を唱えるための追加コストとして、エンチャントやクリーチャーである１つを生け贄に捧げる。\nクリーチャー１体を対象とする。それを追放する。",
+                    )
                 )
             )
         )
@@ -48,20 +49,25 @@ class ScryfallMagicCardMapperTest {
             id = "29b9d103-a1af-4c8f-860a-402d72150dda",
             set = "dsk",
             lang = "ja",
-            names = listOf(
-                DualLanguageText(original = "Meat Locker", translation = "Meat Locker // Drowned Diner"),
-                DualLanguageText(original = "Drowned Diner", translation = "Meat Locker // Drowned Diner"),
-            ),
-            texts = listOf(
-                DualLanguageText(
-                    original = "When you unlock this door, tap up to one target creature and put two stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",
-                    translation = "あなたがこのドアを開放したとき、クリーチャー最大１体を対象とする。それをタップし、それの上に麻痺カウンター２個を置く。（麻痺カウンターが置かれているパーマネントがアンタップ状態になるなら、代わりにそれの上から麻痺カウンター１個を取り除く。）\n（どちらの半分でも唱えることができる。そのドアは戦場で開放される。閉鎖されているドアのマナ・コストを支払って、それを開放してもよい。これはソーサリーとして行う。）",
+            cardFaces = listOf(
+                MagicCardFace(
+                    name =
+                    DualLanguageText(original = "Meat Locker", translation = "Meat Locker // Drowned Diner"),
+                    texts =
+                    DualLanguageText(
+                        original = "When you unlock this door, tap up to one target creature and put two stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",
+                        translation = "あなたがこのドアを開放したとき、クリーチャー最大１体を対象とする。それをタップし、それの上に麻痺カウンター２個を置く。（麻痺カウンターが置かれているパーマネントがアンタップ状態になるなら、代わりにそれの上から麻痺カウンター１個を取り除く。）\n（どちらの半分でも唱えることができる。そのドアは戦場で開放される。閉鎖されているドアのマナ・コストを支払って、それを開放してもよい。これはソーサリーとして行う。）",
+                    ),
                 ),
-                DualLanguageText(
-                    original = "When you unlock this door, draw three cards, then discard a card.\n(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",
-                    translation = "冠（かん）水（すい）した食（しょく）堂（どう）\no3oUoU\nあなたがこのドアを開放したとき、カード３枚を引き、その後、カード１枚を捨てる。",
+                MagicCardFace(
+                    name = DualLanguageText(original = "Drowned Diner", translation = "Meat Locker // Drowned Diner"),
+                    texts =
+                    DualLanguageText(
+                        original = "When you unlock this door, draw three cards, then discard a card.\n(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",
+                        translation = "冠（かん）水（すい）した食（しょく）堂（どう）\no3oUoU\nあなたがこのドアを開放したとき、カード３枚を引き、その後、カード１枚を捨てる。",
+                    )
                 )
-            )
+            ),
         )
 
         assertThat(mapper.toMagicCard(scryfallCard)).isEqualTo(expected)

@@ -2,6 +2,7 @@ package com.copetti.mtganki.domain.usecase
 
 import com.copetti.mtganki.domain.model.DualLanguageText
 import com.copetti.mtganki.domain.model.MagicCard
+import com.copetti.mtganki.domain.model.MagicCardFace
 import com.copetti.mtganki.gateway.JapaneseParserProvider
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
@@ -29,13 +30,13 @@ class GetAllVocabularyFromCardTest {
             id = UUID.randomUUID().toString(),
             set = "any-set",
             lang = "any-lang",
-            names = listOf(
-                DualLanguageText(original = "Enduring Innocence", translation = "永劫の無垢")
-            ),
-            texts = listOf(
-                DualLanguageText(
-                    original = "Lifelink\nWhenever one or more other creatures...",
-                    translation = "絆魂\n...\n永劫の無垢が死亡したとき..."
+            cardFaces = listOf(
+                MagicCardFace(
+                    name = DualLanguageText(original = "Enduring Innocence", translation = "永劫の無垢"),
+                    texts = DualLanguageText(
+                        original = "Lifelink\nWhenever one or more other creatures...",
+                        translation = "絆魂\n...\n永劫の無垢が死亡したとき..."
+                    )
                 )
             )
         )
@@ -57,17 +58,22 @@ class GetAllVocabularyFromCardTest {
             id = UUID.randomUUID().toString(),
             set = "any-set",
             lang = "any-lang",
-            names = listOf(),
-            texts = listOf(
-                DualLanguageText(
-                    original = "original text",
-                    translation = "１枚以上のカードがあなたの墓地を離れるたび..."
+            cardFaces = listOf(
+                MagicCardFace(
+                    name = DualLanguageText("", ""),
+                    texts = DualLanguageText(
+                        original = "original text",
+                        translation = "１枚以上のカードがあなたの墓地を離れるたび..."
+                    )
                 ),
-                DualLanguageText(
-                    original = "original text",
-                    translation = "解（かい）剖（ぼう）室（しつ）\noB\nあなたがこのドアを開放したとき..."
+                MagicCardFace(
+                    name = DualLanguageText("", ""),
+                    DualLanguageText(
+                        original = "original text",
+                        translation = "解（かい）剖（ぼう）室（しつ）\noB\nあなたがこのドアを開放したとき..."
+                    )
                 )
-            )
+            ),
         )
 
         every { japaneseParserProvider.parse(any()) } returns listOf("開放")
