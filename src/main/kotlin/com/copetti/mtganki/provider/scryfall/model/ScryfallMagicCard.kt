@@ -10,7 +10,9 @@ data class ScryfallCardFace (
     @JsonProperty("printed_text")
     val printedText: String?,
     @JsonProperty("oracle_text")
-    val oracleText: String
+    val oracleText: String,
+    @JsonProperty("mana_cost")
+    val manaCost: String,
 )
 
 data class ScryfallMagicCard (
@@ -25,6 +27,8 @@ data class ScryfallMagicCard (
     val oracleText: String?,
     @JsonProperty("printed_text")
     val printedText: String?,
+    @JsonProperty("mana_cost")
+    val manaCost: String?,
 
     @JsonProperty("card_faces")
     val cardFaces: List<ScryfallCardFace>?
