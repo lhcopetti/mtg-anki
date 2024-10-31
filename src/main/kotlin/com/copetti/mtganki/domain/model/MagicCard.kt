@@ -7,7 +7,8 @@ data class DualLanguageText(
 
 data class MagicCardFace(
     val name: DualLanguageText,
-    val texts: DualLanguageText
+    val texts: DualLanguageText,
+    val manaCost: String
 )
 
 data class MagicCard(

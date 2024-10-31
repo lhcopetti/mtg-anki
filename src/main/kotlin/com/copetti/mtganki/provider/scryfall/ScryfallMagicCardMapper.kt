@@ -31,7 +31,8 @@ class ScryfallMagicCardMapper {
         return scryfallMagicCard.cardFaces!!.map { cardFace ->
             MagicCardFace(
                 name = DualLanguageText(original = cardFace.name, translation = cardFace.printedName ?: cardFace.name),
-                texts = DualLanguageText(original = cardFace.oracleText, translation = cardFace.printedText ?: cardFace.oracleText)
+                texts = DualLanguageText(original = cardFace.oracleText, translation = cardFace.printedText ?: cardFace.oracleText),
+                manaCost = cardFace.manaCost
             )
         }
 
@@ -46,7 +47,8 @@ class ScryfallMagicCardMapper {
             texts = DualLanguageText(
                 original = scryfallMagicCard.oracleText ?: "",
                 translation = scryfallMagicCard.printedText ?: scryfallMagicCard.oracleText ?: "",
-            )
+            ),
+            manaCost = scryfallMagicCard.manaCost ?: ""
         )
     }
 }

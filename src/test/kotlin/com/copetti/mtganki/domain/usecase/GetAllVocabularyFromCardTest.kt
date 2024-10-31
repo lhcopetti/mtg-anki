@@ -1,5 +1,6 @@
 package com.copetti.mtganki.domain.usecase
 
+import com.copetti.mtganki.domain.mock.MagicCards
 import com.copetti.mtganki.domain.model.DualLanguageText
 import com.copetti.mtganki.domain.model.MagicCard
 import com.copetti.mtganki.domain.model.MagicCardFace
@@ -26,19 +27,10 @@ class GetAllVocabularyFromCardTest {
 
     @Test
     fun `should remove card names before parsing`() {
-        val enchantmentRoomCard = MagicCard(
-            id = UUID.randomUUID().toString(),
-            set = "any-set",
-            lang = "any-lang",
-            cardFaces = listOf(
-                MagicCardFace(
-                    name = DualLanguageText(original = "Enduring Innocence", translation = "永劫の無垢"),
-                    texts = DualLanguageText(
-                        original = "Lifelink\nWhenever one or more other creatures...",
-                        translation = "絆魂\n...\n永劫の無垢が死亡したとき..."
-                    )
-                )
-            )
+        val enchantmentRoomCard = MagicCards.givenSingleFacedCard(
+            translationCardName = "永劫の無垢",
+            cardText = "Lifelink\\nWhenever one or more other creatures...",
+            translationCardText = "絆魂\n...\n永劫の無垢が死亡したとき...",
         )
 
         every { japaneseParserProvider.parse(any()) } returns listOf("開放")
@@ -64,14 +56,16 @@ class GetAllVocabularyFromCardTest {
                     texts = DualLanguageText(
                         original = "original text",
                         translation = "１枚以上のカードがあなたの墓地を離れるたび..."
-                    )
+                    ),
+                    manaCost = ""
                 ),
                 MagicCardFace(
                     name = DualLanguageText("", ""),
                     DualLanguageText(
                         original = "original text",
                         translation = "解（かい）剖（ぼう）室（しつ）\noB\nあなたがこのドアを開放したとき..."
-                    )
+                    ),
+                    manaCost = ""
                 )
             ),
         )
