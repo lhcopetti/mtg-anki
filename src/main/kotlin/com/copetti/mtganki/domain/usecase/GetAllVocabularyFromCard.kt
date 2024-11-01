@@ -1,29 +1,26 @@
 package com.copetti.mtganki.domain.usecase
 
-import com.copetti.mtganki.domain.model.DualLanguageText
 import com.copetti.mtganki.domain.model.MagicCard
 import com.copetti.mtganki.gateway.JapaneseParserProvider
 import org.springframework.stereotype.Service
-import java.lang.Character.UnicodeBlock
 
 @Service
 class GetAllVocabularyFromCard(
-    private val japaneseParserProvider: JapaneseParserProvider
+    private val japaneseParserProvider: JapaneseParserProvider,
+    private val processMagicCardFaceText: ProcessMagicCardFaceText,
+    private val processParsedVocabulary: ProcessParsedVocabulary
 ) {
 
     fun getVocabulary(magicCard: MagicCard): Set<String> {
         val allText = getAllTextFromCard(magicCard)
         val parsed = japaneseParserProvider.parse(allText).toSet()
-        return parsed.filter(this::containsKanji).toSet()
+        return processParsedVocabulary.process(parsed)
     }
 
     private fun getAllTextFromCard(magicCard: MagicCard): String {
-        var allText = magicCard.cardFaces.joinToString(separator = " ") { face -> face.texts.translation }
-        magicCard.cardFaces.forEach { allText = allText.replace(it.name.translation, "") }
-        return allText
+        return magicCard.cardFaces
+            .map(processMagicCardFaceText::process)
+            .joinToString(separator = " ")
     }
-
-    private fun containsKanji(vocabulary: String) =
-        vocabulary.any { c -> UnicodeBlock.of(c) == UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS }
 
 }
