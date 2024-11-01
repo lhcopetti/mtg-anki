@@ -1,9 +1,6 @@
 package com.copetti.mtganki.domain.usecase
 
 import com.copetti.mtganki.domain.mock.MagicCards
-import com.copetti.mtganki.domain.model.DualLanguageText
-import com.copetti.mtganki.domain.model.MagicCard
-import com.copetti.mtganki.domain.model.MagicCardFace
 import com.copetti.mtganki.gateway.JapaneseParserProvider
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
@@ -13,7 +10,6 @@ import io.mockk.verify
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import java.util.*
 
 @ExtendWith(MockKExtension::class)
 class GetAllVocabularyFromCardTest {
@@ -22,64 +18,55 @@ class GetAllVocabularyFromCardTest {
     private lateinit var getAllVocabularyFromCard: GetAllVocabularyFromCard
 
     @MockK
+    private lateinit var processMagicCardFaceText: ProcessMagicCardFaceText
+
+    @MockK
+    private lateinit var processParsedVocabulary: ProcessParsedVocabulary
+
+    @MockK
     private lateinit var japaneseParserProvider: JapaneseParserProvider
 
 
     @Test
-    fun `should remove card names before parsing`() {
-        val enchantmentRoomCard = MagicCards.givenSingleFacedCard(
-            translationCardName = "永劫の無垢",
-            cardText = "Lifelink\\nWhenever one or more other creatures...",
-            translationCardText = "絆魂\n...\n永劫の無垢が死亡したとき...",
-        )
+    fun `should process single magic card correctly`() {
+        val magicCard = MagicCards.givenSingleFacedCard()
 
-        every { japaneseParserProvider.parse(any()) } returns listOf("開放")
+        every { processMagicCardFaceText.process(any()) } returns "text extracted"
+        every { japaneseParserProvider.parse(any()) } returns listOf("parsed", "text")
+        every { processParsedVocabulary.process(any()) } returns setOf("processed", "vocabulary")
 
-        val actual = getAllVocabularyFromCard.getVocabulary(enchantmentRoomCard)
-        val expected = setOf("開放")
+        val actual = getAllVocabularyFromCard.getVocabulary(magicCard)
+        val expected = setOf("processed", "vocabulary")
 
         assertThat(actual).isEqualTo(expected)
 
-        val expectedParserInput = "絆魂\n...\nが死亡したとき..."
-        verify { japaneseParserProvider.parse(expectedParserInput) }
+        verify { processMagicCardFaceText.process(magicCard.cardFaces.first()) }
+        verify { japaneseParserProvider.parse("text extracted") }
+        verify { processParsedVocabulary.process(setOf("parsed", "text")) }
     }
 
     @Test
-    fun `should remove invalid starting lines from the second card face of enchantment rooms before parsing`() {
-        val enchantmentRoomCard = MagicCard(
-            id = UUID.randomUUID().toString(),
-            set = "any-set",
-            lang = "any-lang",
-            cardFaces = listOf(
-                MagicCardFace(
-                    name = DualLanguageText("", ""),
-                    texts = DualLanguageText(
-                        original = "original text",
-                        translation = "１枚以上のカードがあなたの墓地を離れるたび..."
-                    ),
-                    manaCost = ""
-                ),
-                MagicCardFace(
-                    name = DualLanguageText("", ""),
-                    DualLanguageText(
-                        original = "original text",
-                        translation = "解（かい）剖（ぼう）室（しつ）\noB\nあなたがこのドアを開放したとき..."
-                    ),
-                    manaCost = ""
-                )
-            ),
-        )
+    fun `should process multi faced cards correctly`() {
+        val multiFacedMagicCard = MagicCards.givenMultiFacedCard()
 
-        every { japaneseParserProvider.parse(any()) } returns listOf("開放")
+        every { processMagicCardFaceText.process(any()) } returns "first card text" andThen "second card text"
+        every { japaneseParserProvider.parse(any()) } returns listOf("parsed", "text")
+        every { processParsedVocabulary.process(any()) } returns setOf("processed", "vocabulary")
 
-        val actual = getAllVocabularyFromCard.getVocabulary(enchantmentRoomCard)
-        val expected = setOf("開放")
+        val actual = getAllVocabularyFromCard.getVocabulary(multiFacedMagicCard)
+        val expected = setOf("processed", "vocabulary")
 
         assertThat(actual).isEqualTo(expected)
 
-        val expectedParserInput =
-            "１枚以上のカードがあなたの墓地を離れるたび... 解（かい）剖（ぼう）室（しつ）\noB\nあなたがこのドアを開放したとき..."
+
+        multiFacedMagicCard.cardFaces.forEach { magicCardFace ->
+            verify { processMagicCardFaceText.process(magicCardFace) }
+        }
+        val expectedParserInput = "first card text second card text"
         verify { japaneseParserProvider.parse(expectedParserInput) }
+
+        val expectedProcessInput = setOf("parsed", "text")
+        verify { processParsedVocabulary.process(expectedProcessInput) }
     }
 
 }
