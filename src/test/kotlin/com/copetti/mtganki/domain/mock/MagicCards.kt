@@ -28,7 +28,9 @@ object MagicCards {
     fun givenMultiFacedCard(
         translationCardName: String = "translation-name",
         cardText: String = "original-text",
-        translationCardText: String = "translation-text"
+        translationCardText: String = "translation-text",
+        secondFaceText: String = "second-face-card-text",
+        secondFaceTranslationText: String = "second-face-translation-card-text",
     ) = MagicCard(
         id = UUID.randomUUID().toString(),
         set = "any-set",
@@ -41,7 +43,7 @@ object MagicCards {
             ),
             MagicCardFace(
                 name = DualLanguageText(original = "original-name", translation = translationCardName),
-                texts = DualLanguageText(original = cardText, translation = translationCardText),
+                texts = DualLanguageText(original = secondFaceText, translation = secondFaceTranslationText),
                 manaCost = "cost"
             )
         )
