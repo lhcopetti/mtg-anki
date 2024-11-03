@@ -11,17 +11,27 @@ class JishoDictionaryProvider(
     private val jishoClient: JishoClient
 ) : DictionaryProvider {
 
-    private val logger = getLogger()
+    private val log = getLogger()
 
     override fun lookup(vocabulary: String): VocabularyDefinition? {
 
         try {
             val response = jishoClient.searchWord(vocabulary)
+
+            if (response.data.isEmpty()) {
+                log.info("No data returned from jisho | vocabulary: $vocabulary")
+                return null
+            }
+
+            if (response.data.firstOrNull()?.slug != vocabulary) {
+                log.warn("Searched vocabulary does not match slug. Vocabulary: $vocabulary, slug: ${response.data.firstOrNull()?.slug}")
+            }
+
             val reading = getReading(response)
             val definitions = getDefinitions(response)
             return VocabularyDefinition(reading, definitions)
         } catch (ex: Exception) {
-            logger.error("Error occurred during retrieval of dictionary entry for vocabulary: $vocabulary", ex)
+            log.error("Error occurred during retrieval of dictionary entry for vocabulary: $vocabulary", ex)
             throw ex
         }
     }
