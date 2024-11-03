@@ -17,7 +17,7 @@ class AnkiCreateDeckProvider(
     private val logger = getLogger()
     override fun create(request: CreateDeckProviderRequest) {
 
-        val process = ProcessBuilder("python", "scripts/create-anki-deck.py", request.filePath)
+        val process = ProcessBuilder("bin/mtg-anki-deck-creator", request.filePath)
             .redirectErrorStream(true)
             .start()
 
