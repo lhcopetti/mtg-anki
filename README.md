@@ -19,11 +19,10 @@ To find the decks, head straight to the [Releases](https://github.com/lhcopetti/
 
 #### TODOs:
 - [ ] Remove unnecessary vocabulary such as color combinations (eg: 緑青)
-- [ ] Output .apkg file name based on the version from maven artifact
-- [ ] Some cards do not have sample sentences or definition
-- [ ] Add more tags (e.g., set name, game platform, core, rarity?)
+- [X] Output .apkg file name based on the version from maven artifact
+- [X] Some cards do not have sample sentences or definition
+- [X] Add support for custom tags (e.g., set name, game platform, core, rarity?)
 - [ ] Add support for all sets
-- [ ] Have a single build script do everything from export to apkg
 - [X] Remove known conjugating words (e.g., torinozoku and torinozoki)
 - [ ] Include hiragana and katakana only words?
 - [ ] Remove vocabularies that don't have a properly matching definition
@@ -36,10 +35,10 @@ To find the decks, head straight to the [Releases](https://github.com/lhcopetti/
 - [ ] Improve formatting of notes
 - [ ] Include frequency data
 - [ ] Add link to original card from sample sentence
-- [ ] Link to search for other cards containing that vocabulary
 - [ ] Add WaniKani level and JLPT if present
-- [ ] Add another two sentences for context outside of MTG
+- [ ] Add other sentences for context outside of MTG
 - [ ] Include a deck for card names
+- [ ] Add data about decks
 
 ### Deck Format
 
