@@ -1,4 +1,13 @@
-#!/bin/bash -e
+#!/bin/bash
+set -e
+
+
+if [ "$#" -lt 1 ]; then
+    echo "Build script should be called with the export file as argument"
+    echo "Eg: bash build.sh exports/all-cards-20241017091854.json"
+    exit 1;
+fi
+
 
 function log() {
     MESSAGE="$1"
@@ -12,11 +21,6 @@ log "Beginning..."
 log "Building application..."
 
 mvn clean install
-
-if [ $? -ne 0 ]; then
-    log "Build the application failed. Please see log for more details"
-    exit 1;
-fi
 
 log "Running application..."
 
