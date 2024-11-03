@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.copetti</groupId>
 	<artifactId>mtg-anki-deck-builder</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<name>mtg-anki-deck-builder</name>
 	<description>The mtg-anki deck builder</description>
 	<url/>
