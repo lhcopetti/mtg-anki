@@ -16,7 +16,8 @@ class CreateFlashCard {
     fun create(request: CreateFlashCardEntryRequest): FlashCard {
         val front = buildFront(request)
         val back = buildBack(request)
-        return FlashCard(front = front, back = back)
+        val tags = buildTags(request)
+        return FlashCard(front = front, back = back, tags = tags)
     }
 
     private fun buildFront(request: CreateFlashCardEntryRequest) = request.vocabularyStudyCard.vocabulary
@@ -38,5 +39,11 @@ class CreateFlashCard {
         .flatMap(MagicCard::cardFaces)
         .filter { cardFace -> cardFace.texts.translation.contains(request.vocabularyStudyCard.vocabulary) }
         .minByOrNull { it.texts.translation.length }
+
+    private fun buildTags(request: CreateFlashCardEntryRequest) = request.vocabularyStudyCard.cards
+        .map (MagicCard::set)
+        .distinct()
+        .map { set -> "set:$set" }
+        .toSet()
 
 }

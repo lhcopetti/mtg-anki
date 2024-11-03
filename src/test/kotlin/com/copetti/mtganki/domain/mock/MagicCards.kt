@@ -11,10 +11,11 @@ object MagicCards {
     fun givenSingleFacedCard(
         translationCardName: String = "translation-name",
         cardText: String = "original-text",
-        translationCardText: String = "translation-text"
+        translationCardText: String = "translation-text",
+        set: String = "any-set"
     ) = MagicCard(
         id = UUID.randomUUID().toString(),
-        set = "any-set",
+        set = set,
         lang = "any-lang",
         cardFaces = listOf(
             MagicCardFace(

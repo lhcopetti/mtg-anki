@@ -9,7 +9,15 @@ class AnkiCreateFlashCardEntry {
     fun create(flashCard: FlashCard): String {
         val front = format(flashCard.front)
         val back = format(flashCard.back)
-        return "$front$FIELD_SEPARATOR${back}${System.lineSeparator()}"
+        val tags = flashCard.tags.joinToString(separator = ",")
+
+        val result = StringBuilder()
+        result.append("${front}${FIELD_SEPARATOR}${back}")
+
+        if (tags.isNotEmpty())
+            result.append("\t${tags}")
+
+        return result.appendLine().toString()
     }
 
     private fun format(value: String) = value
