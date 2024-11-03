@@ -48,7 +48,8 @@ class CreateFlashCardTest {
                 the-translation-text (the-vocab)
                 the-original-card-text
 
-            """.trimIndent()
+            """.trimIndent(),
+            tags = setOf("set:any-set")
         )
 
         assertThat(actual).isEqualTo(expected)
@@ -88,7 +89,8 @@ class CreateFlashCardTest {
                 the-translation-text (the-vocab)
                 the-original-card-text
 
-            """.trimIndent()
+            """.trimIndent(),
+            tags = setOf("set:any-set")
         )
 
         assertThat(actual).isEqualTo(expected)
@@ -128,7 +130,50 @@ class CreateFlashCardTest {
                 the-second-face-translation-text (the-target-vocab)
                 the-second-face-text
 
-            """.trimIndent()
+            """.trimIndent(),
+            tags = setOf("set:any-set")
+        )
+
+        assertThat(actual).isEqualTo(expected)
+    }
+
+    @Test
+    fun `should add set tags for the vocabulary from each tag`() {
+        val request = CreateFlashCardEntryRequest(
+            vocabularyStudyCard = VocabularyStudyCard(
+                vocabulary = "the-vocab",
+                definition = VocabularyDefinition(
+                    reading = "the-reading",
+                    definitions = listOf(
+                        "first-definition",
+                        "second-definition"
+                    )
+                ),
+                cards = setOf(
+                    MagicCards.givenSingleFacedCard(set = "set1"),
+                    MagicCards.givenSingleFacedCard(set = "set2" ),
+                    MagicCards.givenSingleFacedCard(
+                        cardText = "the-original-card-text",
+                        translationCardText = "the-translation-text (the-vocab)",
+                        set = "set1"
+                    ),
+                )
+            )
+        )
+
+        val actual = createFlashCard.create(request)
+        val expected = FlashCard(
+            front = "the-vocab",
+            back = """
+                the-reading
+                first-definition
+                second-definition
+                
+                the-translation-text (the-vocab)
+                the-original-card-text
+
+            """.trimIndent(),
+            tags = setOf("set:set1", "set:set2")
         )
 
         assertThat(actual).isEqualTo(expected)
