@@ -36,6 +36,7 @@ class CreateFlashCard {
 
     private fun getSampleSentence(request: CreateFlashCardEntryRequest) = request.vocabularyStudyCard.cards
         .flatMap(MagicCard::cardFaces)
+        .filter { cardFace -> cardFace.texts.translation.contains(request.vocabularyStudyCard.vocabulary) }
         .minByOrNull { it.texts.translation.length }
 
 }
