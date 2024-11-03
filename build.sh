@@ -24,7 +24,9 @@ mvn clean install
 
 log "Running application..."
 
-mvn spring-boot:run -Dspring-boot.run.arguments="$EXPORT_FILE mtg-anki-deck-v0.0.3.apkg"
+ARTIFACT_VERSION="$(mvn -q -Dexec.executable="echo" -Dexec.args='${project.version}' --non-recursive exec:exec)"
+MTG_ANKI_DECK_VERSION="v${ARTIFACT_VERSION//-SNAPSHOT}"
+mvn spring-boot:run -Dspring-boot.run.arguments="$EXPORT_FILE mtg-anki-deck-${MTG_ANKI_DECK_VERSION}.apkg"
 
 if [ $? -ne 0 ]; then
     log "Generating the deck failed. Please see log for more details"
