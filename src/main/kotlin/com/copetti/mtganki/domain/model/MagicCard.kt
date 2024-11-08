@@ -11,9 +11,21 @@ data class MagicCardFace(
     val manaCost: String
 )
 
+enum class Legality {
+    LEGAL,
+    NOT_LEGAL,
+    RESTRICTED,
+    BANNED
+}
+
+data class FormatLegality (
+    val standard: Legality
+)
+
 data class MagicCard(
     val id: String,
     val set: String,
     val lang: String,
     val cardFaces: List<MagicCardFace>,
+    val legality: FormatLegality
 )

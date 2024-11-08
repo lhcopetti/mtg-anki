@@ -1,8 +1,6 @@
 package com.copetti.mtganki.domain.mock
 
-import com.copetti.mtganki.domain.model.DualLanguageText
-import com.copetti.mtganki.domain.model.MagicCard
-import com.copetti.mtganki.domain.model.MagicCardFace
+import com.copetti.mtganki.domain.model.*
 import java.util.*
 
 object MagicCards {
@@ -23,6 +21,9 @@ object MagicCards {
                 texts = DualLanguageText(original = cardText, translation = translationCardText),
                 manaCost = "cost"
             )
+        ),
+        legality = FormatLegality(
+            standard = Legality.LEGAL
         )
     )
 
@@ -47,6 +48,9 @@ object MagicCards {
                 texts = DualLanguageText(original = secondFaceText, translation = secondFaceTranslationText),
                 manaCost = "cost"
             )
+        ),
+        legality = FormatLegality(
+            standard = Legality.LEGAL
         )
     )
 }

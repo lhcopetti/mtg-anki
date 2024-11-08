@@ -1,8 +1,6 @@
 package com.copetti.mtganki.provider.scryfall
 
-import com.copetti.mtganki.domain.model.DualLanguageText
-import com.copetti.mtganki.domain.model.MagicCard
-import com.copetti.mtganki.domain.model.MagicCardFace
+import com.copetti.mtganki.domain.model.*
 import com.copetti.mtganki.provider.scryfall.model.ScryfallMagicCard
 import org.springframework.stereotype.Component
 
@@ -14,8 +12,15 @@ class ScryfallMagicCardMapper {
         id = scryfallMagicCard.id,
         set = scryfallMagicCard.set,
         lang = scryfallMagicCard.lang,
-        cardFaces = resolveCardFaces(scryfallMagicCard)
+        cardFaces = resolveCardFaces(scryfallMagicCard),
+        legality = resolveLegality(scryfallMagicCard)
     )
+
+    private fun resolveLegality(scryfallMagicCard: ScryfallMagicCard): FormatLegality {
+        return FormatLegality(
+            standard = scryfallMagicCard.legalities.standard.toDomain()
+        )
+    }
 
     private fun resolveCardFaces(scryfallMagicCard: ScryfallMagicCard): List<MagicCardFace> {
 
