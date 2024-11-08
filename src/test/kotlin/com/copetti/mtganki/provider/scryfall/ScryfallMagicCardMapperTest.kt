@@ -1,9 +1,7 @@
 package com.copetti.mtganki.provider.scryfall
 
 import com.copetti.mtganki.common.configuration.JsonConfiguration
-import com.copetti.mtganki.domain.model.DualLanguageText
-import com.copetti.mtganki.domain.model.MagicCard
-import com.copetti.mtganki.domain.model.MagicCardFace
+import com.copetti.mtganki.domain.model.*
 import com.copetti.mtganki.provider.scryfall.model.ScryfallMagicCard
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -36,7 +34,8 @@ class ScryfallMagicCardMapperTest {
                     ),
                     manaCost = "{B}"
                 )
-            )
+            ),
+            legality = FormatLegality(standard = Legality.LEGAL)
         )
 
         assertThat(mapper.toMagicCard(scryfallCard)).isEqualTo(expected)
@@ -71,6 +70,33 @@ class ScryfallMagicCardMapperTest {
                     manaCost = "{3}{U}{U}"
                 )
             ),
+            legality = FormatLegality(standard = Legality.LEGAL)
+        )
+
+        assertThat(mapper.toMagicCard(scryfallCard)).isEqualTo(expected)
+    }
+
+    @Test
+    fun `should correctly map illegal standard card`() {
+        val scryfallCard = jsonConfiguration.readValue(STANDARD_NOT_LEGAL_CARD, ScryfallMagicCard::class.java)
+
+        val expected = MagicCard(
+            id = "03d28850-e3af-402d-8472-c335004adaa5",
+            set = "neo",
+            lang = "ja",
+            cardFaces = listOf(
+                MagicCardFace(
+                    name =
+                    DualLanguageText(original = "Spirited Companion", translation = "神憑く相棒"),
+                    texts =
+                    DualLanguageText(
+                        original = "When Spirited Companion enters, draw a card.",
+                        translation = "神憑く相棒が戦場に出たとき、カード１枚を引く。",
+                    ),
+                    manaCost = "{1}{W}"
+                )
+            ),
+            legality = FormatLegality(standard = Legality.NOT_LEGAL)
         )
 
         assertThat(mapper.toMagicCard(scryfallCard)).isEqualTo(expected)
@@ -355,5 +381,140 @@ class ScryfallMagicCardMapperTest {
 }
             
         """.trimIndent()
+
+
+        private val STANDARD_NOT_LEGAL_CARD = """
+{
+  "object": "card",
+  "id": "03d28850-e3af-402d-8472-c335004adaa5",
+  "oracle_id": "9c5f0d91-9d86-4e66-94fd-4af93ad01838",
+  "multiverse_ids": [
+    552990
+  ],
+  "name": "Spirited Companion",
+  "printed_name": "神憑く相棒",
+  "lang": "ja",
+  "released_at": "2022-02-18",
+  "uri": "https://api.scryfall.com/cards/03d28850-e3af-402d-8472-c335004adaa5",
+  "scryfall_uri": "https://scryfall.com/card/neo/508/ja/%E7%A5%9E%E6%86%91%E3%81%8F%E7%9B%B8%E6%A3%92?utm_source=api",
+  "layout": "normal",
+  "highres_image": false,
+  "image_status": "lowres",
+  "image_uris": {
+    "small": "https://cards.scryfall.io/small/front/0/3/03d28850-e3af-402d-8472-c335004adaa5.jpg?1724751775",
+    "normal": "https://cards.scryfall.io/normal/front/0/3/03d28850-e3af-402d-8472-c335004adaa5.jpg?1724751775",
+    "large": "https://cards.scryfall.io/large/front/0/3/03d28850-e3af-402d-8472-c335004adaa5.jpg?1724751775",
+    "png": "https://cards.scryfall.io/png/front/0/3/03d28850-e3af-402d-8472-c335004adaa5.png?1724751775",
+    "art_crop": "https://cards.scryfall.io/art_crop/front/0/3/03d28850-e3af-402d-8472-c335004adaa5.jpg?1724751775",
+    "border_crop": "https://cards.scryfall.io/border_crop/front/0/3/03d28850-e3af-402d-8472-c335004adaa5.jpg?1724751775"
+  },
+  "mana_cost": "{1}{W}",
+  "cmc": 2,
+  "type_line": "Enchantment Creature — Dog",
+  "printed_type_line": "クリーチャー・エンチャント — 犬",
+  "oracle_text": "When Spirited Companion enters, draw a card.",
+  "printed_text": "神憑く相棒が戦場に出たとき、カード１枚を引く。",
+  "power": "1",
+  "toughness": "1",
+  "colors": [
+    "W"
+  ],
+  "color_identity": [
+    "W"
+  ],
+  "keywords": [],
+  "legalities": {
+    "standard": "not_legal",
+    "future": "not_legal",
+    "historic": "legal",
+    "timeless": "legal",
+    "gladiator": "legal",
+    "pioneer": "legal",
+    "explorer": "legal",
+    "modern": "legal",
+    "legacy": "legal",
+    "pauper": "legal",
+    "vintage": "legal",
+    "penny": "not_legal",
+    "commander": "legal",
+    "oathbreaker": "legal",
+    "standardbrawl": "not_legal",
+    "brawl": "legal",
+    "alchemy": "not_legal",
+    "paupercommander": "legal",
+    "duel": "legal",
+    "oldschool": "not_legal",
+    "premodern": "not_legal",
+    "predh": "not_legal"
+  },
+  "games": [
+    "paper",
+    "mtgo",
+    "arena"
+  ],
+  "reserved": false,
+  "foil": true,
+  "nonfoil": true,
+  "finishes": [
+    "nonfoil",
+    "foil"
+  ],
+  "oversized": false,
+  "promo": true,
+  "reprint": false,
+  "variation": false,
+  "set_id": "59a2059f-5482-433f-8761-eb2e17859b71",
+  "set": "neo",
+  "set_name": "Kamigawa: Neon Dynasty",
+  "set_type": "expansion",
+  "set_uri": "https://api.scryfall.com/sets/59a2059f-5482-433f-8761-eb2e17859b71",
+  "set_search_uri": "https://api.scryfall.com/cards/search?order=set&q=e%3Aneo&unique=prints",
+  "scryfall_set_uri": "https://scryfall.com/sets/neo?utm_source=api",
+  "rulings_uri": "https://api.scryfall.com/cards/03d28850-e3af-402d-8472-c335004adaa5/rulings",
+  "prints_search_uri": "https://api.scryfall.com/cards/search?order=released&q=oracleid%3A9c5f0d91-9d86-4e66-94fd-4af93ad01838&unique=prints",
+  "collector_number": "508",
+  "digital": false,
+  "rarity": "common",
+  "watermark": "planeswalker",
+  "flavor_text": "いくつかの陽気な精霊と友情を築くと、すぐにその「群れ」は永岩城で起きる悪戯の原因として知られるようになった。",
+  "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
+  "artist": "Ilse Gort",
+  "artist_ids": [
+    "12070c2e-4de6-46bc-b379-8a580dfb34c5"
+  ],
+  "illustration_id": "ea07f664-a773-4e80-b843-49baf0652bec",
+  "border_color": "black",
+  "frame": "2015",
+  "security_stamp": "oval",
+  "full_art": false,
+  "textless": false,
+  "booster": false,
+  "story_spotlight": false,
+  "promo_types": [
+    "promopack"
+  ],
+  "edhrec_rank": 759,
+  "penny_rank": 400,
+  "prices": {
+    "usd": null,
+    "usd_foil": null,
+    "usd_etched": null,
+    "eur": null,
+    "eur_foil": null,
+    "tix": null
+  },
+  "related_uris": {
+    "gatherer": "https://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=552990&printed=true",
+    "tcgplayer_infinite_articles": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Darticle%26game%3Dmagic%26partner%3Dscryfall%26q%3DSpirited%2BCompanion",
+    "tcgplayer_infinite_decks": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&trafcat=infinite&u=https%3A%2F%2Finfinite.tcgplayer.com%2Fsearch%3FcontentMode%3Ddeck%26game%3Dmagic%26partner%3Dscryfall%26q%3DSpirited%2BCompanion",
+    "edhrec": "https://edhrec.com/route/?cc=Spirited+Companion"
+  },
+  "purchase_uris": {
+    "tcgplayer": "https://tcgplayer.pxf.io/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fsearch%2Fmagic%2Fproduct%3FproductLineName%3Dmagic%26q%3DSpirited%2BCompanion%26view%3Dgrid",
+    "cardmarket": "https://www.cardmarket.com/en/Magic/Products/Search?referrer=scryfall&searchString=Spirited+Companion&utm_campaign=card_prices&utm_medium=text&utm_source=scryfall",
+    "cardhoarder": "https://www.cardhoarder.com/cards?affiliate_id=scryfall&data%5Bsearch%5D=Spirited+Companion&ref=card-profile&utm_campaign=affiliate&utm_medium=card&utm_source=scryfall"
+  }
+}
+            """.trimIndent()
     }
 }

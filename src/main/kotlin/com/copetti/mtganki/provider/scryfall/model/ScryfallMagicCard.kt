@@ -1,8 +1,31 @@
 package com.copetti.mtganki.provider.scryfall.model
 
+import com.copetti.mtganki.domain.model.Legality
 import com.fasterxml.jackson.annotation.JsonProperty
 
-data class ScryfallCardFace (
+enum class ScryfallLegality {
+    @JsonProperty("legal")
+    LEGAL,
+    @JsonProperty("not_legal")
+    NOT_LEGAL,
+    @JsonProperty("restricted")
+    RESTRICTED,
+    @JsonProperty("banned")
+    BANNED;
+
+    fun toDomain() = when(this) {
+        LEGAL -> Legality.LEGAL
+        NOT_LEGAL -> Legality.NOT_LEGAL
+        RESTRICTED -> Legality.RESTRICTED
+        BANNED -> Legality.BANNED
+    }
+}
+
+data class ScryfallFormatLegality(
+    val standard: ScryfallLegality
+)
+
+data class ScryfallCardFace(
     @JsonProperty("name")
     val name: String,
     @JsonProperty("printed_name")
@@ -15,7 +38,8 @@ data class ScryfallCardFace (
     val manaCost: String,
 )
 
-data class ScryfallMagicCard (
+
+data class ScryfallMagicCard(
     val id: String,
     val name: String,
     val set: String,
@@ -31,5 +55,7 @@ data class ScryfallMagicCard (
     val manaCost: String?,
 
     @JsonProperty("card_faces")
-    val cardFaces: List<ScryfallCardFace>?
+    val cardFaces: List<ScryfallCardFace>?,
+
+    val legalities: ScryfallFormatLegality
 )
