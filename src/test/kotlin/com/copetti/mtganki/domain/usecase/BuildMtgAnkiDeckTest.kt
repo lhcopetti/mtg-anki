@@ -1,11 +1,15 @@
 package com.copetti.mtganki.domain.usecase
 
+import com.copetti.mtg.deck.domain.usecase.BuildMtgAnkiDeck
+import com.copetti.mtg.deck.domain.usecase.CreateFlashCard
+import com.copetti.mtg.deck.domain.usecase.CreateFlashCardEntryRequest
+import com.copetti.mtg.deck.domain.usecase.ProcessMagicCards
+import com.copetti.mtg.deck.gateway.CreateDeckProviderRequest
+import com.copetti.mtg.deck.gateway.LoadMagicCardsExportProvider
+import com.copetti.mtg.deck.provider.anki.AnkiCreateDeckProvider
 import com.copetti.mtganki.domain.mock.FlashCards
 import com.copetti.mtganki.domain.mock.MagicCards
 import com.copetti.mtganki.domain.mock.VocabularyStudyCards
-import com.copetti.mtganki.gateway.CreateDeckProviderRequest
-import com.copetti.mtganki.gateway.LoadMagicCardsExportProvider
-import com.copetti.mtganki.provider.anki.AnkiCreateDeckProvider
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK

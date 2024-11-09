@@ -1,6 +1,7 @@
 package com.copetti.mtganki.domain.mock
 
-import com.copetti.mtganki.domain.model.FlashCard
+import com.copetti.mtg.deck.domain.model.FlashCard
+
 
 object FlashCards {
 

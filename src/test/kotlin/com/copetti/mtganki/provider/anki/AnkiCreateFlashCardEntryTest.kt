@@ -1,6 +1,7 @@
 package com.copetti.mtganki.provider.anki
 
-import com.copetti.mtganki.domain.model.FlashCard
+import com.copetti.mtg.deck.domain.model.FlashCard
+import com.copetti.mtg.deck.provider.anki.AnkiCreateFlashCardEntry
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.junit5.MockKExtension
 import org.assertj.core.api.Assertions.assertThat

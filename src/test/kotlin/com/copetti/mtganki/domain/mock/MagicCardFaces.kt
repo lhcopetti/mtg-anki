@@ -1,7 +1,8 @@
 package com.copetti.mtganki.domain.mock
 
-import com.copetti.mtganki.domain.model.DualLanguageText
-import com.copetti.mtganki.domain.model.MagicCardFace
+import com.copetti.mtg.deck.domain.model.DualLanguageText
+import com.copetti.mtg.deck.domain.model.MagicCardFace
+
 
 object MagicCardFaces {
 

@@ -1,5 +1,6 @@
 package com.copetti.mtganki.domain.usecase
 
+import com.copetti.mtg.deck.domain.usecase.ProcessMagicCardFaceText
 import com.copetti.mtganki.domain.mock.MagicCardFaces
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.junit5.MockKExtension
