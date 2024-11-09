@@ -47,4 +47,56 @@ class LoadMagicCardsFromExportTest {
 
     }
 
+    @Test
+    fun `should filter out cards that are not japanese`() {
+        val inputFilePath = "the-input-file-path"
+        val enCard = MagicCards.givenSingleFacedCard(
+                lang = "en",
+                set = "dsk",
+                standardLegality = Legality.LEGAL
+            )
+        val jaCard = MagicCards.givenMultiFacedCard(
+            lang = "ja",
+            set = "blb",
+            standardLegality = Legality.LEGAL
+        )
+        val cardList = listOf( enCard, jaCard)
+
+        every { loadMagicCardsExportProvider.loadAll(any()) } returns cardList
+
+        val actual = loadMagicCardsFromExport.load(inputFilePath)
+        val expected = listOf(jaCard)
+
+        assertThat(actual).isEqualTo(expected)
+
+        verify { loadMagicCardsExportProvider.loadAll(inputFilePath) }
+
+    }
+
+    @Test
+    fun `should filter out cards that are not standard legal`() {
+        val inputFilePath = "the-input-file-path"
+        val notLegalInStandard = MagicCards.givenSingleFacedCard(
+            lang = "ja",
+            set = "dsk",
+            standardLegality = Legality.NOT_LEGAL
+        )
+        val legalInStandard = MagicCards.givenMultiFacedCard(
+            lang = "ja",
+            set = "blb",
+            standardLegality = Legality.LEGAL
+        )
+        val cardList = listOf( notLegalInStandard, legalInStandard)
+
+        every { loadMagicCardsExportProvider.loadAll(any()) } returns cardList
+
+        val actual = loadMagicCardsFromExport.load(inputFilePath)
+        val expected = listOf(legalInStandard)
+
+        assertThat(actual).isEqualTo(expected)
+
+        verify { loadMagicCardsExportProvider.loadAll(inputFilePath) }
+
+    }
+
 }
