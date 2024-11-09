@@ -1,9 +1,7 @@
-package com.copetti.mtganki.provider.scryfall
+package com.copetti.mtg.deck.provider.scryfall
 
 import com.copetti.mtg.deck.common.configuration.JsonConfiguration
 import com.copetti.mtg.deck.domain.model.*
-import com.copetti.mtg.deck.provider.scryfall.ScryfallLoadMagicCardsExportProvider
-import com.copetti.mtg.deck.provider.scryfall.ScryfallMagicCardMapper
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

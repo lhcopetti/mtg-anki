@@ -8,7 +8,7 @@ import com.copetti.mtg.deck.gateway.LoadMagicCardsExportProvider
 import org.springframework.stereotype.Component
 
 @Component
-class BuildMtgAnkiDeck(
+class BuildMtgDeck(
     val loadMagicCardsExportProvider: LoadMagicCardsExportProvider,
     val processMagicCards: ProcessMagicCards,
     val createFlashCard: CreateFlashCard,

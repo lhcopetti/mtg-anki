@@ -1,8 +1,5 @@
-package com.copetti.mtganki.provider.jisho
+package com.copetti.mtg.deck.provider.jisho
 
-import com.copetti.mtg.deck.provider.jisho.JishoClient
-import com.copetti.mtg.deck.provider.jisho.JishoDictionaryProvider
-import com.copetti.mtg.deck.provider.jisho.JishoSearchResponse
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK

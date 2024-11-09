@@ -1,7 +1,6 @@
-package com.copetti.mtganki.domain.usecase
+package com.copetti.mtg.deck.domain.usecase
 
-import com.copetti.mtg.deck.domain.usecase.ProcessMagicCardFaceText
-import com.copetti.mtganki.domain.mock.MagicCardFaces
+import com.copetti.mtg.deck.domain.mock.MagicCardFaces
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.junit5.MockKExtension
 import org.assertj.core.api.Assertions.assertThat

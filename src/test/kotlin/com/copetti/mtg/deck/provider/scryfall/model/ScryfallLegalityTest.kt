@@ -1,7 +1,6 @@
-package com.copetti.mtganki.provider.scryfall.model
+package com.copetti.mtg.deck.provider.scryfall.model
 
 import com.copetti.mtg.deck.domain.model.Legality
-import com.copetti.mtg.deck.provider.scryfall.model.ScryfallLegality
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EnumSource
