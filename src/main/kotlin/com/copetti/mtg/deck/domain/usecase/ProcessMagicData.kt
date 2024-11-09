@@ -1,18 +1,19 @@
 package com.copetti.mtg.deck.domain.usecase
 
 import com.copetti.mtg.deck.domain.model.MagicCard
+import com.copetti.mtg.deck.domain.model.MagicData
 import com.copetti.mtg.deck.domain.model.VocabularyStudyCard
 import org.springframework.stereotype.Component
 
 @Component
-class ProcessMagicCards(
+class ProcessMagicData(
     private val getAllVocabularyFromCard: GetAllVocabularyFromCard,
     private val createMagicStudyCard: CreateMagicStudyCard
 ) {
 
-    fun process(magicCards: List<MagicCard>): Set<VocabularyStudyCard> {
+    fun process(magicData: MagicData): Set<VocabularyStudyCard> {
 
-        return buildVocabularyCollection(magicCards)
+        return buildVocabularyCollection(magicData.cards)
             .map { (vocab, cards) -> createMagicStudyCard.create(vocab, cards) }
             .filterNotNull()
             .toSet()
