@@ -18,7 +18,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 class BuildMtgDeckTest {
 
     @MockK
-    private lateinit var loadMagicCardsExportProvider: LoadMagicCardsExportProvider
+    private lateinit var loadMagicCardsFromExport: LoadMagicCardsFromExport
     @MockK
     private lateinit var processMagicCards: ProcessMagicCards
     @MockK
@@ -45,7 +45,7 @@ class BuildMtgDeckTest {
         val firstFlashCard = FlashCards.givenFlashCard(front = "first")
         val secondFlashCard = FlashCards.givenFlashCard(front = "first")
 
-        every { loadMagicCardsExportProvider.loadAll(any()) } returns loadedCards
+        every { loadMagicCardsFromExport.load(any()) } returns loadedCards
         every { processMagicCards.process(any()) } returns vocabularyStudyCards
 
         val firstFlashCardRequest = CreateFlashCardEntryRequest(firstVocabularyCard)
@@ -58,7 +58,7 @@ class BuildMtgDeckTest {
 
         buildMtgDeck.buildDeck(inputFilePath, outputFilePath)
 
-        verify { loadMagicCardsExportProvider.loadAll(inputFilePath) }
+        verify { loadMagicCardsFromExport.load(inputFilePath) }
         verify { processMagicCards.process(loadedCards) }
         verify { createFlashCard.create(firstFlashCardRequest) }
         verify { createFlashCard.create(secondFlashCardRequest) }

@@ -12,8 +12,7 @@ class ProcessMagicCards(
 
     fun process(magicCards: List<MagicCard>): Set<VocabularyStudyCard> {
 
-        val targetCards = magicCards.filter { it.lang == "ja" && it.set in setOf("dsk", "blb", "otj") }
-        return buildVocabularyCollection(targetCards)
+        return buildVocabularyCollection(magicCards)
             .map { (vocab, cards) -> createMagicStudyCard.create(vocab, cards) }
             .filterNotNull()
             .toSet()
