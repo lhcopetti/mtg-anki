@@ -18,6 +18,8 @@ To find the decks, head straight to the [Releases](https://github.com/lhcopetti/
 ## Development
 
 #### TODOs:
+- [ ] Add card frequency count to each vocabulary
+- [ ] Fix bug where some cards are missing the sample sentence (card vocabulary not in base form)
 - [ ] Remove unnecessary vocabulary such as color combinations (eg: 緑青)
 - [X] Output .apkg file name based on the version from maven artifact
 - [X] Some cards do not have sample sentences or definition
@@ -27,18 +29,10 @@ To find the decks, head straight to the [Releases](https://github.com/lhcopetti/
 - [ ] Include hiragana and katakana only words?
 - [ ] Remove vocabularies that don't have a properly matching definition
 - [X] Handle improper formatting of room names (second face contains the name of the card)
-- [ ] Remove invalid sentence from room texts in the back of cards
 - [ ] Build the project from 'mvn clean install' instead of build.sh
 - [ ] Incorporate downloading a fresh export from scryfall project during build
-
-#### Enhancements:
-- [ ] Improve formatting of notes
-- [ ] Include frequency data
-- [ ] Add link to original card from sample sentence
-- [ ] Add WaniKani level and JLPT if present
-- [ ] Add other sentences for context outside of MTG
-- [ ] Include a deck for card names
-- [ ] Add data about decks
+- [ ] Limit the number of definitions
+- [ ] Add link to reference card (sentence)
 
 ### Deck Format
 
