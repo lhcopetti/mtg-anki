@@ -1,6 +1,6 @@
 package com.copetti.mtganki.domain.mock
 
-import com.copetti.mtganki.domain.model.*
+import com.copetti.mtg.deck.domain.model.*
 import java.util.*
 
 object MagicCards {

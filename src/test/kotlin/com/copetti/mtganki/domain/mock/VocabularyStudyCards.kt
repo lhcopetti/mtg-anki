@@ -1,7 +1,7 @@
 package com.copetti.mtganki.domain.mock
 
-import com.copetti.mtganki.domain.model.VocabularyStudyCard
-import com.copetti.mtganki.gateway.VocabularyDefinition
+import com.copetti.mtg.deck.domain.model.VocabularyStudyCard
+import com.copetti.mtg.deck.gateway.VocabularyDefinition
 
 object VocabularyStudyCards {
 

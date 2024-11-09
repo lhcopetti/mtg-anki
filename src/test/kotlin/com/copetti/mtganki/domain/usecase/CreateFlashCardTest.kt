@@ -1,9 +1,11 @@
 package com.copetti.mtganki.domain.usecase
 
+import com.copetti.mtg.deck.domain.model.FlashCard
+import com.copetti.mtg.deck.domain.model.VocabularyStudyCard
+import com.copetti.mtg.deck.domain.usecase.CreateFlashCard
+import com.copetti.mtg.deck.domain.usecase.CreateFlashCardEntryRequest
+import com.copetti.mtg.deck.gateway.VocabularyDefinition
 import com.copetti.mtganki.domain.mock.MagicCards
-import com.copetti.mtganki.domain.model.FlashCard
-import com.copetti.mtganki.domain.model.VocabularyStudyCard
-import com.copetti.mtganki.gateway.VocabularyDefinition
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.junit5.MockKExtension
 import org.assertj.core.api.Assertions.assertThat
