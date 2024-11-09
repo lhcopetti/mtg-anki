@@ -2,9 +2,10 @@ package com.copetti.mtg.deck.domain.usecase
 
 import com.copetti.mtg.deck.domain.mock.FlashCards
 import com.copetti.mtg.deck.domain.mock.MagicCards
+import com.copetti.mtg.deck.domain.mock.MagicSets
 import com.copetti.mtg.deck.domain.mock.VocabularyStudyCards
+import com.copetti.mtg.deck.domain.model.MagicData
 import com.copetti.mtg.deck.gateway.CreateDeckProviderRequest
-import com.copetti.mtg.deck.gateway.LoadMagicCardsExportProvider
 import com.copetti.mtg.deck.provider.anki.AnkiCreateDeckProvider
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
@@ -18,9 +19,9 @@ import org.junit.jupiter.api.extension.ExtendWith
 class BuildMtgDeckTest {
 
     @MockK
-    private lateinit var loadMagicCardsFromExport: LoadMagicCardsFromExport
+    private lateinit var loadMagicData: LoadMagicData
     @MockK
-    private lateinit var processMagicCards: ProcessMagicCards
+    private lateinit var processMagicData: ProcessMagicData
     @MockK
     private lateinit var createFlashCard: CreateFlashCard
     @MockK
@@ -33,11 +34,11 @@ class BuildMtgDeckTest {
     fun `should correctly load process and create the deck`() {
         val inputFilePath = "the-input"
         val outputFilePath = "the-output"
-
-        val loadedCards = listOf(
-            MagicCards.givenSingleFacedCard(),
-            MagicCards.givenMultiFacedCard()
+        val magicData = MagicData(
+            listOf(MagicCards.givenMultiFacedCard()),
+            sets = listOf(MagicSets.givenMagicSet())
         )
+
         val firstVocabularyCard = VocabularyStudyCards.givenVocabularyStudyCard()
         val secondVocabularyCard = VocabularyStudyCards.givenVocabularyStudyCard()
 
@@ -45,8 +46,8 @@ class BuildMtgDeckTest {
         val firstFlashCard = FlashCards.givenFlashCard(front = "first")
         val secondFlashCard = FlashCards.givenFlashCard(front = "first")
 
-        every { loadMagicCardsFromExport.load(any()) } returns loadedCards
-        every { processMagicCards.process(any()) } returns vocabularyStudyCards
+        every { loadMagicData.load(any()) } returns magicData
+        every { processMagicData.process(any()) } returns vocabularyStudyCards
 
         val firstFlashCardRequest = CreateFlashCardEntryRequest(firstVocabularyCard)
         every { createFlashCard.create(firstFlashCardRequest) } returns firstFlashCard
@@ -58,8 +59,8 @@ class BuildMtgDeckTest {
 
         buildMtgDeck.buildDeck(inputFilePath, outputFilePath)
 
-        verify { loadMagicCardsFromExport.load(inputFilePath) }
-        verify { processMagicCards.process(loadedCards) }
+        verify { loadMagicData.load(inputFilePath) }
+        verify { processMagicData.process(magicData) }
         verify { createFlashCard.create(firstFlashCardRequest) }
         verify { createFlashCard.create(secondFlashCardRequest) }
 
