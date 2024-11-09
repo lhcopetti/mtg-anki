@@ -5,8 +5,11 @@ import com.copetti.mtg.deck.domain.model.VocabularyStudyCard
 import com.copetti.mtg.deck.gateway.VocabularyDefinition
 import com.copetti.mtg.deck.domain.mock.MagicCards
 import com.copetti.mtg.deck.domain.mock.MagicSets
+import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
+import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
+import io.mockk.verify
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -14,11 +17,18 @@ import org.junit.jupiter.api.extension.ExtendWith
 @ExtendWith(MockKExtension::class)
 class CreateFlashCardTest {
 
+    @MockK
+    private lateinit var buildMagicSetInformation: BuildMagicSetInformation
+
     @InjectMockKs
     private lateinit var createFlashCard: CreateFlashCard
 
     @Test
     fun `should create a flashcard correctly for a single faced magic card`() {
+        val setData = "the-set-data"
+
+        every { buildMagicSetInformation.build(any()) } returns setData
+
         val request = CreateFlashCardEntryRequest(
             vocabularyStudyCard = VocabularyStudyCard(
                 vocabulary = "the-vocab",
@@ -47,6 +57,8 @@ class CreateFlashCardTest {
                 first-definition
                 second-definition
                 
+                $setData
+                
                 the-translation-text (the-vocab)
                 the-original-card-text
 
@@ -55,10 +67,16 @@ class CreateFlashCardTest {
         )
 
         assertThat(actual).isEqualTo(expected)
+
+        verify { buildMagicSetInformation.build(request) }
     }
 
     @Test
     fun `should create a flashcard correctly for a multi faced magic card`() {
+        val setData = "the-set-data"
+
+        every { buildMagicSetInformation.build(any()) } returns setData
+
         val request = CreateFlashCardEntryRequest(
             vocabularyStudyCard = VocabularyStudyCard(
                 vocabulary = "the-vocab",
@@ -89,6 +107,8 @@ class CreateFlashCardTest {
                 first-definition
                 second-definition
                 
+                $setData
+                
                 the-translation-text (the-vocab)
                 the-original-card-text
 
@@ -97,10 +117,16 @@ class CreateFlashCardTest {
         )
 
         assertThat(actual).isEqualTo(expected)
+
+        verify { buildMagicSetInformation.build(request) }
     }
 
     @Test
     fun `should create a flashcard correctly for a multi faced magic card when target vocabulary is on the second face`() {
+        val setData = "the-set-data"
+
+        every { buildMagicSetInformation.build(any()) } returns setData
+
         val request = CreateFlashCardEntryRequest(
             vocabularyStudyCard = VocabularyStudyCard(
                 vocabulary = "the-target-vocab",
@@ -131,6 +157,8 @@ class CreateFlashCardTest {
                 first-definition
                 second-definition
                 
+                $setData
+                
                 the-second-face-translation-text (the-target-vocab)
                 the-second-face-text
 
@@ -143,6 +171,10 @@ class CreateFlashCardTest {
 
     @Test
     fun `should add set tags for the vocabulary from each tag`() {
+        val setData = "the-set-data"
+
+        every { buildMagicSetInformation.build(any()) } returns setData
+
         val request = CreateFlashCardEntryRequest(
             vocabularyStudyCard = VocabularyStudyCard(
                 vocabulary = "the-vocab",
@@ -174,6 +206,8 @@ class CreateFlashCardTest {
                 first-definition
                 second-definition
                 
+                $setData
+                
                 the-translation-text (the-vocab)
                 the-original-card-text
 
@@ -182,5 +216,7 @@ class CreateFlashCardTest {
         )
 
         assertThat(actual).isEqualTo(expected)
+
+        verify { buildMagicSetInformation.build(request) }
     }
 }

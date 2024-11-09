@@ -11,7 +11,9 @@ data class CreateFlashCardEntryRequest(
 )
 
 @Service
-class CreateFlashCard {
+class CreateFlashCard(
+    private val buildMagicSetInformation: BuildMagicSetInformation
+) {
 
     fun create(request: CreateFlashCardEntryRequest): FlashCard {
         val front = buildFront(request)
@@ -26,6 +28,8 @@ class CreateFlashCard {
         val result = StringBuilder()
         result.appendLine(request.vocabularyStudyCard.definition.reading)
         request.vocabularyStudyCard.definition.definitions.forEach(result::appendLine)
+        result.appendLine()
+        result.appendLine(buildMagicSetInformation.build(request))
         result.appendLine()
 
         getSampleSentence(request)?.let {
