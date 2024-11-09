@@ -4,6 +4,7 @@ import com.copetti.mtg.deck.domain.model.FlashCard
 import com.copetti.mtg.deck.domain.model.VocabularyStudyCard
 import com.copetti.mtg.deck.gateway.VocabularyDefinition
 import com.copetti.mtg.deck.domain.mock.MagicCards
+import com.copetti.mtg.deck.domain.mock.MagicSets
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.junit5.MockKExtension
 import org.assertj.core.api.Assertions.assertThat
@@ -33,7 +34,8 @@ class CreateFlashCardTest {
                         cardText = "the-original-card-text",
                         translationCardText = "the-translation-text (the-vocab)"
                     )
-                )
+                ),
+                sets = setOf(MagicSets.givenMagicSet())
             )
         )
 
@@ -74,7 +76,8 @@ class CreateFlashCardTest {
                         secondFaceText = "the-second-face-text",
                         secondFaceTranslationText = "the-second-face-translation-text"
                     )
-                )
+                ),
+                sets = setOf(MagicSets.givenMagicSet())
             )
         )
 
@@ -115,7 +118,8 @@ class CreateFlashCardTest {
                         secondFaceText = "the-second-face-text",
                         secondFaceTranslationText = "the-second-face-translation-text (the-target-vocab)"
                     )
-                )
+                ),
+                sets = setOf(MagicSets.givenMagicSet())
             )
         )
 
@@ -151,13 +155,14 @@ class CreateFlashCardTest {
                 ),
                 cards = setOf(
                     MagicCards.givenSingleFacedCard(set = "set1"),
-                    MagicCards.givenSingleFacedCard(set = "set2" ),
+                    MagicCards.givenSingleFacedCard(set = "set2"),
                     MagicCards.givenSingleFacedCard(
                         cardText = "the-original-card-text",
                         translationCardText = "the-translation-text (the-vocab)",
                         set = "set1"
                     ),
-                )
+                ),
+                sets = setOf(MagicSets.givenMagicSet())
             )
         )
 
