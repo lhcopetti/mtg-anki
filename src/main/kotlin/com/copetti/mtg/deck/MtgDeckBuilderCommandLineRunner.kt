@@ -11,7 +11,7 @@ import kotlin.system.exitProcess
 
 
 @Component
-class MtgAnkiDeckBuilderCommandLineRunner(
+class MtgDeckBuilderCommandLineRunner(
     private val buildMtgDeck: BuildMtgDeck,
     private val applicationContext: ApplicationContext
 ) {
@@ -22,7 +22,7 @@ class MtgAnkiDeckBuilderCommandLineRunner(
         try {
             doRun(args)
         } catch (t: Throwable) {
-            logger.error("Exception during mtg-anki deck builder", t)
+            logger.error("Exception during mtg deck build process", t)
             SpringApplication.exit(applicationContext, ExitCodeGenerator { 1 })
             exitProcess(1)
         }
