@@ -10,11 +10,13 @@ object MagicCards {
         translationCardName: String = "translation-name",
         cardText: String = "original-text",
         translationCardText: String = "translation-text",
-        set: String = "any-set"
+        set: String = "any-set",
+        lang: String = "any-lang",
+        standardLegality: Legality = Legality.LEGAL
     ) = MagicCard(
         id = UUID.randomUUID().toString(),
         set = set,
-        lang = "any-lang",
+        lang = lang,
         cardFaces = listOf(
             MagicCardFace(
                 name = DualLanguageText(original = "original-name", translation = translationCardName),
@@ -23,7 +25,7 @@ object MagicCards {
             )
         ),
         legality = FormatLegality(
-            standard = Legality.LEGAL
+            standard = standardLegality
         )
     )
 
@@ -33,10 +35,13 @@ object MagicCards {
         translationCardText: String = "translation-text",
         secondFaceText: String = "second-face-card-text",
         secondFaceTranslationText: String = "second-face-translation-card-text",
+        set: String = "any-set",
+        lang: String = "any-lang",
+        standardLegality: Legality = Legality.LEGAL
     ) = MagicCard(
         id = UUID.randomUUID().toString(),
-        set = "any-set",
-        lang = "any-lang",
+        set = set,
+        lang = lang,
         cardFaces = listOf(
             MagicCardFace(
                 name = DualLanguageText(original = "original-name", translation = translationCardName),
@@ -50,7 +55,7 @@ object MagicCards {
             )
         ),
         legality = FormatLegality(
-            standard = Legality.LEGAL
+            standard = standardLegality
         )
     )
 }
