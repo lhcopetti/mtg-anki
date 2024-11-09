@@ -1,6 +1,5 @@
-package com.copetti.mtganki.domain.usecase
+package com.copetti.mtg.deck.domain.usecase
 
-import com.copetti.mtg.deck.domain.usecase.ProcessParsedVocabulary
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith

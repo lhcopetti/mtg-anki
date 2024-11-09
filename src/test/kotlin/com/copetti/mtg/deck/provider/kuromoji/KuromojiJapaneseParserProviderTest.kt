@@ -1,7 +1,6 @@
-package com.copetti.mtganki.provider.kuromoji
+package com.copetti.mtg.deck.provider.kuromoji
 
 import com.atilika.kuromoji.ipadic.Tokenizer
-import com.copetti.mtg.deck.provider.kuromoji.KuromojiJapaneseParserProvider
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

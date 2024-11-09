@@ -1,4 +1,4 @@
-package com.copetti.mtganki.domain.mock
+package com.copetti.mtg.deck.domain.mock
 
 import com.copetti.mtg.deck.domain.model.DualLanguageText
 import com.copetti.mtg.deck.domain.model.MagicCardFace

@@ -1,15 +1,11 @@
-package com.copetti.mtganki.domain.usecase
+package com.copetti.mtg.deck.domain.usecase
 
-import com.copetti.mtg.deck.domain.usecase.BuildMtgAnkiDeck
-import com.copetti.mtg.deck.domain.usecase.CreateFlashCard
-import com.copetti.mtg.deck.domain.usecase.CreateFlashCardEntryRequest
-import com.copetti.mtg.deck.domain.usecase.ProcessMagicCards
+import com.copetti.mtg.deck.domain.mock.FlashCards
+import com.copetti.mtg.deck.domain.mock.MagicCards
+import com.copetti.mtg.deck.domain.mock.VocabularyStudyCards
 import com.copetti.mtg.deck.gateway.CreateDeckProviderRequest
 import com.copetti.mtg.deck.gateway.LoadMagicCardsExportProvider
 import com.copetti.mtg.deck.provider.anki.AnkiCreateDeckProvider
-import com.copetti.mtganki.domain.mock.FlashCards
-import com.copetti.mtganki.domain.mock.MagicCards
-import com.copetti.mtganki.domain.mock.VocabularyStudyCards
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
@@ -19,7 +15,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 
 @ExtendWith(MockKExtension::class)
-class BuildMtgAnkiDeckTest {
+class BuildMtgDeckTest {
 
     @MockK
     private lateinit var loadMagicCardsExportProvider: LoadMagicCardsExportProvider
@@ -31,7 +27,7 @@ class BuildMtgAnkiDeckTest {
     private lateinit var createDeckProvider: AnkiCreateDeckProvider
 
     @InjectMockKs
-    private lateinit var buildMtgAnkiDeck: BuildMtgAnkiDeck
+    private lateinit var buildMtgDeck: BuildMtgDeck
 
     @Test
     fun `should correctly load process and create the deck`() {
@@ -60,7 +56,7 @@ class BuildMtgAnkiDeckTest {
 
         every { createDeckProvider.create(any()) } returns Unit
 
-        buildMtgAnkiDeck.buildDeck(inputFilePath, outputFilePath)
+        buildMtgDeck.buildDeck(inputFilePath, outputFilePath)
 
         verify { loadMagicCardsExportProvider.loadAll(inputFilePath) }
         verify { processMagicCards.process(loadedCards) }

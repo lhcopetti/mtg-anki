@@ -1,10 +1,7 @@
-package com.copetti.mtganki.domain.usecase
+package com.copetti.mtg.deck.domain.usecase
 
-import com.copetti.mtg.deck.domain.usecase.GetAllVocabularyFromCard
-import com.copetti.mtg.deck.domain.usecase.ProcessMagicCardFaceText
-import com.copetti.mtg.deck.domain.usecase.ProcessParsedVocabulary
 import com.copetti.mtg.deck.gateway.JapaneseParserProvider
-import com.copetti.mtganki.domain.mock.MagicCards
+import com.copetti.mtg.deck.domain.mock.MagicCards
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
