@@ -14,7 +14,7 @@ class ProcessMagicData(
     fun process(magicData: MagicData): Set<VocabularyStudyCard> {
 
         return buildVocabularyCollection(magicData.cards)
-            .map { (vocab, cards) -> createMagicStudyCard.create(vocab, cards) }
+            .map { (vocab, cards) -> createMagicStudyCard(magicData, vocab, cards) }
             .filterNotNull()
             .toSet()
     }
@@ -40,4 +40,18 @@ class ProcessMagicData(
             cards.add(magicCard)
         }
     }
+
+    private fun createMagicStudyCard(
+        magicData: MagicData,
+        vocabulary: String,
+        cards: Set<MagicCard>
+    ): VocabularyStudyCard? {
+        val request = CreateMagicStudyCardRequest(
+            vocabulary = vocabulary,
+            relatedCards = cards,
+            sets = magicData.sets,
+        )
+        return createMagicStudyCard.create(request)
+    }
+
 }

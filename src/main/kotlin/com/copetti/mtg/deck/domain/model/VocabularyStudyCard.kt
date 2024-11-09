@@ -7,4 +7,5 @@ data class VocabularyStudyCard (
     val vocabulary: String,
     val definition: VocabularyDefinition,
     val cards: Set<MagicCard>,
+    val sets: Set<MagicSet>,
 )
