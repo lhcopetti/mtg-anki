@@ -8,17 +8,17 @@ import org.springframework.context.annotation.Bean
 
 @SpringBootApplication
 @EnableFeignClients
-class MtgAnkiDeckBuilderApplication(
-    private val mtgAnkiDeckBuilderCommandLineRunner: MtgAnkiDeckBuilderCommandLineRunner
+class MtgDeckBuilderApplication(
+    private val mtgDeckBuilderCommandLineRunner: MtgDeckBuilderCommandLineRunner
 ) {
 
     @Bean
     fun runner() = CommandLineRunner { args ->
-        mtgAnkiDeckBuilderCommandLineRunner.run(args)
+        mtgDeckBuilderCommandLineRunner.run(args)
     }
 }
 
 fun main(args: Array<String>) {
-    runApplication<MtgAnkiDeckBuilderApplication>(*args)
+    runApplication<MtgDeckBuilderApplication>(*args)
 }
 

@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.copetti</groupId>
-	<artifactId>mtg-anki-deck-builder</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
-	<name>mtg-anki-deck-builder</name>
-	<description>The mtg-anki deck builder</description>
+	<artifactId>mtg-deck-builder</artifactId>
+	<version>0.0.5-SNAPSHOT</version>
+	<name>mtg-deck-builder</name>
+	<description>The mtg deck builder</description>
 	<url/>
 	<licenses>
 		<license/>
