@@ -4,6 +4,7 @@ import com.copetti.mtg.deck.domain.model.DualLanguageText
 import com.copetti.mtg.deck.domain.model.FormatLegality
 import com.copetti.mtg.deck.domain.model.MagicCard
 import com.copetti.mtg.deck.domain.model.MagicCardFace
+import com.copetti.mtg.deck.provider.scryfall.model.ScryfallGame
 import com.copetti.mtg.deck.provider.scryfall.model.ScryfallMagicCard
 import org.springframework.stereotype.Component
 
@@ -16,7 +17,8 @@ class ScryfallMagicCardMapper {
         set = scryfallMagicCard.set,
         lang = scryfallMagicCard.lang,
         cardFaces = resolveCardFaces(scryfallMagicCard),
-        legality = resolveLegality(scryfallMagicCard)
+        legality = resolveLegality(scryfallMagicCard),
+        games = resolveGames(scryfallMagicCard)
     )
 
     private fun resolveLegality(scryfallMagicCard: ScryfallMagicCard): FormatLegality {
@@ -24,6 +26,8 @@ class ScryfallMagicCardMapper {
             standard = scryfallMagicCard.legalities.standard.toDomain()
         )
     }
+
+    private fun resolveGames(scryfallMagicCard: ScryfallMagicCard) = scryfallMagicCard.games.map(ScryfallGame::toDomain).toSet()
 
     private fun resolveCardFaces(scryfallMagicCard: ScryfallMagicCard): List<MagicCardFace> {
 

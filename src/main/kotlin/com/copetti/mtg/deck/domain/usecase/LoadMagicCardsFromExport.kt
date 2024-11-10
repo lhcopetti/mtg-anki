@@ -1,5 +1,6 @@
 package com.copetti.mtg.deck.domain.usecase
 
+import com.copetti.mtg.deck.domain.model.GameLegality
 import com.copetti.mtg.deck.domain.model.Legality
 import com.copetti.mtg.deck.domain.model.MagicCard
 import com.copetti.mtg.deck.gateway.LoadMagicCardsExportProvider
@@ -14,9 +15,13 @@ class LoadMagicCardsFromExport(
         return loadMagicCardsExportProvider.loadAll(inputFilePath)
             .filter (this::isJapaneseCard)
             .filter (this::isStandardLegal)
+            .filter (this::isArenaLegal)
     }
 
     private fun isJapaneseCard(magicCard: MagicCard) = magicCard.lang == "ja"
 
     private fun isStandardLegal(magicCard: MagicCard) = magicCard.legality.standard == Legality.LEGAL
+
+    private fun isArenaLegal(magicCard: MagicCard) = magicCard.games.contains(GameLegality.MAGIC_ARENA)
+
 }

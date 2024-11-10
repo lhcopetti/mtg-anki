@@ -18,12 +18,14 @@ To find the decks, head straight to the [Releases](https://github.com/lhcopetti/
 ## Development
 
 #### TODOs:
-- [ ] Add card frequency count to each vocabulary
-- [ ] Fix bug where some cards are missing the sample sentence (card vocabulary not in base form)
+- [ ] Add instructions for custom study
+- [ ] Add card frequency count to vocabulary
+- [X] Fix issue where cards have way too many tags (eg: 引く)
+- [ ] Fix issue where some cards are missing the sample sentence (card vocabulary not in base form)
 - [ ] Remove unnecessary vocabulary such as color combinations (eg: 緑青)
 - [X] Output .apkg file name based on the version from maven artifact
 - [X] Some cards do not have sample sentences or definition
-- [X] Add support for custom tags (e.g., set name, game platform, core, rarity?)
+- [X] Add support for custom tags (e.g., set name, game platform, core, common)
 - [ ] Add support for all sets
 - [X] Remove known conjugating words (e.g., torinozoku and torinozoki)
 - [ ] Include hiragana and katakana only words?
@@ -33,6 +35,8 @@ To find the decks, head straight to the [Releases](https://github.com/lhcopetti/
 - [ ] Incorporate downloading a fresh export from scryfall project during build
 - [ ] Limit the number of definitions
 - [ ] Add link to reference card (sentence)
+- [ ] Consider a sub-deck structure
+- [ ] Consider adding decks for card names
 
 ### Deck Format
 

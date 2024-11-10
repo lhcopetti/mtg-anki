@@ -35,7 +35,8 @@ class ScryfallMagicCardMapperTest {
                     manaCost = "{B}"
                 )
             ),
-            legality = FormatLegality(standard = Legality.LEGAL)
+            legality = FormatLegality(standard = Legality.LEGAL),
+            games = setOf(GameLegality.PAPER, GameLegality.MAGIC_ARENA, GameLegality.MTG_ONLINE)
         )
 
         assertThat(mapper.toMagicCard(scryfallCard)).isEqualTo(expected)
@@ -51,26 +52,23 @@ class ScryfallMagicCardMapperTest {
             lang = "ja",
             cardFaces = listOf(
                 MagicCardFace(
-                    name =
-                    DualLanguageText(original = "Meat Locker", translation = "Meat Locker // Drowned Diner"),
-                    texts =
-                    DualLanguageText(
+                    name = DualLanguageText(original = "Meat Locker", translation = "Meat Locker // Drowned Diner"),
+                    texts = DualLanguageText(
                         original = "When you unlock this door, tap up to one target creature and put two stun counters on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)\n(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",
                         translation = "あなたがこのドアを開放したとき、クリーチャー最大１体を対象とする。それをタップし、それの上に麻痺カウンター２個を置く。（麻痺カウンターが置かれているパーマネントがアンタップ状態になるなら、代わりにそれの上から麻痺カウンター１個を取り除く。）\n（どちらの半分でも唱えることができる。そのドアは戦場で開放される。閉鎖されているドアのマナ・コストを支払って、それを開放してもよい。これはソーサリーとして行う。）",
                     ),
                     manaCost = "{2}{U}"
-                ),
-                MagicCardFace(
+                ), MagicCardFace(
                     name = DualLanguageText(original = "Drowned Diner", translation = "Meat Locker // Drowned Diner"),
-                    texts =
-                    DualLanguageText(
+                    texts = DualLanguageText(
                         original = "When you unlock this door, draw three cards, then discard a card.\n(You may cast either half. That door unlocks on the battlefield. As a sorcery, you may pay the mana cost of a locked door to unlock it.)",
                         translation = "冠（かん）水（すい）した食（しょく）堂（どう）\no3oUoU\nあなたがこのドアを開放したとき、カード３枚を引き、その後、カード１枚を捨てる。",
                     ),
                     manaCost = "{3}{U}{U}"
                 )
             ),
-            legality = FormatLegality(standard = Legality.LEGAL)
+            legality = FormatLegality(standard = Legality.LEGAL),
+            games = setOf(GameLegality.MAGIC_ARENA, GameLegality.PAPER, GameLegality.MTG_ONLINE)
         )
 
         assertThat(mapper.toMagicCard(scryfallCard)).isEqualTo(expected)
@@ -86,17 +84,16 @@ class ScryfallMagicCardMapperTest {
             lang = "ja",
             cardFaces = listOf(
                 MagicCardFace(
-                    name =
-                    DualLanguageText(original = "Spirited Companion", translation = "神憑く相棒"),
-                    texts =
-                    DualLanguageText(
+                    name = DualLanguageText(original = "Spirited Companion", translation = "神憑く相棒"),
+                    texts = DualLanguageText(
                         original = "When Spirited Companion enters, draw a card.",
                         translation = "神憑く相棒が戦場に出たとき、カード１枚を引く。",
                     ),
                     manaCost = "{1}{W}"
                 )
             ),
-            legality = FormatLegality(standard = Legality.NOT_LEGAL)
+            legality = FormatLegality(standard = Legality.NOT_LEGAL),
+            games = setOf(GameLegality.MTG_ONLINE, GameLegality.MAGIC_ARENA, GameLegality.PAPER)
         )
 
         assertThat(mapper.toMagicCard(scryfallCard)).isEqualTo(expected)

@@ -18,14 +18,21 @@ enum class Legality {
     BANNED
 }
 
-data class FormatLegality (
+data class FormatLegality(
     val standard: Legality
 )
+
+enum class GameLegality {
+    MTG_ONLINE,
+    MAGIC_ARENA,
+    PAPER
+}
 
 data class MagicCard(
     val id: String,
     val set: String,
     val lang: String,
     val cardFaces: List<MagicCardFace>,
-    val legality: FormatLegality
+    val legality: FormatLegality,
+    val games: Set<GameLegality>
 )
