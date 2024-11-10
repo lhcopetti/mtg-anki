@@ -1,6 +1,7 @@
 package com.copetti.mtg.deck.domain.usecase
 
 import com.copetti.mtg.deck.domain.mock.MagicCards
+import com.copetti.mtg.deck.domain.model.GameLegality
 import com.copetti.mtg.deck.domain.model.Legality
 import com.copetti.mtg.deck.gateway.LoadMagicCardsExportProvider
 import io.mockk.every
@@ -92,6 +93,34 @@ class LoadMagicCardsFromExportTest {
 
         val actual = loadMagicCardsFromExport.load(inputFilePath)
         val expected = listOf(legalInStandard)
+
+        assertThat(actual).isEqualTo(expected)
+
+        verify { loadMagicCardsExportProvider.loadAll(inputFilePath) }
+
+    }
+
+    @Test
+    fun `should filter out cards that are not legal in magic arena`() {
+        val inputFilePath = "the-input-file-path"
+        val notLegalInArena = MagicCards.givenSingleFacedCard(
+            lang = "ja",
+            set = "dsk",
+            standardLegality = Legality.NOT_LEGAL,
+            games = setOf(GameLegality.PAPER, GameLegality.MTG_ONLINE)
+        )
+        val legalInArena = MagicCards.givenMultiFacedCard(
+            lang = "ja",
+            set = "blb",
+            standardLegality = Legality.LEGAL,
+            games = setOf(GameLegality.MAGIC_ARENA)
+        )
+        val cardList = listOf(notLegalInArena, legalInArena)
+
+        every { loadMagicCardsExportProvider.loadAll(any()) } returns cardList
+
+        val actual = loadMagicCardsFromExport.load(inputFilePath)
+        val expected = listOf(legalInArena)
 
         assertThat(actual).isEqualTo(expected)
 

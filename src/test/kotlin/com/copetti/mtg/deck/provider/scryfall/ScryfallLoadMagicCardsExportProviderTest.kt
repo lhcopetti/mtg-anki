@@ -43,7 +43,8 @@ class ScryfallLoadMagicCardsExportProviderTest {
                 ),
                 legality = FormatLegality(
                     standard = Legality.LEGAL
-                )
+                ),
+                games = setOf(GameLegality.MTG_ONLINE, GameLegality.MAGIC_ARENA, GameLegality.PAPER)
             ),
             MagicCard(
                 id = "0000579f-7b35-4ed3-b44c-db2a538066fe",
@@ -61,7 +62,8 @@ class ScryfallLoadMagicCardsExportProviderTest {
                 ),
                 legality = FormatLegality(
                     standard = Legality.NOT_LEGAL
-                )
+                ),
+                games = setOf(GameLegality.MTG_ONLINE, GameLegality.PAPER)
             )
         )
 

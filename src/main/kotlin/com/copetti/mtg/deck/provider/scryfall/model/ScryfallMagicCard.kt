@@ -1,5 +1,6 @@
 package com.copetti.mtg.deck.provider.scryfall.model
 
+import com.copetti.mtg.deck.domain.model.GameLegality
 import com.copetti.mtg.deck.domain.model.Legality
 import com.fasterxml.jackson.annotation.JsonProperty
 
@@ -24,6 +25,21 @@ enum class ScryfallLegality {
 data class ScryfallFormatLegality(
     val standard: ScryfallLegality
 )
+
+enum class ScryfallGame {
+    @JsonProperty("mtgo")
+    MTGO,
+    @JsonProperty("arena")
+    ARENA,
+    @JsonProperty("paper")
+    PAPER;
+
+    fun toDomain() = when(this) {
+        MTGO -> GameLegality.MTG_ONLINE
+        ARENA -> GameLegality.MAGIC_ARENA
+        PAPER -> GameLegality.PAPER
+    }
+}
 
 data class ScryfallCardFace(
     @JsonProperty("name")
@@ -57,5 +73,7 @@ data class ScryfallMagicCard(
     @JsonProperty("card_faces")
     val cardFaces: List<ScryfallCardFace>?,
 
-    val legalities: ScryfallFormatLegality
+    val legalities: ScryfallFormatLegality,
+
+    val games: List<ScryfallGame>
 )

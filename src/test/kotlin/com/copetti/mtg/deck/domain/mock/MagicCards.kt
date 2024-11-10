@@ -12,7 +12,8 @@ object MagicCards {
         translationCardText: String = "translation-text",
         set: String = "any-set",
         lang: String = "any-lang",
-        standardLegality: Legality = Legality.LEGAL
+        standardLegality: Legality = Legality.LEGAL,
+        games: Set<GameLegality> = GameLegality.entries.toSet()
     ) = MagicCard(
         id = UUID.randomUUID().toString(),
         set = set,
@@ -26,7 +27,8 @@ object MagicCards {
         ),
         legality = FormatLegality(
             standard = standardLegality
-        )
+        ),
+        games = games
     )
 
     fun givenMultiFacedCard(
@@ -37,7 +39,8 @@ object MagicCards {
         secondFaceTranslationText: String = "second-face-translation-card-text",
         set: String = "any-set",
         lang: String = "any-lang",
-        standardLegality: Legality = Legality.LEGAL
+        standardLegality: Legality = Legality.LEGAL,
+        games: Set<GameLegality> = GameLegality.entries.toSet()
     ) = MagicCard(
         id = UUID.randomUUID().toString(),
         set = set,
@@ -56,6 +59,7 @@ object MagicCards {
         ),
         legality = FormatLegality(
             standard = standardLegality
-        )
+        ),
+        games = games
     )
 }
