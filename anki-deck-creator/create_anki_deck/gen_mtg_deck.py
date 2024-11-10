@@ -54,7 +54,7 @@ def gen_mtg_deck(request: MtgAnkiDeckRequest):
 
     mtgAnkiDeck = genanki.Deck(
             MTG_ANKI_DECK_ID,
-            'Magic: The Gathering (mtg-anki)'
+            'Play Magic: The Gathering in japanese'
             )
     for note in notes: mtgAnkiDeck.add_note(note)
     genanki.Package([mtgAnkiDeck]).write_to_file(request.export_file_path)
