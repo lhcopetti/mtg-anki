@@ -7,13 +7,25 @@ Expect changes, and feel free to contribute by submitting issues or suggestions.
 ## Overview
 This project provides Anki decks designed for learners of Japanese, based on the popular trading card game *Magic: The Gathering* (MTG). Each deck focuses on vocabulary and kanji found in the text of MTG cards, offering a fun and practical way to expand your Japanese language skills while enjoying the game.
 
-### Quick Start
-To find the decks, head straight to the [Releases](https://github.com/lhcopetti/mtg-anki/releases) page and download the Anki decks for your desired MTG set expansion.
+### Getting Started
+
+To get the latest Anki deck, visit the [Releases page](https://github.com/lhcopetti/mtg-anki/releases) and download the most recent version. Once downloaded, simply import the deck into Anki to start learning.
+
+### Focusing on Specific Sets
+
+Anki’s custom study feature allows you to target specific sets, which is useful for focused study sessions or draft preparation. To study vocabulary from a particular Magic: The Gathering set:
+
+1. Open your deck in Anki.
+2. Click on **Custom Study** and select **Study by card tag**.
+3. Use the set tag to filter cards, for example, enter `set:dsk` to review all vocabulary from *Duskmourn*.
+
+This way, you can prepare specifically for upcoming drafts or focus on vocabulary from your favorite sets.
 
 ### Example
 
-![example-review](https://github.com/user-attachments/assets/eae65b1b-7008-4162-947e-fc14b2af35f0)
+![image](https://github.com/user-attachments/assets/90116376-e8cd-4996-b5dd-45b4c4114480)
 
+![image](https://github.com/user-attachments/assets/bfabf513-ae95-4f73-9721-7ad9dfa6f3c6)
 
 ## Development
 
@@ -38,9 +50,22 @@ To find the decks, head straight to the [Releases](https://github.com/lhcopetti/
 - [ ] Consider a sub-deck structure
 - [ ] Consider adding decks for card names
 
-### Deck Format
+### Card Format
 
-**To-do**
+Each Anki card is designed to help you learn Japanese vocabulary using terms from Magic: The Gathering (MTG). Here’s how the format works:
+
+- **Front**: Displays the target vocabulary word, which is the main term you’re learning.
+
+- **Back**:
+    - **Reading**: The pronunciation of the vocabulary in kana.
+    - **Definitions**: A list of possible meanings or translations for the vocabulary term.
+    - *(Empty line)*
+    - **Set Information**: Details about the MTG set or expansions in which this vocabulary appears.
+    - *(Empty line)*
+    - **Example Sentence**: A sample sentence drawn from the official MTG ruling text, giving context for the vocabulary usage.
+
+This structure provides a complete context for each term, linking it to MTG gameplay and rules while also making vocabulary and reading practice accessible.
+
 
 ## Background
 As a Magic: The Gathering player, I often considered switching the language settings in *Magic: Arena* to Japanese. However, I felt overwhelmed by the sheer number of cards and the vast vocabulary required to comfortably play the game in a foreign language. Since MTG matches tend to be fast-paced, there isn’t much time to look up unfamiliar kanji or vocabulary mid-game, even though playing in Japanese seemed like a great language-learning tool.
