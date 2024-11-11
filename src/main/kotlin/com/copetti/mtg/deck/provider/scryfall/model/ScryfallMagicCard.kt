@@ -28,16 +28,22 @@ data class ScryfallFormatLegality(
 
 enum class ScryfallGame {
     @JsonProperty("mtgo")
-    MTGO,
+    MTG_ONLINE,
     @JsonProperty("arena")
-    ARENA,
+    MAGIC_ARENA,
     @JsonProperty("paper")
-    PAPER;
+    PAPER,
+    @JsonProperty("astral")
+    ASTRAL,
+    @JsonProperty("sega")
+    SEGA;
 
     fun toDomain() = when(this) {
-        MTGO -> GameLegality.MTG_ONLINE
-        ARENA -> GameLegality.MAGIC_ARENA
+        MTG_ONLINE -> GameLegality.MTG_ONLINE
+        MAGIC_ARENA -> GameLegality.MAGIC_ARENA
         PAPER -> GameLegality.PAPER
+        ASTRAL -> GameLegality.ASTRAL
+        SEGA -> GameLegality.SEGA
     }
 }
 
