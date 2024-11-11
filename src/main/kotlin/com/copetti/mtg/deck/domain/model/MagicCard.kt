@@ -25,7 +25,9 @@ data class FormatLegality(
 enum class GameLegality {
     MTG_ONLINE,
     MAGIC_ARENA,
-    PAPER
+    PAPER,
+    ASTRAL,
+    SEGA
 }
 
 data class MagicCard(
