@@ -1,7 +1,7 @@
 package com.copetti.mtg.deck.domain.usecase
 
-import com.copetti.mtg.deck.gateway.JapaneseParserProvider
 import com.copetti.mtg.deck.domain.mock.MagicCards
+import com.copetti.mtg.deck.gateway.JapaneseParserProvider
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
@@ -40,7 +40,7 @@ class GetAllVocabularyFromCardTest {
 
         assertThat(actual).isEqualTo(expected)
 
-        verify { processMagicCardFaceText.process(magicCard.cardFaces.first()) }
+        verify { processMagicCardFaceText.process(magicCard) }
         verify { japaneseParserProvider.parse("text extracted") }
         verify { processParsedVocabulary.process(setOf("parsed", "text")) }
     }
@@ -49,7 +49,7 @@ class GetAllVocabularyFromCardTest {
     fun `should process multi faced cards correctly`() {
         val multiFacedMagicCard = MagicCards.givenMultiFacedCard()
 
-        every { processMagicCardFaceText.process(any()) } returns "first card text" andThen "second card text"
+        every { processMagicCardFaceText.process(any()) } returns "first card text second card text"
         every { japaneseParserProvider.parse(any()) } returns listOf("parsed", "text")
         every { processParsedVocabulary.process(any()) } returns setOf("processed", "vocabulary")
 
@@ -59,9 +59,8 @@ class GetAllVocabularyFromCardTest {
         assertThat(actual).isEqualTo(expected)
 
 
-        multiFacedMagicCard.cardFaces.forEach { magicCardFace ->
-            verify { processMagicCardFaceText.process(magicCardFace) }
-        }
+        verify { processMagicCardFaceText.process(multiFacedMagicCard) }
+
         val expectedParserInput = "first card text second card text"
         verify { japaneseParserProvider.parse(expectedParserInput) }
 

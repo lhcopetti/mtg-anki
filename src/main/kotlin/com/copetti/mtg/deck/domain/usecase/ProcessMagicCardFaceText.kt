@@ -1,18 +1,24 @@
 package com.copetti.mtg.deck.domain.usecase
 
+import com.copetti.mtg.deck.domain.model.MagicCard
 import com.copetti.mtg.deck.domain.model.MagicCardFace
 import org.springframework.stereotype.Component
 
 @Component
 class ProcessMagicCardFaceText {
 
-    fun process(magicCardFace: MagicCardFace): String {
-        val nameRemoved = removeCardName(magicCardFace)
-        return removeInvalidTextFromEnchantmentRooms(nameRemoved, magicCardFace)
+    fun process(magicCard: MagicCard): String {
+        val allText = magicCard.cardFaces.map { face -> face.text.translation }.joinToString(separator = " ")
+        val nameRemoved = removeCardNames(allText, magicCard)
+        return removeInvalidTextFromEnchantmentRooms(nameRemoved, magicCard)
     }
 
-    private fun removeCardName(magicCardFace: MagicCardFace) =
-        magicCardFace.text.translation.replace(magicCardFace.name.translation, "")
+    private fun removeCardNames(allText: String, magicCard: MagicCard): String = magicCard.cardFaces
+        .map { face -> face.name.translation }
+        .fold(allText) { acc, value -> acc.replace(value, "") }
+
+    private fun removeInvalidTextFromEnchantmentRooms(input: String, magicCard: MagicCard) =
+        magicCard.cardFaces.fold(input) { acc, value -> removeInvalidTextFromEnchantmentRooms(acc, value) }
 
     /**
      *
