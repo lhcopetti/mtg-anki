@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 
 @ExtendWith(MockKExtension::class)
-class ProcessMagicCardFaceTextTest {
+class ProcessMagicCardTextTest {
 
     @InjectMockKs
-    private lateinit var processMagicCardFaceText: ProcessMagicCardFaceText
+    private lateinit var processMagicCardText: ProcessMagicCardText
 
     @Test
     fun `should remove the card name translation from the magic card face`() {
@@ -22,7 +22,7 @@ class ProcessMagicCardFaceTextTest {
             translationText = "絆魂\n...\n永劫の無垢が死亡したとき...",
         )
 
-        val actual = processMagicCardFaceText.process(enchantmentRoomCard)
+        val actual = processMagicCardText.process(enchantmentRoomCard)
         val expected = "絆魂\n...\nが死亡したとき..."
 
         assertThat(actual).isEqualTo(expected)
@@ -34,7 +34,7 @@ class ProcessMagicCardFaceTextTest {
             manaCost = "{B}", translationText = "解（かい）剖（ぼう）室（しつ）\noB\nあなたがこのドアを開放したとき..."
         )
 
-        val actual = processMagicCardFaceText.process(enchantmentRoomCard)
+        val actual = processMagicCardText.process(enchantmentRoomCard)
         val expected = "あなたがこのドアを開放したとき..."
 
         assertThat(actual).isEqualTo(expected)
@@ -47,7 +47,7 @@ class ProcessMagicCardFaceTextTest {
             translationText = "冠（かん）水（すい）した食（しょく）堂（どう）\no3oUoU\nあなたがこのドアを開放したとき、カード３枚を引き、その後、カード１枚を捨てる。"
         )
 
-        val actual = processMagicCardFaceText.process(enchantmentRoomCard)
+        val actual = processMagicCardText.process(enchantmentRoomCard)
         val expected = "あなたがこのドアを開放したとき、カード３枚を引き、その後、カード１枚を捨てる。"
 
         assertThat(actual).isEqualTo(expected)
@@ -72,7 +72,7 @@ class ProcessMagicCardFaceTextTest {
             )
         )
 
-        val actual = processMagicCardFaceText.process(enchantmentRoomCard)
+        val actual = processMagicCardText.process(enchantmentRoomCard)
         val expected =
             "あなたが唱えるすべてのクリーチャー・呪文は召集を持つ。\n（どちらの半分でも唱えることができる。そのドアは戦場で開放される。閉鎖されているドアのマナ・コストを支払って、それを開放してもよい。これはソーサリーとして行う。） あなた以外の各プレイヤーのアンタップ・ステップに、あなたがコントロールしているすべてのクリーチャーをアンタップする。"
 
@@ -93,7 +93,7 @@ class ProcessMagicCardFaceTextTest {
             )
         )
 
-        val actual = processMagicCardFaceText.process(enchantmentRoomCard)
+        val actual = processMagicCardText.process(enchantmentRoomCard)
         val expected =
             "が戦場に出たとき、「このクリーチャーのパワーとタフネスはそれぞれ、アーティファクトやクリーチャーでありあなたがコントロールしているものの数に等しい。」を持つ白のノーム・兵士・アーティファクト・クリーチャー・トークン１体を生成する。\nあなたの戦闘前メイン・フェイズの開始時に、アーティファクトやクリーチャーでありあなたがコントロールしていてアンタップ状態である５つをタップしてもよい。そうしたなら、を変身させる。 （から変身する。）\n{T}：{W}を加える。\nあなたが千の兵舎によって生み出されたマナを使ってアーティファクトやクリーチャーである呪文１つを唱えるたび、「このクリーチャーのパワーとタフネスはそれぞれ、アーティファクトやクリーチャーでありあなたがコントロールしているものの数に等しい。」を持つ白のノーム・兵士・アーティファクト・クリーチャー・トークン１体を生成する。"
 

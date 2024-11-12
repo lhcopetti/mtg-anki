@@ -18,7 +18,7 @@ class GetAllVocabularyFromCardTest {
     private lateinit var getAllVocabularyFromCard: GetAllVocabularyFromCard
 
     @MockK
-    private lateinit var processMagicCardFaceText: ProcessMagicCardFaceText
+    private lateinit var processMagicCardText: ProcessMagicCardText
 
     @MockK
     private lateinit var processParsedVocabulary: ProcessParsedVocabulary
@@ -31,7 +31,7 @@ class GetAllVocabularyFromCardTest {
     fun `should process single magic card correctly`() {
         val magicCard = MagicCards.givenSingleFacedCard()
 
-        every { processMagicCardFaceText.process(any()) } returns "text extracted"
+        every { processMagicCardText.process(any()) } returns "text extracted"
         every { japaneseParserProvider.parse(any()) } returns listOf("parsed", "text")
         every { processParsedVocabulary.process(any()) } returns setOf("processed", "vocabulary")
 
@@ -40,7 +40,7 @@ class GetAllVocabularyFromCardTest {
 
         assertThat(actual).isEqualTo(expected)
 
-        verify { processMagicCardFaceText.process(magicCard) }
+        verify { processMagicCardText.process(magicCard) }
         verify { japaneseParserProvider.parse("text extracted") }
         verify { processParsedVocabulary.process(setOf("parsed", "text")) }
     }
@@ -49,7 +49,7 @@ class GetAllVocabularyFromCardTest {
     fun `should process multi faced cards correctly`() {
         val multiFacedMagicCard = MagicCards.givenMultiFacedCard()
 
-        every { processMagicCardFaceText.process(any()) } returns "first card text second card text"
+        every { processMagicCardText.process(any()) } returns "first card text second card text"
         every { japaneseParserProvider.parse(any()) } returns listOf("parsed", "text")
         every { processParsedVocabulary.process(any()) } returns setOf("processed", "vocabulary")
 
@@ -59,7 +59,7 @@ class GetAllVocabularyFromCardTest {
         assertThat(actual).isEqualTo(expected)
 
 
-        verify { processMagicCardFaceText.process(multiFacedMagicCard) }
+        verify { processMagicCardText.process(multiFacedMagicCard) }
 
         val expectedParserInput = "first card text second card text"
         verify { japaneseParserProvider.parse(expectedParserInput) }
