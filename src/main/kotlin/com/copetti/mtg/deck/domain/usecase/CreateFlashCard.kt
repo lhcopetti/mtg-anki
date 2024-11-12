@@ -1,7 +1,9 @@
 package com.copetti.mtg.deck.domain.usecase
 
+import com.copetti.mtg.deck.common.extensions.getLogger
 import com.copetti.mtg.deck.domain.model.FlashCard
 import com.copetti.mtg.deck.domain.model.MagicCard
+import com.copetti.mtg.deck.domain.model.MagicCardFace
 import com.copetti.mtg.deck.domain.model.VocabularyStudyCard
 import org.springframework.stereotype.Service
 
@@ -14,6 +16,8 @@ data class CreateFlashCardEntryRequest(
 class CreateFlashCard(
     private val buildMagicSetInformation: BuildMagicSetInformation
 ) {
+
+    private val log = getLogger()
 
     fun create(request: CreateFlashCardEntryRequest): FlashCard {
         val front = buildFront(request)
@@ -39,10 +43,18 @@ class CreateFlashCard(
         return result.toString()
     }
 
-    private fun getSampleSentence(request: CreateFlashCardEntryRequest) = request.vocabularyStudyCard.cards
-        .flatMap(MagicCard::cardFaces)
-        .filter { cardFace -> cardFace.text.translation.contains(request.vocabularyStudyCard.vocabulary) }
-        .minByOrNull { it.text.translation.length }
+    private fun getSampleSentence(request: CreateFlashCardEntryRequest): MagicCardFace? {
+        val sampleSentence = request.vocabularyStudyCard.cards
+            .flatMap(MagicCard::cardFaces)
+            .filter { cardFace -> cardFace.text.translation.contains(request.vocabularyStudyCard.vocabulary) }
+            .minByOrNull { it.text.translation.length }
+
+        if (sampleSentence == null) {
+            log.warn("Flash card entry is missing sample sentence | vocabulary: ${request.vocabularyStudyCard.vocabulary}, #cards: ${request.vocabularyStudyCard.cards.size}")
+        }
+
+        return sampleSentence
+    }
 
     private fun buildTags(request: CreateFlashCardEntryRequest) = request.vocabularyStudyCard.cards
         .map (MagicCard::set)
