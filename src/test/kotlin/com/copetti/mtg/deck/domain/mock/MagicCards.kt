@@ -7,9 +7,10 @@ object MagicCards {
 
 
     fun givenSingleFacedCard(
-        translationCardName: String = "translation-name",
-        cardText: String = "original-text",
-        translationCardText: String = "translation-text",
+        name: String = "the-name",
+        text: String = "original-text",
+        translationName: String = "translation-name",
+        translationText: String = "translation-text",
         set: String = "any-set",
         lang: String = "any-lang",
         standardLegality: Legality = Legality.LEGAL,
@@ -21,8 +22,8 @@ object MagicCards {
         lang = lang,
         cardFaces = listOf(
             MagicCardFace(
-                name = DualLanguageText(original = "original-name", translation = translationCardName),
-                text = DualLanguageText(original = cardText, translation = translationCardText),
+                name = DualLanguageText(original = name, translation = translationName),
+                text = DualLanguageText(original = text, translation = translationText),
                 manaCost = manaCost
             )
         ),
@@ -33,12 +34,10 @@ object MagicCards {
     )
 
     fun givenMultiFacedCard(
-        translationCardName: String = "translation-name",
-        cardText: String = "original-text",
-        translationCardText: String = "translation-text",
-        secondTranslationCardName: String = "second-translation-name",
-        secondFaceText: String = "second-face-card-text",
-        secondFaceTranslationText: String = "second-face-translation-card-text",
+        faces: List<MagicCardFace> = listOf(
+            MagicCardFaces.givenMagicCardFaces(),
+            MagicCardFaces.givenMagicCardFaces()
+        ),
         set: String = "any-set",
         lang: String = "any-lang",
         standardLegality: Legality = Legality.LEGAL,
@@ -47,18 +46,7 @@ object MagicCards {
         id = UUID.randomUUID().toString(),
         set = set,
         lang = lang,
-        cardFaces = listOf(
-            MagicCardFace(
-                name = DualLanguageText(original = "original-name", translation = translationCardName),
-                text = DualLanguageText(original = cardText, translation = translationCardText),
-                manaCost = "cost"
-            ),
-            MagicCardFace(
-                name = DualLanguageText(original = "original-name", translation = secondTranslationCardName),
-                text = DualLanguageText(original = secondFaceText, translation = secondFaceTranslationText),
-                manaCost = "cost"
-            )
-        ),
+        cardFaces = faces,
         legality = FormatLegality(
             standard = standardLegality
         ),
