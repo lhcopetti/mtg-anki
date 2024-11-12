@@ -33,16 +33,16 @@ class CreateFlashCard(
         result.appendLine()
 
         getSampleSentence(request)?.let {
-            result.appendLine(it.texts.translation)
-            result.appendLine(it.texts.original)
+            result.appendLine(it.text.translation)
+            result.appendLine(it.text.original)
         }
         return result.toString()
     }
 
     private fun getSampleSentence(request: CreateFlashCardEntryRequest) = request.vocabularyStudyCard.cards
         .flatMap(MagicCard::cardFaces)
-        .filter { cardFace -> cardFace.texts.translation.contains(request.vocabularyStudyCard.vocabulary) }
-        .minByOrNull { it.texts.translation.length }
+        .filter { cardFace -> cardFace.text.translation.contains(request.vocabularyStudyCard.vocabulary) }
+        .minByOrNull { it.text.translation.length }
 
     private fun buildTags(request: CreateFlashCardEntryRequest) = request.vocabularyStudyCard.cards
         .map (MagicCard::set)

@@ -34,7 +34,7 @@ class ScryfallLoadMagicCardsExportProviderTest {
                 cardFaces = listOf(
                     MagicCardFace(
                         name = DualLanguageText(original = "Forest", translation = "Forest"),
-                        texts = DualLanguageText(
+                        text = DualLanguageText(
                             original = "({T}: Add {G}.)",
                             translation = "({T}: Add {G}.)"
                         ),
@@ -53,7 +53,7 @@ class ScryfallLoadMagicCardsExportProviderTest {
                 cardFaces = listOf(
                     MagicCardFace(
                         name = DualLanguageText(original = "Fury Sliver", translation = "Fury Sliver"),
-                        texts = DualLanguageText(
+                        text = DualLanguageText(
                             original = "All Sliver creatures have double strike.",
                             translation = "All Sliver creatures have double strike."
                         ),
