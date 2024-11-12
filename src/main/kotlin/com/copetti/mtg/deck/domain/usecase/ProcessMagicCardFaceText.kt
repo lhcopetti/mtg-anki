@@ -12,7 +12,7 @@ class ProcessMagicCardFaceText {
     }
 
     private fun removeCardName(magicCardFace: MagicCardFace) =
-        magicCardFace.texts.translation.replace(magicCardFace.name.translation, "")
+        magicCardFace.text.translation.replace(magicCardFace.name.translation, "")
 
     /**
      *

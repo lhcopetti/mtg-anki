@@ -21,7 +21,7 @@ object MagicCards {
         cardFaces = listOf(
             MagicCardFace(
                 name = DualLanguageText(original = "original-name", translation = translationCardName),
-                texts = DualLanguageText(original = cardText, translation = translationCardText),
+                text = DualLanguageText(original = cardText, translation = translationCardText),
                 manaCost = "cost"
             )
         ),
@@ -48,12 +48,12 @@ object MagicCards {
         cardFaces = listOf(
             MagicCardFace(
                 name = DualLanguageText(original = "original-name", translation = translationCardName),
-                texts = DualLanguageText(original = cardText, translation = translationCardText),
+                text = DualLanguageText(original = cardText, translation = translationCardText),
                 manaCost = "cost"
             ),
             MagicCardFace(
                 name = DualLanguageText(original = "original-name", translation = translationCardName),
-                texts = DualLanguageText(original = secondFaceText, translation = secondFaceTranslationText),
+                text = DualLanguageText(original = secondFaceText, translation = secondFaceTranslationText),
                 manaCost = "cost"
             )
         ),

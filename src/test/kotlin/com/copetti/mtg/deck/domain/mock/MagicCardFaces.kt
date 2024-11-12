@@ -14,7 +14,7 @@ object MagicCardFaces {
         manaCost: String = "mana-cost"
     ) = MagicCardFace(
         name = DualLanguageText(original = name, translation = translationName),
-        texts = DualLanguageText(original = cardText, translation = translationCardText),
+        text = DualLanguageText(original = cardText, translation = translationCardText),
         manaCost = manaCost
     )
 }
