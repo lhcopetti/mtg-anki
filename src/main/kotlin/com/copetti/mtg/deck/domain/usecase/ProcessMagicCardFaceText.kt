@@ -8,17 +8,18 @@ import org.springframework.stereotype.Component
 class ProcessMagicCardFaceText {
 
     fun process(magicCard: MagicCard): String {
-        val allText = magicCard.cardFaces.map { face -> face.text.translation }.joinToString(separator = " ")
-        val nameRemoved = removeCardNames(allText, magicCard)
-        return removeInvalidTextFromEnchantmentRooms(nameRemoved, magicCard)
+        return magicCard.cardFaces
+            .map(this::processMagicCardFaceText)
+            .map { text -> removeCardNames(magicCard, text) }
+            .joinToString(separator = " ")
     }
 
-    private fun removeCardNames(allText: String, magicCard: MagicCard): String = magicCard.cardFaces
+    private fun removeCardNames(magicCard: MagicCard, text: String): String = magicCard.cardFaces
         .map { face -> face.name.translation }
-        .fold(allText) { acc, value -> acc.replace(value, "") }
+        .fold(text) { acc, value -> acc.replace(value, "") }
 
-    private fun removeInvalidTextFromEnchantmentRooms(input: String, magicCard: MagicCard) =
-        magicCard.cardFaces.fold(input) { acc, value -> removeInvalidTextFromEnchantmentRooms(acc, value) }
+    private fun processMagicCardFaceText(magicCardFace: MagicCardFace) =
+        removeInvalidTextFromEnchantmentRooms(magicCardFace)
 
     /**
      *
@@ -28,11 +29,11 @@ class ProcessMagicCardFaceText {
      * 冠（かん）水（すい）した食（しょく）堂（どう）\no3oUoU\nあなたがこのドアを開放したとき、カード３枚を引き、その後、カード１枚を捨てる。
      * ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
      */
-    private fun removeInvalidTextFromEnchantmentRooms(input: String, magicCardFace: MagicCardFace): String {
+    private fun removeInvalidTextFromEnchantmentRooms(magicCardFace: MagicCardFace): String {
         /** Transforms "{B}" into "oB" or {3}{U}{U} into "o3oUoU" **/
         val manaCost = magicCardFace.manaCost.replace("{", "o").replace("}", "")
         val manaCostRemovalRegex = "^.*\\n$manaCost\\n".toRegex()
-        return manaCostRemovalRegex.replace(input, "")
+        return manaCostRemovalRegex.replace(magicCardFace.text.translation, "")
     }
 
 }
