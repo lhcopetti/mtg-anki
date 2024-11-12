@@ -18,9 +18,7 @@ class GetAllVocabularyFromCard(
     }
 
     private fun getAllTextFromCard(magicCard: MagicCard): String {
-        return magicCard.cardFaces
-            .map(processMagicCardFaceText::process)
-            .joinToString(separator = " ")
+        return processMagicCardFaceText.process(magicCard)
     }
 
 }
