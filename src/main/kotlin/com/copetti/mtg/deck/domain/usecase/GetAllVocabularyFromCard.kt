@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 @Service
 class GetAllVocabularyFromCard(
     private val japaneseParserProvider: JapaneseParserProvider,
-    private val processMagicCardFaceText: ProcessMagicCardFaceText,
+    private val processMagicCardText: ProcessMagicCardText,
     private val processParsedVocabulary: ProcessParsedVocabulary
 ) {
 
@@ -18,7 +18,7 @@ class GetAllVocabularyFromCard(
     }
 
     private fun getAllTextFromCard(magicCard: MagicCard): String {
-        return processMagicCardFaceText.process(magicCard)
+        return processMagicCardText.process(magicCard)
     }
 
 }
