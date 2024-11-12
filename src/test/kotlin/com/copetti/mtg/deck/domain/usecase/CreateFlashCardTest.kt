@@ -1,10 +1,11 @@
 package com.copetti.mtg.deck.domain.usecase
 
+import com.copetti.mtg.deck.domain.mock.MagicCardFaces
+import com.copetti.mtg.deck.domain.mock.MagicCards
+import com.copetti.mtg.deck.domain.mock.MagicSets
 import com.copetti.mtg.deck.domain.model.FlashCard
 import com.copetti.mtg.deck.domain.model.VocabularyStudyCard
 import com.copetti.mtg.deck.gateway.VocabularyDefinition
-import com.copetti.mtg.deck.domain.mock.MagicCards
-import com.copetti.mtg.deck.domain.mock.MagicSets
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
@@ -41,8 +42,8 @@ class CreateFlashCardTest {
                 ),
                 cards = setOf(
                     MagicCards.givenSingleFacedCard(
-                        cardText = "the-original-card-text",
-                        translationCardText = "the-translation-text (the-vocab)"
+                        text = "the-original-card-text",
+                        translationText = "the-translation-text (the-vocab)"
                     )
                 ),
                 sets = setOf(MagicSets.givenMagicSet())
@@ -89,10 +90,16 @@ class CreateFlashCardTest {
                 ),
                 cards = setOf(
                     MagicCards.givenMultiFacedCard(
-                        cardText = "the-original-card-text",
-                        translationCardText = "the-translation-text (the-vocab)",
-                        secondFaceText = "the-second-face-text",
-                        secondFaceTranslationText = "the-second-face-translation-text"
+                        faces = listOf(
+                            MagicCardFaces.givenMagicCardFaces(
+                                text = "the-original-card-text",
+                                translationText = "the-translation-text (the-vocab)",
+                            ),
+                            MagicCardFaces.givenMagicCardFaces(
+                                text = "the-second-face-text",
+                                translationText = "the-second-face-translation-text"
+                            )
+                        ),
                     )
                 ),
                 sets = setOf(MagicSets.givenMagicSet())
@@ -139,10 +146,16 @@ class CreateFlashCardTest {
                 ),
                 cards = setOf(
                     MagicCards.givenMultiFacedCard(
-                        cardText = "the-original-card-text",
-                        translationCardText = "the-translation-text",
-                        secondFaceText = "the-second-face-text",
-                        secondFaceTranslationText = "the-second-face-translation-text (the-target-vocab)"
+                        listOf(
+                            MagicCardFaces.givenMagicCardFaces(
+                                text = "the-original-card-text",
+                                translationText = "the-translation-text",
+                            ),
+                            MagicCardFaces.givenMagicCardFaces(
+                                text = "the-second-face-text",
+                                translationText = "the-second-face-translation-text (the-target-vocab)"
+                            )
+                        )
                     )
                 ),
                 sets = setOf(MagicSets.givenMagicSet())
@@ -189,8 +202,8 @@ class CreateFlashCardTest {
                     MagicCards.givenSingleFacedCard(set = "set1"),
                     MagicCards.givenSingleFacedCard(set = "set2"),
                     MagicCards.givenSingleFacedCard(
-                        cardText = "the-original-card-text",
-                        translationCardText = "the-translation-text (the-vocab)",
+                        text = "the-original-card-text",
+                        translationText = "the-translation-text (the-vocab)",
                         set = "set1"
                     ),
                 ),
