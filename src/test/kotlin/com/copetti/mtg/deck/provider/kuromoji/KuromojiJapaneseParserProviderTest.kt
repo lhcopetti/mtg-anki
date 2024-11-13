@@ -1,6 +1,7 @@
 package com.copetti.mtg.deck.provider.kuromoji
 
 import com.atilika.kuromoji.ipadic.Tokenizer
+import com.copetti.mtg.deck.domain.model.ParsedVocabulary
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -20,11 +21,11 @@ class KuromojiJapaneseParserProviderTest {
         val output = kuromojiJapaneseParserProvider.parse(input)
 
         val expected = listOf(
-            "俺",
-            "が",
-            "大好き",
-            "です",
-            "。"
+            ParsedVocabulary(vocabulary = "俺", baseForm = "俺"),
+            ParsedVocabulary(vocabulary = "が", baseForm = "が"),
+            ParsedVocabulary(vocabulary = "大好き", baseForm = "大好き"),
+            ParsedVocabulary(vocabulary = "です", baseForm = "です"),
+            ParsedVocabulary(vocabulary = "。", baseForm = "。")
         )
         assertThat(output).isEqualTo(expected)
     }
@@ -35,10 +36,10 @@ class KuromojiJapaneseParserProviderTest {
         val output = kuromojiJapaneseParserProvider.parse(input)
 
         val expected = listOf(
-            "素晴らしい",
-            "た",
-            "です",
-            "。"
+            ParsedVocabulary(vocabulary = "素晴らしかっ", baseForm = "素晴らしい"),
+            ParsedVocabulary(vocabulary = "た", baseForm = "た"),
+            ParsedVocabulary(vocabulary = "です", baseForm = "です"),
+            ParsedVocabulary(vocabulary = "。", baseForm = "。")
         )
         assertThat(output).isEqualTo(expected)
     }
@@ -49,18 +50,18 @@ class KuromojiJapaneseParserProviderTest {
         val output = kuromojiJapaneseParserProvider.parse(input)
 
         val expected = listOf(
-            "兄",
-            "が",
-            "ピアノ",
-            "を",
-            "弾く",
-            "て",
-            "、",
-            "妹",
-            "が",
-            "歌う",
-            "た",
-            "。"
+            ParsedVocabulary(vocabulary = "兄", baseForm = "兄"),
+            ParsedVocabulary(vocabulary = "が", baseForm = "が"),
+            ParsedVocabulary(vocabulary = "ピアノ", baseForm = "ピアノ"),
+            ParsedVocabulary(vocabulary = "を", baseForm = "を"),
+            ParsedVocabulary(vocabulary = "弾い", baseForm = "弾く"),
+            ParsedVocabulary(vocabulary = "て", baseForm = "て"),
+            ParsedVocabulary(vocabulary = "、", baseForm = "、"),
+            ParsedVocabulary(vocabulary = "妹", baseForm = "妹"),
+            ParsedVocabulary(vocabulary = "が", baseForm = "が"),
+            ParsedVocabulary(vocabulary = "歌っ", baseForm = "歌う"),
+            ParsedVocabulary(vocabulary = "た", baseForm = "た"),
+            ParsedVocabulary(vocabulary = "。", baseForm = "。"),
         )
         assertThat(output).isEqualTo(expected)
     }
@@ -71,17 +72,17 @@ class KuromojiJapaneseParserProviderTest {
         val output = kuromojiJapaneseParserProvider.parse(input)
 
         val expected = listOf(
-            "兄",
-            "が",
-            "ピアノ",
-            "を",
-            "弾く",
-            "、",
-            "妹",
-            "が",
-            "歌う",
-            "た",
-            "。"
+            ParsedVocabulary(vocabulary = "兄", baseForm = "兄"),
+            ParsedVocabulary(vocabulary = "が", baseForm = "が"),
+            ParsedVocabulary(vocabulary = "ピアノ", baseForm = "ピアノ"),
+            ParsedVocabulary(vocabulary = "を", baseForm = "を"),
+            ParsedVocabulary(vocabulary = "弾き", baseForm = "弾く"),
+            ParsedVocabulary(vocabulary = "、", baseForm = "、"),
+            ParsedVocabulary(vocabulary = "妹", baseForm = "妹"),
+            ParsedVocabulary(vocabulary = "が", baseForm = "が"),
+            ParsedVocabulary(vocabulary = "歌っ", baseForm = "歌う"),
+            ParsedVocabulary(vocabulary = "た", baseForm = "た"),
+            ParsedVocabulary(vocabulary = "。", baseForm = "。"),
         )
         assertThat(output).isEqualTo(expected)
     }

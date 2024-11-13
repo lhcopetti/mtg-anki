@@ -1,7 +1,7 @@
 package com.copetti.mtg.deck.provider.kuromoji
 
-import com.atilika.kuromoji.ipadic.Token
 import com.atilika.kuromoji.ipadic.Tokenizer
+import com.copetti.mtg.deck.domain.model.ParsedVocabulary
 import com.copetti.mtg.deck.gateway.JapaneseParserProvider
 import org.springframework.stereotype.Component
 
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component
 class KuromojiJapaneseParserProvider(
     private val tokenizer: Tokenizer
 ): JapaneseParserProvider {
-    override fun parse(input: String): List<String> {
+    override fun parse(input: String): List<ParsedVocabulary> {
         return tokenizer
             .tokenize(input)
-            .map (Token::getBaseForm)
+            .map { token -> ParsedVocabulary(vocabulary = token.surface, baseForm = token.baseForm) }
         }
     }

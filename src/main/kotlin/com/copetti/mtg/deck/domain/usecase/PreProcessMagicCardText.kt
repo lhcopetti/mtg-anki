@@ -5,7 +5,7 @@ import com.copetti.mtg.deck.domain.model.MagicCardFace
 import org.springframework.stereotype.Component
 
 @Component
-class ProcessMagicCardText {
+class PreProcessMagicCardText {
 
     fun process(magicCard: MagicCard): String {
         return magicCard.cardFaces
