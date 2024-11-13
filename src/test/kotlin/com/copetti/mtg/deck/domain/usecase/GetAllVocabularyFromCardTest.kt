@@ -1,6 +1,7 @@
 package com.copetti.mtg.deck.domain.usecase
 
 import com.copetti.mtg.deck.domain.mock.MagicCards
+import com.copetti.mtg.deck.domain.mock.ParsedVocabularies
 import com.copetti.mtg.deck.gateway.JapaneseParserProvider
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
@@ -18,10 +19,10 @@ class GetAllVocabularyFromCardTest {
     private lateinit var getAllVocabularyFromCard: GetAllVocabularyFromCard
 
     @MockK
-    private lateinit var processMagicCardText: ProcessMagicCardText
+    private lateinit var preProcessMagicCardText: PreProcessMagicCardText
 
     @MockK
-    private lateinit var processParsedVocabulary: ProcessParsedVocabulary
+    private lateinit var postProcessParsedVocabulary: PostProcessParsedVocabulary
 
     @MockK
     private lateinit var japaneseParserProvider: JapaneseParserProvider
@@ -30,28 +31,36 @@ class GetAllVocabularyFromCardTest {
     @Test
     fun `should process single magic card correctly`() {
         val magicCard = MagicCards.givenSingleFacedCard()
+        val parsedVocabularies = listOf(
+            ParsedVocabularies.given("parsed", "parsed"),
+            ParsedVocabularies.given("text", "text"),
+        )
 
-        every { processMagicCardText.process(any()) } returns "text extracted"
-        every { japaneseParserProvider.parse(any()) } returns listOf("parsed", "text")
-        every { processParsedVocabulary.process(any()) } returns setOf("processed", "vocabulary")
+        every { preProcessMagicCardText.process(any()) } returns "text extracted"
+        every { japaneseParserProvider.parse(any()) } returns parsedVocabularies
+        every { postProcessParsedVocabulary.process(any()) } returns setOf("processed", "vocabulary")
 
         val actual = getAllVocabularyFromCard.getVocabulary(magicCard)
         val expected = setOf("processed", "vocabulary")
 
         assertThat(actual).isEqualTo(expected)
 
-        verify { processMagicCardText.process(magicCard) }
+        verify { preProcessMagicCardText.process(magicCard) }
         verify { japaneseParserProvider.parse("text extracted") }
-        verify { processParsedVocabulary.process(setOf("parsed", "text")) }
+        verify { postProcessParsedVocabulary.process(parsedVocabularies) }
     }
 
     @Test
     fun `should process multi faced cards correctly`() {
         val multiFacedMagicCard = MagicCards.givenMultiFacedCard()
+        val parsedVocabularies = listOf(
+            ParsedVocabularies.given("parsed", "parsed"),
+            ParsedVocabularies.given("text", "text"),
+        )
 
-        every { processMagicCardText.process(any()) } returns "first card text second card text"
-        every { japaneseParserProvider.parse(any()) } returns listOf("parsed", "text")
-        every { processParsedVocabulary.process(any()) } returns setOf("processed", "vocabulary")
+        every { preProcessMagicCardText.process(any()) } returns "first card text second card text"
+        every { japaneseParserProvider.parse(any()) } returns parsedVocabularies
+        every { postProcessParsedVocabulary.process(any()) } returns setOf("processed", "vocabulary")
 
         val actual = getAllVocabularyFromCard.getVocabulary(multiFacedMagicCard)
         val expected = setOf("processed", "vocabulary")
@@ -59,13 +68,12 @@ class GetAllVocabularyFromCardTest {
         assertThat(actual).isEqualTo(expected)
 
 
-        verify { processMagicCardText.process(multiFacedMagicCard) }
+        verify { preProcessMagicCardText.process(multiFacedMagicCard) }
 
         val expectedParserInput = "first card text second card text"
         verify { japaneseParserProvider.parse(expectedParserInput) }
 
-        val expectedProcessInput = setOf("parsed", "text")
-        verify { processParsedVocabulary.process(expectedProcessInput) }
+        verify { postProcessParsedVocabulary.process(parsedVocabularies) }
     }
 
 }

@@ -1,12 +1,14 @@
 package com.copetti.mtg.deck.domain.usecase
 
+import com.copetti.mtg.deck.domain.model.ParsedVocabulary
 import org.springframework.stereotype.Service
 
 @Service
-class ProcessParsedVocabulary {
+class PostProcessParsedVocabulary {
 
-    fun process(vocabularies: Set<String>): Set<String> {
+    fun process(vocabularies: List<ParsedVocabulary>): Set<String> {
         return vocabularies
+            .map(ParsedVocabulary::baseForm)
             .filter(this::containsKanji)
             .filterNot(this::combinationOfColors)
             .toSet()
