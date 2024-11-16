@@ -1,7 +1,7 @@
 package com.copetti.mtg.deck.provider.scryfall
 
 import com.copetti.mtg.deck.domain.model.MagicSet
-import com.copetti.mtg.deck.provider.scryfall.client.ScryfallMagicSetClient
+import com.copetti.mtg.deck.provider.scryfall.client.ScryfallApiClient
 import com.copetti.mtg.deck.provider.scryfall.model.ScryfallMagicSet
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
@@ -17,7 +17,7 @@ import java.time.LocalDate
 class ScryfallMagicDataProviderTest {
 
     @MockK
-    private lateinit var client: ScryfallMagicSetClient
+    private lateinit var client: ScryfallApiClient
 
     @InjectMockKs
     private lateinit var scryfallMagicDataProvider: ScryfallMagicDataProvider
