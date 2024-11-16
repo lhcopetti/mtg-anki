@@ -19,7 +19,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 class CreateFlashCardTest {
 
     @MockK
-    private lateinit var buildMagicSetInformation: BuildMagicSetInformation
+    private lateinit var buildFrequencyInformation: BuildFrequencyInformation
 
     @InjectMockKs
     private lateinit var createFlashCard: CreateFlashCard
@@ -28,7 +28,7 @@ class CreateFlashCardTest {
     fun `should create a flashcard correctly for a single faced magic card`() {
         val setData = "the-set-data"
 
-        every { buildMagicSetInformation.build(any()) } returns setData
+        every { buildFrequencyInformation.build(any()) } returns setData
 
         val request = CreateFlashCardEntryRequest(
             vocabularyStudyCard = VocabularyStudyCards.givenVocabularyStudyCard(
@@ -69,14 +69,14 @@ class CreateFlashCardTest {
 
         assertThat(actual).isEqualTo(expected)
 
-        verify { buildMagicSetInformation.build(request) }
+        verify { buildFrequencyInformation.build(request) }
     }
 
     @Test
     fun `should pick the card that contains any of the variations for the target vocabulary as the sample sentence`() {
         val setData = "the-set-data"
 
-        every { buildMagicSetInformation.build(any()) } returns setData
+        every { buildFrequencyInformation.build(any()) } returns setData
 
         val request = CreateFlashCardEntryRequest(
             vocabularyStudyCard = VocabularyStudyCards.givenVocabularyStudyCard(
@@ -123,14 +123,14 @@ class CreateFlashCardTest {
 
         assertThat(actual).isEqualTo(expected)
 
-        verify { buildMagicSetInformation.build(request) }
+        verify { buildFrequencyInformation.build(request) }
     }
 
     @Test
     fun `should pick the correct face from the card that contains any of the variations for the target vocabulary as the sample sentence`() {
         val setData = "the-set-data"
 
-        every { buildMagicSetInformation.build(any()) } returns setData
+        every { buildFrequencyInformation.build(any()) } returns setData
 
         val request = CreateFlashCardEntryRequest(
             vocabularyStudyCard = VocabularyStudyCards.givenVocabularyStudyCard(
@@ -182,14 +182,14 @@ class CreateFlashCardTest {
 
         assertThat(actual).isEqualTo(expected)
 
-        verify { buildMagicSetInformation.build(request) }
+        verify { buildFrequencyInformation.build(request) }
     }
 
     @Test
     fun `should create a flashcard correctly for a multi faced magic card`() {
         val setData = "the-set-data"
 
-        every { buildMagicSetInformation.build(any()) } returns setData
+        every { buildFrequencyInformation.build(any()) } returns setData
 
         val request = CreateFlashCardEntryRequest(
             vocabularyStudyCard = VocabularyStudyCards.givenVocabularyStudyCard(
@@ -238,14 +238,14 @@ class CreateFlashCardTest {
 
         assertThat(actual).isEqualTo(expected)
 
-        verify { buildMagicSetInformation.build(request) }
+        verify { buildFrequencyInformation.build(request) }
     }
 
     @Test
     fun `should create a flashcard correctly for a multi faced magic card when target vocabulary is on the second face`() {
         val setData = "the-set-data"
 
-        every { buildMagicSetInformation.build(any()) } returns setData
+        every { buildFrequencyInformation.build(any()) } returns setData
 
         val request = CreateFlashCardEntryRequest(
             vocabularyStudyCard = VocabularyStudyCards.givenVocabularyStudyCard(
@@ -299,7 +299,7 @@ class CreateFlashCardTest {
     fun `should add set tags for the vocabulary from each tag`() {
         val setData = "the-set-data"
 
-        every { buildMagicSetInformation.build(any()) } returns setData
+        every { buildFrequencyInformation.build(any()) } returns setData
 
         val request = CreateFlashCardEntryRequest(
             vocabularyStudyCard = VocabularyStudyCards.givenVocabularyStudyCard(
@@ -343,7 +343,7 @@ class CreateFlashCardTest {
 
         assertThat(actual).isEqualTo(expected)
 
-        verify { buildMagicSetInformation.build(request) }
+        verify { buildFrequencyInformation.build(request) }
     }
 
     @Test
@@ -351,7 +351,7 @@ class CreateFlashCardTest {
         val setData = "the-set-data"
         val definitions = (1..10).map { "definition-$it" }
 
-        every { buildMagicSetInformation.build(any()) } returns setData
+        every { buildFrequencyInformation.build(any()) } returns setData
 
         val request = CreateFlashCardEntryRequest(
             vocabularyStudyCard = VocabularyStudyCards.givenVocabularyStudyCard(
@@ -392,6 +392,6 @@ class CreateFlashCardTest {
 
         assertThat(actual).isEqualTo(expected)
 
-        verify { buildMagicSetInformation.build(request) }
+        verify { buildFrequencyInformation.build(request) }
     }
 }
