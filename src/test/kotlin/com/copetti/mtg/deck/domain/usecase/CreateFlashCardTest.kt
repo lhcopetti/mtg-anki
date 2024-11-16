@@ -3,8 +3,8 @@ package com.copetti.mtg.deck.domain.usecase
 import com.copetti.mtg.deck.domain.mock.MagicCardFaces
 import com.copetti.mtg.deck.domain.mock.MagicCards
 import com.copetti.mtg.deck.domain.mock.MagicSets
+import com.copetti.mtg.deck.domain.mock.VocabularyStudyCards
 import com.copetti.mtg.deck.domain.model.FlashCard
-import com.copetti.mtg.deck.domain.model.VocabularyStudyCard
 import com.copetti.mtg.deck.gateway.VocabularyDefinition
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
@@ -31,7 +31,7 @@ class CreateFlashCardTest {
         every { buildMagicSetInformation.build(any()) } returns setData
 
         val request = CreateFlashCardEntryRequest(
-            vocabularyStudyCard = VocabularyStudyCard(
+            vocabularyStudyCard = VocabularyStudyCards.givenVocabularyStudyCard(
                 vocabulary = "the-vocab",
                 definition = VocabularyDefinition(
                     reading = "the-reading",
@@ -73,13 +73,126 @@ class CreateFlashCardTest {
     }
 
     @Test
+    fun `should pick the card that contains any of the variations for the target vocabulary as the sample sentence`() {
+        val setData = "the-set-data"
+
+        every { buildMagicSetInformation.build(any()) } returns setData
+
+        val request = CreateFlashCardEntryRequest(
+            vocabularyStudyCard = VocabularyStudyCards.givenVocabularyStudyCard(
+                vocabulary = "the-vocab",
+                variations = setOf("variation-1", "variation-2", "variation-3"),
+                definition = VocabularyDefinition(
+                    reading = "the-reading",
+                    definitions = listOf(
+                        "first-definition",
+                        "second-definition"
+                    )
+                ),
+                cards = setOf(
+                    MagicCards.givenSingleFacedCard("does not contain variation"),
+                    MagicCards.givenSingleFacedCard("this one also doesn't"),
+                    MagicCards.givenSingleFacedCard(
+                        name = "target-card",
+                        text = "the-original-card-text",
+                        translationText = "the-translation-text (variation-2)"
+                    ),
+                    MagicCards.givenSingleFacedCard("does not contain vocabulary"),
+                    MagicCards.givenSingleFacedCard("neither does this one"),
+                ),
+                sets = setOf(MagicSets.givenMagicSet())
+            )
+        )
+
+        val actual = createFlashCard.create(request)
+        val expected = FlashCard(
+            front = "the-vocab",
+            back = """
+                the-reading
+                first-definition
+                second-definition
+                
+                $setData
+                
+                the-translation-text (variation-2)
+                the-original-card-text
+
+            """.trimIndent(),
+            tags = setOf("set:any-set")
+        )
+
+        assertThat(actual).isEqualTo(expected)
+
+        verify { buildMagicSetInformation.build(request) }
+    }
+
+    @Test
+    fun `should pick the correct face from the card that contains any of the variations for the target vocabulary as the sample sentence`() {
+        val setData = "the-set-data"
+
+        every { buildMagicSetInformation.build(any()) } returns setData
+
+        val request = CreateFlashCardEntryRequest(
+            vocabularyStudyCard = VocabularyStudyCards.givenVocabularyStudyCard(
+                vocabulary = "the-vocab",
+                variations = setOf("variation-1", "variation-2", "variation-3"),
+                definition = VocabularyDefinition(
+                    reading = "the-reading",
+                    definitions = listOf(
+                        "first-definition",
+                        "second-definition"
+                    )
+                ),
+                cards = setOf(
+                    MagicCards.givenSingleFacedCard("does not contain variation"),
+                    MagicCards.givenSingleFacedCard("this one also doesn't"),
+                    MagicCards.givenMultiFacedCard(
+                        faces = listOf(
+                            MagicCardFaces.givenMagicCardFaces(name = "not equal to any of the variations - before"),
+                            MagicCardFaces.givenMagicCardFaces(
+                                text = "the-original-card-text",
+                                translationText = "the-translation-text (variation-3)"
+                            ),
+                            MagicCardFaces.givenMagicCardFaces(name = "not equal to any of the variations - after"),
+                        ),
+                    ),
+                    MagicCards.givenSingleFacedCard("does not contain vocabulary"),
+                    MagicCards.givenSingleFacedCard("neither does this one"),
+                ),
+                sets = setOf(MagicSets.givenMagicSet())
+            )
+        )
+
+        val actual = createFlashCard.create(request)
+        val expected = FlashCard(
+            front = "the-vocab",
+            back = """
+                the-reading
+                first-definition
+                second-definition
+                
+                $setData
+                
+                the-translation-text (variation-3)
+                the-original-card-text
+
+            """.trimIndent(),
+            tags = setOf("set:any-set")
+        )
+
+        assertThat(actual).isEqualTo(expected)
+
+        verify { buildMagicSetInformation.build(request) }
+    }
+
+    @Test
     fun `should create a flashcard correctly for a multi faced magic card`() {
         val setData = "the-set-data"
 
         every { buildMagicSetInformation.build(any()) } returns setData
 
         val request = CreateFlashCardEntryRequest(
-            vocabularyStudyCard = VocabularyStudyCard(
+            vocabularyStudyCard = VocabularyStudyCards.givenVocabularyStudyCard(
                 vocabulary = "the-vocab",
                 definition = VocabularyDefinition(
                     reading = "the-reading",
@@ -135,7 +248,7 @@ class CreateFlashCardTest {
         every { buildMagicSetInformation.build(any()) } returns setData
 
         val request = CreateFlashCardEntryRequest(
-            vocabularyStudyCard = VocabularyStudyCard(
+            vocabularyStudyCard = VocabularyStudyCards.givenVocabularyStudyCard(
                 vocabulary = "the-target-vocab",
                 definition = VocabularyDefinition(
                     reading = "the-reading",
@@ -189,7 +302,7 @@ class CreateFlashCardTest {
         every { buildMagicSetInformation.build(any()) } returns setData
 
         val request = CreateFlashCardEntryRequest(
-            vocabularyStudyCard = VocabularyStudyCard(
+            vocabularyStudyCard = VocabularyStudyCards.givenVocabularyStudyCard(
                 vocabulary = "the-vocab",
                 definition = VocabularyDefinition(
                     reading = "the-reading",

@@ -6,18 +6,19 @@ import org.springframework.stereotype.Service
 @Service
 class PostProcessParsedVocabulary {
 
-    fun process(vocabularies: List<ParsedVocabulary>): Set<String> {
+    fun process(vocabularies: List<ParsedVocabulary>): Set<ParsedVocabulary> {
         return vocabularies
-            .map(ParsedVocabulary::baseForm)
             .filter(this::containsKanji)
             .filterNot(this::combinationOfColors)
             .toSet()
     }
 
-    private fun combinationOfColors(vocabulary: String) = vocabulary.length > 1 && vocabulary.all { c -> c in COLORS }
 
-    private fun containsKanji(vocabulary: String) =
-        vocabulary.any { c -> Character.UnicodeBlock.of(c) == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS }
+    private fun containsKanji(vocabulary: ParsedVocabulary) =
+        vocabulary.baseForm.any { c -> Character.UnicodeBlock.of(c) == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS }
+
+    private fun combinationOfColors(vocabulary: ParsedVocabulary) =
+        vocabulary.baseForm.length > 1 && vocabulary.baseForm.all { c -> c in COLORS }
 
     companion object {
         private const val COLORS = "白青黒赤緑"

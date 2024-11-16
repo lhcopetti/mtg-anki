@@ -24,8 +24,8 @@ class PostProcessParsedVocabularyTest {
         )
         val actual = postProcessParsedVocabulary.process(input)
         val expected = setOf(
-            "取り除く",
-            "逡巡"
+            ParsedVocabularies.given(vocabulary = "取り除く"),
+            ParsedVocabularies.given(vocabulary = "逡巡")
         )
 
         assertThat(actual).isEqualTo(expected)
@@ -43,11 +43,11 @@ class PostProcessParsedVocabularyTest {
         )
         val actual = postProcessParsedVocabulary.process(input)
         val expected = setOf(
-            "白",
-            "青",
-            "黒",
-            "赤",
-            "緑"
+            ParsedVocabularies.given("白"),
+            ParsedVocabularies.given("青"),
+            ParsedVocabularies.given("黒"),
+            ParsedVocabularies.given("赤"),
+            ParsedVocabularies.given("緑"),
         )
         assertThat(actual).isEqualTo(expected)
     }
@@ -69,8 +69,8 @@ class PostProcessParsedVocabularyTest {
         )
         val actual = postProcessParsedVocabulary.process(input)
         val expected = setOf(
-            "青",
-            "黒",
+            ParsedVocabularies.given("青"),
+            ParsedVocabularies.given("黒"),
         )
         assertThat(actual).isEqualTo(expected)
     }

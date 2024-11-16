@@ -46,7 +46,7 @@ class CreateFlashCard(
     private fun getSampleSentence(request: CreateFlashCardEntryRequest): MagicCardFace? {
         val sampleSentence = request.vocabularyStudyCard.cards
             .flatMap(MagicCard::cardFaces)
-            .filter { cardFace -> cardFace.text.translation.contains(request.vocabularyStudyCard.vocabulary) }
+            .filter { cardFace -> cardFaceContainsTargetVocabulary(request, cardFace) }
             .minByOrNull { it.text.translation.length }
 
         if (sampleSentence == null) {
@@ -56,8 +56,11 @@ class CreateFlashCard(
         return sampleSentence
     }
 
+    private fun cardFaceContainsTargetVocabulary(request: CreateFlashCardEntryRequest, cardFace: MagicCardFace) =
+        request.vocabularyStudyCard.variations.any { variation -> cardFace.text.translation.contains(variation) }
+
     private fun buildTags(request: CreateFlashCardEntryRequest) = request.vocabularyStudyCard.cards
-        .map (MagicCard::set)
+        .map(MagicCard::set)
         .distinct()
         .map { set -> "set:$set" }
         .toSet()

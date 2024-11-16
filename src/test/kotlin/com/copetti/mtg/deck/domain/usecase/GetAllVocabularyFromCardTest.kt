@@ -35,15 +35,18 @@ class GetAllVocabularyFromCardTest {
             ParsedVocabularies.given("parsed", "parsed"),
             ParsedVocabularies.given("text", "text"),
         )
+        val postProcessedVocabulary = setOf(
+            ParsedVocabularies.given("post", "processed"),
+            ParsedVocabularies.given("post-vocabulary", "processed-vocabulary"),
+        )
 
         every { preProcessMagicCardText.process(any()) } returns "text extracted"
         every { japaneseParserProvider.parse(any()) } returns parsedVocabularies
-        every { postProcessParsedVocabulary.process(any()) } returns setOf("processed", "vocabulary")
+        every { postProcessParsedVocabulary.process(any()) } returns postProcessedVocabulary
 
         val actual = getAllVocabularyFromCard.getVocabulary(magicCard)
-        val expected = setOf("processed", "vocabulary")
 
-        assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(postProcessedVocabulary)
 
         verify { preProcessMagicCardText.process(magicCard) }
         verify { japaneseParserProvider.parse("text extracted") }
@@ -57,16 +60,18 @@ class GetAllVocabularyFromCardTest {
             ParsedVocabularies.given("parsed", "parsed"),
             ParsedVocabularies.given("text", "text"),
         )
+        val postProcessedVocabulary = setOf(
+            ParsedVocabularies.given("post", "processed"),
+            ParsedVocabularies.given("post-vocabulary", "processed-vocabulary"),
+        )
 
         every { preProcessMagicCardText.process(any()) } returns "first card text second card text"
         every { japaneseParserProvider.parse(any()) } returns parsedVocabularies
-        every { postProcessParsedVocabulary.process(any()) } returns setOf("processed", "vocabulary")
+        every { postProcessParsedVocabulary.process(any()) } returns postProcessedVocabulary
 
         val actual = getAllVocabularyFromCard.getVocabulary(multiFacedMagicCard)
-        val expected = setOf("processed", "vocabulary")
 
-        assertThat(actual).isEqualTo(expected)
-
+        assertThat(actual).isEqualTo(postProcessedVocabulary)
 
         verify { preProcessMagicCardText.process(multiFacedMagicCard) }
 
