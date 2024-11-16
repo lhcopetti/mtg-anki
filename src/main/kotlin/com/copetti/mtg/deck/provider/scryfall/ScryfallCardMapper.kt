@@ -9,7 +9,7 @@ import com.copetti.mtg.deck.provider.scryfall.model.ScryfallMagicCard
 import org.springframework.stereotype.Component
 
 @Component
-class ScryfallMagicCardMapper {
+class ScryfallCardMapper {
 
 
     fun toMagicCard(scryfallMagicCard: ScryfallMagicCard) = MagicCard(

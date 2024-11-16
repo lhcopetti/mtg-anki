@@ -15,7 +15,7 @@ class ScryfallLoadMagicCardsExportProviderTest {
     fun setUp() {
         scryfallLoadMagicCardsExportProvider = ScryfallLoadMagicCardsExportProvider(
             objectMapper = JsonConfiguration().objectMapper(),
-            scryfallMagicCardMapper = ScryfallMagicCardMapper()
+            scryfallCardMapper = ScryfallCardMapper()
         )
     }
 

@@ -12,11 +12,11 @@ import java.io.FileInputStream
 @Component
 class ScryfallLoadMagicCardsExportProvider(
     private val objectMapper: ObjectMapper,
-    private val scryfallMagicCardMapper: ScryfallMagicCardMapper
+    private val scryfallCardMapper: ScryfallCardMapper
 ) : LoadMagicCardsExportProvider {
     override fun loadAll(filePath: String): List<MagicCard> {
         val inputStream = FileInputStream(File(filePath))
         return objectMapper.readValue(inputStream, object : TypeReference<List<ScryfallMagicCard>>() {})
-            .map(scryfallMagicCardMapper::toMagicCard)
+            .map(scryfallCardMapper::toMagicCard)
     }
 }
