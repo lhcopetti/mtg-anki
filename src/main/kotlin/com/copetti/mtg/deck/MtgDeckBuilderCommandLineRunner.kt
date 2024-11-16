@@ -6,7 +6,6 @@ import org.springframework.boot.ExitCodeGenerator
 import org.springframework.boot.SpringApplication
 import org.springframework.context.ApplicationContext
 import org.springframework.stereotype.Component
-import java.io.File
 import kotlin.system.exitProcess
 
 
@@ -30,20 +29,14 @@ class MtgDeckBuilderCommandLineRunner(
 
     private fun doRun(args: Array<String>) {
 
-        if (args.size != 2) {
-            println("Please, specify the input and output file paths correctly")
-            println("mvn spring-boot:run <input-card-dump> <output-deck>")
+        if (args.size != 1) {
+            println("Please, specify the output file path correctly")
+            println("mvn spring-boot:run <output-deck>")
             throw IllegalArgumentException()
         }
 
-        val inputFilePath = args[0]
-        if (!File(inputFilePath).exists()) {
-            println("Invalid input file path: $inputFilePath")
-            throw IllegalArgumentException()
-        }
-
-        val outputFilePath = args[1]
-        buildMtgDeck.buildDeck(inputFilePath, outputFilePath)
+        val outputFilePath = args[0]
+        buildMtgDeck.buildDeck(outputFilePath)
 
     }
 }

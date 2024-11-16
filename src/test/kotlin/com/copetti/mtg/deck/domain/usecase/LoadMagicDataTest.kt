@@ -15,9 +15,11 @@ import org.junit.jupiter.api.extension.ExtendWith
 @ExtendWith(MockKExtension::class)
 class LoadMagicDataTest {
     @MockK
-    private lateinit var loadMagicCardsFromExport: LoadMagicCardsFromExport
+    private lateinit var loadMagicCards: LoadMagicCards
+
     @MockK
     private lateinit var loadMagicCardSets: LoadMagicCardSets
+
     @InjectMockKs
     private lateinit var loadMagicData: LoadMagicData
 
@@ -31,19 +33,18 @@ class LoadMagicDataTest {
             MagicSets.givenMagicSet(code = "first-set"),
             MagicSets.givenMagicSet(code = "second-set"),
         )
-        val inputFilePath = "the-input-file-path"
 
-        every { loadMagicCardsFromExport.load(any()) } returns cards
+        every { loadMagicCards.load() } returns cards
         every { loadMagicCardSets.load(any()) } returns sets
 
-        val actual = loadMagicData.load(inputFilePath)
+        val actual = loadMagicData.load()
         val expected = MagicData(
             cards = cards,
             sets = sets
         )
         assertThat(actual).isEqualTo(expected)
 
-        verify { loadMagicCardsFromExport.load(inputFilePath) }
+        verify { loadMagicCards.load() }
         verify { loadMagicCardSets.load(cards) }
     }
 }

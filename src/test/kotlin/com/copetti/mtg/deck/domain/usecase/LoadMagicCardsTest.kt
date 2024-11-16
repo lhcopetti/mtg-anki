@@ -3,28 +3,28 @@ package com.copetti.mtg.deck.domain.usecase
 import com.copetti.mtg.deck.domain.mock.MagicCards
 import com.copetti.mtg.deck.domain.model.GameLegality
 import com.copetti.mtg.deck.domain.model.Legality
-import com.copetti.mtg.deck.gateway.LoadMagicCardsExportProvider
+import com.copetti.mtg.deck.gateway.MagicCardsProvider
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import io.mockk.verify
 import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.util.Streams
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 
 @ExtendWith(MockKExtension::class)
-class LoadMagicCardsFromExportTest {
+class LoadMagicCardsTest {
 
     @MockK
-    private lateinit var loadMagicCardsExportProvider: LoadMagicCardsExportProvider
+    private lateinit var magicCardsProvider: MagicCardsProvider
 
     @InjectMockKs
-    private lateinit var loadMagicCardsFromExport: LoadMagicCardsFromExport
+    private lateinit var loadMagicCards: LoadMagicCards
 
     @Test
-    fun `should load the cards from export`() {
-        val inputFilePath = "the-input-file-path"
+    fun `should load the cards from provider`() {
         val cardList = listOf(
             MagicCards.givenSingleFacedCard(
                 lang = "ja",
@@ -38,45 +38,41 @@ class LoadMagicCardsFromExportTest {
             )
         )
 
-        every { loadMagicCardsExportProvider.loadAll(any()) } returns cardList
+        every { magicCardsProvider.loadAll() } returns Streams.stream(cardList)
 
-        val actual = loadMagicCardsFromExport.load(inputFilePath)
+        val actual = loadMagicCards.load()
 
         assertThat(actual).isEqualTo(cardList)
 
-        verify { loadMagicCardsExportProvider.loadAll(inputFilePath) }
-
+        verify { magicCardsProvider.loadAll() }
     }
 
     @Test
     fun `should filter out cards that are not japanese`() {
-        val inputFilePath = "the-input-file-path"
         val enCard = MagicCards.givenSingleFacedCard(
-                lang = "en",
-                set = "dsk",
-                standardLegality = Legality.LEGAL
-            )
+            lang = "en",
+            set = "dsk",
+            standardLegality = Legality.LEGAL
+        )
         val jaCard = MagicCards.givenMultiFacedCard(
             lang = "ja",
             set = "blb",
             standardLegality = Legality.LEGAL
         )
-        val cardList = listOf( enCard, jaCard)
+        val cardList = listOf(enCard, jaCard)
 
-        every { loadMagicCardsExportProvider.loadAll(any()) } returns cardList
+        every { magicCardsProvider.loadAll() } returns Streams.stream(cardList)
 
-        val actual = loadMagicCardsFromExport.load(inputFilePath)
+        val actual = loadMagicCards.load()
         val expected = listOf(jaCard)
 
         assertThat(actual).isEqualTo(expected)
 
-        verify { loadMagicCardsExportProvider.loadAll(inputFilePath) }
-
+        verify { magicCardsProvider.loadAll() }
     }
 
     @Test
     fun `should filter out cards that are not standard legal`() {
-        val inputFilePath = "the-input-file-path"
         val notLegalInStandard = MagicCards.givenSingleFacedCard(
             lang = "ja",
             set = "dsk",
@@ -87,22 +83,20 @@ class LoadMagicCardsFromExportTest {
             set = "blb",
             standardLegality = Legality.LEGAL
         )
-        val cardList = listOf( notLegalInStandard, legalInStandard)
+        val cardList = listOf(notLegalInStandard, legalInStandard)
 
-        every { loadMagicCardsExportProvider.loadAll(any()) } returns cardList
+        every { magicCardsProvider.loadAll() } returns Streams.stream(cardList)
 
-        val actual = loadMagicCardsFromExport.load(inputFilePath)
+        val actual = loadMagicCards.load()
         val expected = listOf(legalInStandard)
 
         assertThat(actual).isEqualTo(expected)
 
-        verify { loadMagicCardsExportProvider.loadAll(inputFilePath) }
-
+        verify { magicCardsProvider.loadAll() }
     }
 
     @Test
     fun `should filter out cards that are not legal in magic arena`() {
-        val inputFilePath = "the-input-file-path"
         val notLegalInArena = MagicCards.givenSingleFacedCard(
             lang = "ja",
             set = "dsk",
@@ -117,15 +111,14 @@ class LoadMagicCardsFromExportTest {
         )
         val cardList = listOf(notLegalInArena, legalInArena)
 
-        every { loadMagicCardsExportProvider.loadAll(any()) } returns cardList
+        every { magicCardsProvider.loadAll() } returns Streams.stream(cardList)
 
-        val actual = loadMagicCardsFromExport.load(inputFilePath)
+        val actual = loadMagicCards.load()
         val expected = listOf(legalInArena)
 
         assertThat(actual).isEqualTo(expected)
 
-        verify { loadMagicCardsExportProvider.loadAll(inputFilePath) }
-
+        verify { magicCardsProvider.loadAll() }
     }
 
 }

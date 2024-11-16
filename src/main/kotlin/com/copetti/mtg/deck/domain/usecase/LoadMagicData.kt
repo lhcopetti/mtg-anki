@@ -5,12 +5,12 @@ import org.springframework.stereotype.Service
 
 @Service
 class LoadMagicData(
-    private val loadMagicCardsFromExport: LoadMagicCardsFromExport,
+    private val loadMagicCards: LoadMagicCards,
     private val loadMagicCardSets: LoadMagicCardSets
 ) {
 
-    fun load(inputFilePath: String): MagicData {
-        val magicCards = loadMagicCardsFromExport.load(inputFilePath)
+    fun load(): MagicData {
+        val magicCards = loadMagicCards.load()
         val magicSets = loadMagicCardSets.load(magicCards)
         return MagicData(magicCards, magicSets)
     }
