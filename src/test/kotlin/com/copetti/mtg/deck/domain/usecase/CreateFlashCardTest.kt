@@ -345,4 +345,53 @@ class CreateFlashCardTest {
 
         verify { buildMagicSetInformation.build(request) }
     }
+
+    @Test
+    fun `should only use the first few definitions when the vocabulary card contains several ones`() {
+        val setData = "the-set-data"
+        val definitions = (1..10).map { "definition-$it" }
+
+        every { buildMagicSetInformation.build(any()) } returns setData
+
+        val request = CreateFlashCardEntryRequest(
+            vocabularyStudyCard = VocabularyStudyCards.givenVocabularyStudyCard(
+                vocabulary = "the-vocab",
+                definition = VocabularyDefinition(
+                    reading = "the-reading",
+                    definitions = definitions
+                ),
+                cards = setOf(
+                    MagicCards.givenSingleFacedCard(
+                        text = "the-original-card-text",
+                        translationText = "the-translation-text (the-vocab)"
+                    )
+                ),
+                sets = setOf(MagicSets.givenMagicSet())
+            )
+        )
+
+        val actual = createFlashCard.create(request)
+        val expected = FlashCard(
+            front = "the-vocab",
+            back = """
+                the-reading
+                definition-1
+                definition-2
+                definition-3
+                definition-4
+                definition-5
+                
+                $setData
+                
+                the-translation-text (the-vocab)
+                the-original-card-text
+
+            """.trimIndent(),
+            tags = setOf("set:any-set")
+        )
+
+        assertThat(actual).isEqualTo(expected)
+
+        verify { buildMagicSetInformation.build(request) }
+    }
 }
