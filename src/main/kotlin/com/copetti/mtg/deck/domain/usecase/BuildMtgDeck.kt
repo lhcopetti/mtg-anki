@@ -14,8 +14,8 @@ class BuildMtgDeck(
     val createDeckProvider: CreateDeckProvider
 ) {
 
-    fun buildDeck(inputFilePath: String, exportFilePath: String) {
-        val magicData = loadMagicData.load(inputFilePath)
+    fun buildDeck(exportFilePath: String) {
+        val magicData = loadMagicData.load()
         val studyCards = processMagicData.process(magicData)
         val flashCardEntries = createFlashCards(studyCards)
         createDeckProvider.create(CreateDeckProviderRequest(exportFilePath, flashCardEntries))

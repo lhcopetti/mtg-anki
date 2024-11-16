@@ -20,10 +20,13 @@ class BuildMtgDeckTest {
 
     @MockK
     private lateinit var loadMagicData: LoadMagicData
+
     @MockK
     private lateinit var processMagicData: ProcessMagicData
+
     @MockK
     private lateinit var createFlashCard: CreateFlashCard
+
     @MockK
     private lateinit var createDeckProvider: AnkiCreateDeckProvider
 
@@ -32,7 +35,6 @@ class BuildMtgDeckTest {
 
     @Test
     fun `should correctly load process and create the deck`() {
-        val inputFilePath = "the-input"
         val outputFilePath = "the-output"
         val magicData = MagicData(
             listOf(MagicCards.givenMultiFacedCard()),
@@ -42,11 +44,11 @@ class BuildMtgDeckTest {
         val firstVocabularyCard = VocabularyStudyCards.givenVocabularyStudyCard()
         val secondVocabularyCard = VocabularyStudyCards.givenVocabularyStudyCard()
 
-        val vocabularyStudyCards = setOf( firstVocabularyCard, secondVocabularyCard)
+        val vocabularyStudyCards = setOf(firstVocabularyCard, secondVocabularyCard)
         val firstFlashCard = FlashCards.givenFlashCard(front = "first")
         val secondFlashCard = FlashCards.givenFlashCard(front = "first")
 
-        every { loadMagicData.load(any()) } returns magicData
+        every { loadMagicData.load() } returns magicData
         every { processMagicData.process(any()) } returns vocabularyStudyCards
 
         val firstFlashCardRequest = CreateFlashCardEntryRequest(firstVocabularyCard)
@@ -57,9 +59,9 @@ class BuildMtgDeckTest {
 
         every { createDeckProvider.create(any()) } returns Unit
 
-        buildMtgDeck.buildDeck(inputFilePath, outputFilePath)
+        buildMtgDeck.buildDeck(outputFilePath)
 
-        verify { loadMagicData.load(inputFilePath) }
+        verify { loadMagicData.load() }
         verify { processMagicData.process(magicData) }
         verify { createFlashCard.create(firstFlashCardRequest) }
         verify { createFlashCard.create(secondFlashCardRequest) }
