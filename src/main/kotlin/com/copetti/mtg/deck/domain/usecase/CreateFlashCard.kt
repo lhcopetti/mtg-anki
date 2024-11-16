@@ -31,7 +31,7 @@ class CreateFlashCard(
     private fun buildBack(request: CreateFlashCardEntryRequest): String {
         val result = StringBuilder()
         result.appendLine(request.vocabularyStudyCard.definition.reading)
-        request.vocabularyStudyCard.definition.definitions.forEach(result::appendLine)
+        appendDefinitions(request, result)
         result.appendLine()
         result.appendLine(buildMagicSetInformation.build(request))
         result.appendLine()
@@ -42,6 +42,11 @@ class CreateFlashCard(
         }
         return result.toString()
     }
+
+    private fun appendDefinitions(request: CreateFlashCardEntryRequest, result: StringBuilder)  = request
+        .vocabularyStudyCard.definition.definitions
+        .take(5)
+        .forEach(result::appendLine)
 
     private fun getSampleSentence(request: CreateFlashCardEntryRequest): MagicCardFace? {
         val sampleSentence = request.vocabularyStudyCard.cards
