@@ -34,19 +34,22 @@ class CreateMagicStudyCardTest {
             MagicCards.givenSingleFacedCard(set = "set-#1"),
             MagicCards.givenSingleFacedCard(set = "set-#3"),
         )
-        val sets = listOf( set1, set2, set3 )
+        val sets = listOf(set1, set2, set3)
         val vocabularyDefinition = VocabularyDefinitions.givenVocabularyDefinition()
+        val variations = setOf("var1", "var2")
 
-        every { dictionaryProvider.lookup(any())} returns vocabularyDefinition
+        every { dictionaryProvider.lookup(any()) } returns vocabularyDefinition
 
         val request = CreateMagicStudyCardRequest(
             vocabulary = vocabulary,
+            variations = variations,
             relatedCards = cards,
             sets = sets
         )
         val actual = createMagicStudyCard.create(request)
         val expected = VocabularyStudyCard(
             vocabulary = vocabulary,
+            variations = variations,
             definition = vocabularyDefinition,
             cards = request.relatedCards,
             sets = setOf(set1, set3)

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service
 
 data class CreateMagicStudyCardRequest(
     val vocabulary: String,
+    val variations: Set<String>,
     val relatedCards: Set<MagicCard>,
     val sets: List<MagicSet>,
 )
@@ -34,6 +35,7 @@ class CreateMagicStudyCard(
 
         return VocabularyStudyCard(
             vocabulary = request.vocabulary,
+            variations = request.variations,
             definition = definition,
             cards = request.relatedCards,
             sets = sets
