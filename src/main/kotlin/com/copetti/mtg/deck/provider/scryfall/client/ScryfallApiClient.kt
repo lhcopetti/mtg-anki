@@ -6,7 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 
-@FeignClient(name = "scryfallSetClient", url = "\${scryfall.url}")
+@FeignClient(name = "scryfallApiClient", url = "\${scryfall.url}")
 interface ScryfallApiClient {
 
     @GetMapping("/sets/{code}")
