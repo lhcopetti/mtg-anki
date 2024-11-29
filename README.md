@@ -32,9 +32,9 @@ This way, you can prepare specifically for upcoming drafts or focus on vocabular
 #### TODOs:
 - [ ] Add instructions for custom study
 - [ ] Add card frequency count to vocabulary
-- [X] Fix issue where cards have way too many tags (eg: 引く)
-- [ ] Fix issue where some cards are missing the sample sentence (card vocabulary not in base form)
-- [ ] Remove unnecessary vocabulary such as color combinations (eg: 緑青)
+- [X] Fix issue where cards have way too many definitions (eg: 引く)
+- [X] Fix issue where some cards are missing the sample sentence (card vocabulary not in base form)
+- [X] Remove unnecessary vocabulary such as color combinations (eg: 緑青)
 - [X] Output .apkg file name based on the version from maven artifact
 - [X] Some cards do not have sample sentences or definition
 - [X] Add support for custom tags (e.g., set name, game platform, core, common)
@@ -44,8 +44,8 @@ This way, you can prepare specifically for upcoming drafts or focus on vocabular
 - [ ] Remove vocabularies that don't have a properly matching definition
 - [X] Handle improper formatting of room names (second face contains the name of the card)
 - [ ] Build the project from 'mvn clean install' instead of build.sh
-- [ ] Incorporate downloading a fresh export from scryfall project during build
-- [ ] Limit the number of definitions
+- [X] Incorporate downloading a fresh export from scryfall project during build
+- [X] Limit the number of definitions
 - [ ] Add link to reference card (sentence)
 - [ ] Consider a sub-deck structure
 - [ ] Consider adding decks for card names
